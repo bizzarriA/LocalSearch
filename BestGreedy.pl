@@ -32,35 +32,13 @@ nodi_presi([_,N1,N2,_],ListaNodi):-
 		-> true
 		; Val2 is 1
 	).
-	
-is_in_spanning([Id,_,_,_], ArchiSpanning, X):-
-	nth1(Id, ArchiSpanning, X).
 
-controllo_grado_loop(_,[],_,_,0).	
-controllo_grado_loop(N,[[Id,N1,N2,_]|ListaArchi], ArchiSpanning,K,C):-
-	K1 is K-1,
-	nth1(Id, ArchiSpanning, Val),
-	((C==K1)
-		->false;	/*se raggiungo K-1 sono già al limite ed è inutile controllare altri archi */
-	),
-	( (Val!=1)
-		-> controllo_grado_loop(N,ListaArchi,ArchiSpanning,C); /* se l'arco non è selezionato vado oltre*/
-	),
-	((N!=N1, N!=N2) 
-		-> controllo_grado_loop(N,ListaArchi,ArchiSpanning,C) /*se il valore di N non corrisponde a nessun estremo dell'arco considerato vado oltre*/
-		; C is C1+1, controllo_grado_loop(N,ListaArchi,ArchiSpanning,C1) /*se invece l'arco è selezionato ed il nodo corrisponde ad almeno uno degli estremi incremento C */
-	).
-
-controllo_grado([_,N1,N2,_], ListaArchi, ArchiSpanning, K):-
-	controllo_grado_loop(N1, ListaArchi, ArchiSpanning, K, C1),
-	controllo_grado_loop(N2, ListaArchi, ArchiSpanning, K, C2).
-	
 define_tree(_,_,ListaNodi):-
 	ground(ListaNodi),!.
 define_tree(ListaArchi,ArchiSpanning,ListaNodi):-
 	cerca_arco(ListaArchi,ArchiSpanning,Arco), /*Arco è una lista che ha Id,N1,N2,Costo*/
-	((is_percorso(Arco,ListaArchi,ArchiSpanning), grado(K),controllo_grado(Arco,ListaArchi,ArchiSpanning,K)) /*se Arco va da N1 a N2, controlla che non ci sia già un percorso e che il grado dei nodi sia rispettato*/
-		-> is_in_spanning(Arco,ArchiSpanning,0)	/*se c'è il percorso, nella lista spanning l'arco va a 0;*/
+	((is_percorso(Arco,ListaArchi,ArchiSpanning); grado(K),controllo_grado(Arco,ListaArchi,ArchiSpanning,K)), /*se Arco va da N1 a N2, controlla che non ci sia già un percorso e che il grado dei nodi sia rispettato*/
+		-> is_in_spanning(Arco,ArchiSpanning,0)	/*se c'è il percorso, nella lista spanning l'arco va a 0*/
 		; is_in_spanning(Arco,ArchiSpanning,1), nodi_presi(Arco,ListaNodi)/*setta i nodi e gli archi presi*/
 	),
 	define_tree(ListaArchi,ArchiSpanning,ListaNodi).
