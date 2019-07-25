@@ -19,6 +19,7 @@ is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning):-
 	is_arco(N1,N2,ListaArchi,ArchiSpanning),!.
 is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning):-
 	N_1 is N1+1,
+	nodi(Nnodi),
 	N::[1..Nnodi],
 	is_percorso_aux(N1,N,ListaArchi,ArchiSpanning),is_arco(N,N2).
 
