@@ -3,6 +3,8 @@
 :-lib(listut).
 :-lib(propia).
 
+:-[istanze].
+
 is_arco(N1,N2,ListaArchi,ArchiSpanning):-
 	(N1<N2
 		-> arco(Id,N1,N2,_) infers most, nth1(Id,ArchiSpanning,Bool),Bool==1
@@ -43,13 +45,10 @@ controllo_grado_loop(N,[[Id,N1,N2,_]|ListaArchi], ArchiSpanning,K,C):-
 	K1 is K-1,
 	nth1(Id, ArchiSpanning, Val),
 	((C==K1)
-		->false;	/*se raggiungo K-1 sono già al limite ed è inutile controllare altri archi */
+		->false	/*se raggiungo K-1 sono già al limite ed è inutile controllare altri archi */
 	),
-	( (Val!=1)
-		-> controllo_grado_loop(N,ListaArchi,ArchiSpanning,C); /* se l'arco non è selezionato vado oltre*/
-	),
-	((N!=N1, N!=N2) 
-		-> controllo_grado_loop(N,ListaArchi,ArchiSpanning,C) /*se il valore di N non corrisponde a nessun estremo dell'arco considerato vado oltre*/
+	((Val!=1; (N!=N1, N!=N2)) 
+		-> controllo_grado_loop(N,ListaArchi,ArchiSpanning,C) /*se l'arco non è selezionato oppure se il valore di N non corrisponde a nessun estremo dell'arco considerato vado oltre*/
 		; C is C1+1, controllo_grado_loop(N,ListaArchi,ArchiSpanning,C1) /*se invece l'arco è selezionato ed il nodo corrisponde ad almeno uno degli estremi incremento C */
 	).
 
