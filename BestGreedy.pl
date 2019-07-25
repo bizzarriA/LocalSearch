@@ -21,6 +21,8 @@ is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning):-
 is_percorso([_,N1,N2,_],ListaArchi,ArchiSpanning):-
 	is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning).
 	
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	
 nodi_presi([_,N1,N2,_],ListaNodi):-
 	nth1(N1,ListaNodi,Val1),
 	nth1(N2,ListaNodi,Val2),
