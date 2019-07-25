@@ -9,6 +9,7 @@ is_arco(N1,N2,ListaArchi,ArchiSpanning):-
 		; (N1\=N2
 			-> arco(Id,N2,N1,_) infers most, nth1(Id,ArchiSpanning,Bool),Bool==1
 			; false
+		)	
 	).
 	
 is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning):-
