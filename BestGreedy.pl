@@ -32,6 +32,8 @@ nodi_presi([_,N1,N2,_],ListaNodi):-
 		-> true
 		; Val2 is 1
 	).
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	
 is_in_spanning([Id,_,_,_], ArchiSpanning, X):-
 	nth1(Id, ArchiSpanning, X).
@@ -51,6 +53,12 @@ controllo_grado_loop(N,[[Id,N1,N2,_]|ListaArchi], ArchiSpanning,K,C):-
 		; C is C1+1, controllo_grado_loop(N,ListaArchi,ArchiSpanning,C1) /*se invece l'arco è selezionato ed il nodo corrisponde ad almeno uno degli estremi incremento C */
 	).
 
+controllo_grado([_,N1,N2,_], ListaArchi, ArchiSpanning, K):-
+	controllo_grado_loop(N1, ListaArchi, ArchiSpanning, K, C1),
+	controllo_grado_loop(N2, ListaArchi, ArchiSpanning, K, C2).
+	
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/	
+
 cerca_arco_aux([],[],Id_attuale,Min_attuale,Id_min_attuale,Id_min_definitivo,Min_definitivo):-!, /*se arrivo alla fine della lista, il minimo definitivo è l'ultimo minimo trovato*/
 	Id_min_definitivo is Id_min_attuale,
 	Min_definitivo is Min_attuale. 
@@ -67,17 +75,8 @@ cerca_arco_aux([[Id,N1,N2,Costo]|Tarchi],[Bool1|Tbool],Id_attuale,Min_attuale,Id
 cerca_arco(ListaArchi,ArchiSpanning,Arco,CostoMax):-
 	cerca_arco_aux(ListaArchi,ArchiSpanning,1,CostoMax,1,Id_min_definitivo,Min_definitivo),	/*CostoMax è il minimo iniziale in quanto upper bound del minimo e 1 è il primo arco che si controlla*/
 	nth1(Id_min_definitivo,ListaArchi,Arco).
-	
-define_tree(_,_,ListaNodi,_):-
-	ground(ListaNodi),!.
-define_tree(ListaArchi,ArchiSpanning,ListaNodi,CostoMax):-
-	cerca_arco(ListaArchi,ArchiSpanning,Arco,CostoMax), /*Arco è una lista che ha Id,N1,N2,Costo*/
-	((is_percorso(Arco,ListaArchi,ArchiSpanning); grado(K),controllo_grado(Arco,ListaArchi,ArchiSpanning,K)), /*se Arco va da N1 a N2, controlla che non ci sia già un percorso e che il grado dei nodi sia rispettato*/
-		-> is_in_spanning(Arco,ArchiSpanning,0)	/*se c'è il percorso, nella lista spanning l'arco va a 0*/
 
-controllo_grado([_,N1,N2,_], ListaArchi, ArchiSpanning, K):-
-	controllo_grado_loop(N1, ListaArchi, ArchiSpanning, K, C1),
-	controllo_grado_loop(N2, ListaArchi, ArchiSpanning, K, C2).
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	
 define_tree(_,_,ListaNodi):-
 	ground(ListaNodi),!.
