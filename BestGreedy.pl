@@ -2,6 +2,7 @@
 :-lib(fd_global).
 :-lib(listut).
 :-lib(propia).
+:-lib(edge_finder).
 
 :-[istanze].
 
@@ -92,7 +93,7 @@ define_tree(ListaArchi,ArchiSpanning,ListaNodi):-
 	
 spanning_tree(ArchiSpanning,Costo):-
 	findall([Id,N1,N2,C],arco(Id,N1,N2,C),ListaArchi),
-	findall([_,_,_,C],arco(_,_,_,C),ListaCosti),
+	findall(C,arco(_,_,_,C),ListaCosti),
 	maxlist(ListaCosti,CostoMax),
 	length(ListaArchi,Narchi),
 	length(ArchiSpanning,Narchi),
