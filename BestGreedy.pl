@@ -3,8 +3,8 @@
 :-lib(listut).
 :-lib(propia).
 :-lib(edge_finder).
+:-lib(graph_algorithms).
 
-:-[istanze].
 
 is_arco(N1,N2,ListaArchi,ArchiSpanning):-
 	(N1<N2
@@ -81,7 +81,7 @@ cerca_arco(ListaArchi,ArchiSpanning,Arco,CostoMax):-
 	nth1(Id_min_definitivo,ListaArchi,Arco).
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	
+/*TENTATIVO 1*/	
 define_tree(_,_,ListaNodi,_):-
 	ground(ListaNodi),!.
 define_tree(ListaArchi,ArchiSpanning,ListaNodi,CostoMax):-
@@ -90,7 +90,35 @@ define_tree(ListaArchi,ArchiSpanning,ListaNodi,CostoMax):-
 		-> is_in_spanning(Arco,ArchiSpanning,0)	/*se c'è il percorso, nella lista spanning l'arco va a 0;*/
 		; is_in_spanning(Arco,ArchiSpanning,1), nodi_presi(Arco,ListaNodi)/*setta i nodi e gli archi presi*/
 	),
-	define_tree(ListaArchi,ArchiSpanning,ListaNodi).
+	define_tree(ListaArchi,ArchiSpanning,ListaNodi,CostoMax).
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/	
+/*TENTATIVO 2*/
+define_treep(_,_,_,ListaNodi,_):-
+	ground(ListaNodi),!.
+define_treep(ListaArchi,ArchiSpanning,Lista_presi_old,ListaNodi,CostoMax):- /*lista presi old all'inizio è vuota, poi mantiene gli archi presi nell'ordine*/
+	cerca_arco(ListaArchi,ArchiSpanning,Arco,CostoMax), /*Arco è una lista che ha Id,N1,N2,Costo*/
+	prova_grafo(Lista_presi_old,Arco,Lista_presi_new,Grafo_prova),
+	((not graph_is_acyclic(Grafo_prova); grado(K),controllo_grado(Arco,ListaArchi,ArchiSpanning,K)) /*se Arco va da N1 a N2, controlla che non ci sia già un percorso e che il grado dei nodi sia rispettato*/
+		-> is_in_spanning(Arco,ArchiSpanning,0),Lista_presi=Lista_presi_old	/*se c'è il percorso, nella lista spanning l'arco va a 0;*/
+		; is_in_spanning(Arco,ArchiSpanning,1), nodi_presi(Arco,ListaNodi),Lista_presi=Lista_presi_new/*setta i nodi e gli archi presi*/
+	),
+	define_treep(ListaArchi,ArchiSpanning,Lista_presi,ListaNodi,CostoMax).
+	
+	prova_grafo(Lista_presi_old,[Id,N1,N2,C],Lista_presi_new,Graph):-
+		nodi(Nnodi),
+		append(Lista_presi_old,[e(N1,N2,C),e(N2,N1,C)],Lista_presi_new),
+		make_graph(Nnodi,Lista_presi_new,Graph).
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/	
+
+calcola_costo([],[],0):-!.		
+calcola_costo([[_,_,_,C]|T],[Bool|Tbool],Costo):-
+	(Bool==1
+		-> Costo#=C+Costo1
+		; Costo#=Costo1
+	),
+	calcola_costo(T,Tbool,Costo1).
 	
 spanning_tree(ArchiSpanning,Costo):-
 	findall([Id,N1,N2,C],arco(Id,N1,N2,C),ListaArchi),
@@ -102,5 +130,5 @@ spanning_tree(ArchiSpanning,Costo):-
 	nodi(Nnodi),
 	length(ListaNodi,Nnodi),
 	ListaNodi::[0,1],
-	define_tree(ListaArchi,ArchiSpanning,ListaNodi,CostoMax),
+	define_treep(ListaArchi,ArchiSpanning,[],ListaNodi,CostoMax),
 	calcola_costo(ListaArchi,ArchiSpanning,Costo).
