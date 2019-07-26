@@ -22,7 +22,7 @@ is_arco(N1,N2,ListaArchi,ArchiSpanning):-
 is_percorso([_,N1,N2,_],ListaNodi):-
 	nth1(N1,ListaNodi,Val1),
 	nth1(N2,ListaNodi,Val2),
-	((N1==1,N2==1)	/*se entrambi i nodi sono già selezionati esiste per forza già un percorso non orientato da N1 a N2*/
+	((Val1==1,Val2==1)	/*se entrambi i nodi sono già selezionati esiste per forza già un percorso non orientato da N1 a N2*/
 		->true
 		;false
 	).
@@ -144,5 +144,5 @@ spanning_tree(ArchiSpanning,Costo):-
 	nodi(Nnodi),
 	length(ListaNodi,Nnodi),
 	ListaNodi::[0,1],
-	define_tree(ListaArchi,ArchiSpanning,[],ListaNodi,CostoMax),
+	define_tree(ListaArchi,ArchiSpanning,ListaNodi,CostoMax),
 	calcola_costo(ListaArchi,ArchiSpanning,Costo).
