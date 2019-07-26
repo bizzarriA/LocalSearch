@@ -41,8 +41,8 @@ is_percorso([_,N1,N2,_],ListaArchi,ArchiSpanning):-
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	
 nodi_presi([_,N1,N2,_],ListaNodi):-
-	nth1(N1,ListaNodi,Val1),
-	nth1(N2,ListaNodi,Val2),
+	nth1(N1,ListaNodi,Val1,_),
+	nth1(N2,ListaNodi,Val2,_),
 	(ground(Val1)
 		-> true
 		; Val1 is 1
@@ -55,12 +55,12 @@ nodi_presi([_,N1,N2,_],ListaNodi):-
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	
 is_in_spanning([Id,_,_,_], ArchiSpanning, X):-
-	nth1(Id, ArchiSpanning, X).
+	nth1(Id, ArchiSpanning, X,_).
 
 controllo_grado_loop(_,[],_,0).	
 controllo_grado_loop(N,[[Id,N1,N2,_]|ListaArchi], ArchiSpanning,C):-
 	K1 is K-1,
-	nth1(Id, ArchiSpanning, Val),
+	nth1(Id, ArchiSpanning, Val,_),
 	((not ground(Val))
 		-> controllo_grado_loop(N,ListaArchi,ArchiSpanning,C)
 		;((Val\= 1; (N\=N1, N\=N2) )
@@ -94,7 +94,7 @@ cerca_arco_aux([[Id,N1,N2,Costo]|Tarchi],[Bool1|Tbool],Id_attuale,Min_attuale,Id
 		
 cerca_arco(ListaArchi,ArchiSpanning,Arco,CostoMax):-
 	cerca_arco_aux(ListaArchi,ArchiSpanning,1,CostoMax,1,Id_min_definitivo,Min_definitivo),	/*CostoMax è il minimo iniziale in quanto upper bound del minimo e 1 è il primo arco che si controlla*/
-	nth1(Id_min_definitivo,ListaArchi,Arco).
+	element(Id_min_definitivo,ListaArchi,Arco).
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*TENTATIVO 1*/	
