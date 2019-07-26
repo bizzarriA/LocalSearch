@@ -57,21 +57,25 @@ nodi_presi([_,N1,N2,_],ListaNodi):-
 is_in_spanning([Id,_,_,_], ArchiSpanning, X):-
 	nth1(Id, ArchiSpanning, X).
 
-controllo_grado_loop(_,[],_,_,0).	
-controllo_grado_loop(N,[[Id,N1,N2,_]|ListaArchi], ArchiSpanning,K,C):-
+controllo_grado_loop(_,[],_,0).	
+controllo_grado_loop(N,[[Id,N1,N2,_]|ListaArchi], ArchiSpanning,C):-
 	K1 is K-1,
 	nth1(Id, ArchiSpanning, Val),
-	((C==K1)
-		->false	/*se raggiungo K-1 sono già al limite ed è inutile controllare altri archi */
-	),
-	((Val\=1; (N\=N1, N\=N2)) 
-		-> controllo_grado_loop(N,ListaArchi,ArchiSpanning,C) /*se l'arco non è selezionato oppure se il valore di N non corrisponde a nessun estremo dell'arco considerato vado oltre*/
-		; C is C1+1, controllo_grado_loop(N,ListaArchi,ArchiSpanning,C1) /*se invece l'arco è selezionato ed il nodo corrisponde ad almeno uno degli estremi incremento C */
+	((not ground(Val))
+		-> controllo_grado_loop(N,ListaArchi,ArchiSpanning,C)
+		;((Val\= 1; (N\=N1, N\=N2) )
+			-> controllo_grado_loop(N,ListaArchi,ArchiSpanning,C) /*se l'arco non è selezionato oppure se il valore di N non corrisponde a nessun estremo dell'arco considerato vado oltre*/
+			; C is C1+1, controllo_grado_loop(N,ListaArchi,ArchiSpanning,C1) /*se invece l'arco è selezionato ed il nodo corrisponde ad almeno uno degli estremi incremento C */
+		)
 	).
 
 controllo_grado([_,N1,N2,_], ListaArchi, ArchiSpanning, K):-
-	controllo_grado_loop(N1, ListaArchi, ArchiSpanning, K, C1),
-	controllo_grado_loop(N2, ListaArchi, ArchiSpanning, K, C2).
+	controllo_grado_loop(N1, ListaArchi, ArchiSpanning, C1),
+	controllo_grado_loop(N2, ListaArchi, ArchiSpanning, C2),
+	((C1>=K; C2>=K)
+		->true
+		;false
+	).
 	
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/	
 
