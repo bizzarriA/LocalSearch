@@ -3,9 +3,7 @@
 :-lib(listut).
 :-lib(propia).
 :-lib(edge_finder).
-:-lib(graph_algorithms).
 
-:-[istanze].
 
 is_arco(N1,N2,ListaArchi,ArchiSpanning):-
 	(N1<N2
@@ -100,7 +98,6 @@ define_tree(_,_,ListaNodi,_):-
 	ground(ListaNodi),!.
 define_tree(ListaArchi,ArchiSpanning,ListaNodi,CostoMax):-
 	cerca_arco(ListaArchi,ArchiSpanning,Arco,CostoMax), /*Arco è una lista che ha Id,N1,N2,Costo*/
-	((is_percorso(Arco,ListaNodi); grado(K),not controllo_grado(Arco,ListaArchi,ArchiSpanning,K)) /*se Arco va da N1 a N2, controlla che non ci sia già un percorso e che il grado dei nodi sia rispettato*/
 		-> is_in_spanning(Arco,ArchiSpanning,0)	/*se c'è il percorso, nella lista spanning l'arco va a 0;*/
 		; is_in_spanning(Arco,ArchiSpanning,1), nodi_presi(Arco,ListaNodi)/*setta i nodi e gli archi presi*/
 	),
