@@ -5,6 +5,7 @@
 :-lib(edge_finder).
 :-lib(graph_algorithms).
 
+:-[istanze].
 
 is_arco(N1,N2,ListaArchi,ArchiSpanning):-
 	(N1<N2
@@ -15,6 +16,19 @@ is_arco(N1,N2,ListaArchi,ArchiSpanning):-
 		)	
 	).
 	
+/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*prova percorso N3*/
+
+is_percorso([_,N1,N2,_],ListaNodi):-
+	nth1(N1,ListaNodi,Val1),
+	nth1(N2,ListaNodi,Val2),
+	((N1==1,N2==1)	/*se entrambi i nodi sono già selezionati esiste per forza già un percorso non orientato da N1 a N2*/
+		->true
+		;false
+	).
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*
 is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning):-
 	is_arco(N1,N2,ListaArchi,ArchiSpanning),!.
 is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning):-
@@ -25,7 +39,7 @@ is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning):-
 
 is_percorso([_,N1,N2,_],ListaArchi,ArchiSpanning):-
 	is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning).
-	
+	*/
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	
 nodi_presi([_,N1,N2,_],ListaNodi):-
@@ -86,7 +100,7 @@ define_tree(_,_,ListaNodi,_):-
 	ground(ListaNodi),!.
 define_tree(ListaArchi,ArchiSpanning,ListaNodi,CostoMax):-
 	cerca_arco(ListaArchi,ArchiSpanning,Arco,CostoMax), /*Arco è una lista che ha Id,N1,N2,Costo*/
-	((is_percorso(Arco,ListaArchi,ArchiSpanning); grado(K),controllo_grado(Arco,ListaArchi,ArchiSpanning,K)) /*se Arco va da N1 a N2, controlla che non ci sia già un percorso e che il grado dei nodi sia rispettato*/
+	((is_percorso(Arco,ListaNodi); grado(K),controllo_grado(Arco,ListaArchi,ArchiSpanning,K)) /*se Arco va da N1 a N2, controlla che non ci sia già un percorso e che il grado dei nodi sia rispettato*/
 		-> is_in_spanning(Arco,ArchiSpanning,0)	/*se c'è il percorso, nella lista spanning l'arco va a 0;*/
 		; is_in_spanning(Arco,ArchiSpanning,1), nodi_presi(Arco,ListaNodi)/*setta i nodi e gli archi presi*/
 	),
@@ -130,5 +144,5 @@ spanning_tree(ArchiSpanning,Costo):-
 	nodi(Nnodi),
 	length(ListaNodi,Nnodi),
 	ListaNodi::[0,1],
-	define_treep(ListaArchi,ArchiSpanning,[],ListaNodi,CostoMax),
+	define_tree(ListaArchi,ArchiSpanning,[],ListaNodi,CostoMax),
 	calcola_costo(ListaArchi,ArchiSpanning,Costo).
