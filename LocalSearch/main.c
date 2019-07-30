@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #define NUMERONODI 5
-#define NUMEROARCHI 8
+#define NUMEROARCHI 10
 
 typedef struct s_arco{
     int Id;
@@ -129,12 +129,25 @@ void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
 void main() {
     int Nodi[NUMERONODI];
     arco ListaArchi[NUMEROARCHI];
-    int IdArcoMigliore;
+    int IdArcoMigliore, scan=0, i=0;
+
+    FILE *fd;
+    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze.txt", "r");
+    if(fd==NULL){
+        printf("Errore apertura file");
+        exit(1);
+    }
+
+    while(scan!=EOF){
+        scan=fscanf(fd,"%d/%d/%d/%d/%d",&ListaArchi[i].Id,&ListaArchi[i].N1,&ListaArchi[i].N2,&ListaArchi[i].Costo,&ListaArchi[i].Selected);
+        i++;
+    }
+    fclose(fd);
 
     stampaLista(ListaArchi);
     //IdArcoMigliore=individuaArco(ListaArchi);
     for(IdArcoMigliore=1;IdArcoMigliore<=NUMEROARCHI;IdArcoMigliore++) {
-        if(ListaArchi[IdArcoMigliore].Selected==0)
+        if(ListaArchi[IdArcoMigliore-1].Selected==0)
         localSearch(ListaArchi, IdArcoMigliore, Nodi);
     }
 
