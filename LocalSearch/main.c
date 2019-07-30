@@ -34,6 +34,22 @@ int calcolaCosto(arco ListaArchi[]){
     return CostoTot;
 }
 
+int findEstremo(arco* SoluzioneCandidata,int i){
+    int IdNodo=i+1;
+    int Estremo;
+    for(int j=0;j<NUMEROARCHI;j++){
+        if(SoluzioneCandidata[j].N1==IdNodo) {
+            Estremo = SoluzioneCandidata[j].N2;
+            break;
+        }
+        if(SoluzioneCandidata[j].N2==IdNodo) {
+            Estremo = SoluzioneCandidata[j].N1;
+            break;
+        }
+    }
+    return Estremo;
+}
+
 int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
     int* NodiNew=malloc(NUMERONODI*sizeof(int));
     memcpy(NodiNew,Nodi,NUMERONODI*sizeof(int));
@@ -44,7 +60,7 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
         for (int i = 0; i < NUMERONODI; i++) {
             if (NodiNew[i] == 1) {
                 NodiNew[i] = 0;
-                Estremo = findEstremo(SoluzioneCandidata);
+                Estremo = findEstremo(SoluzioneCandidata,i);
                 NodiNew[Estremo]--;
                 trovato = 1;
             }
@@ -60,14 +76,16 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
     return j+1;
 }
 
-void localSearch(arco* ListaArchi,int Id,int Nodi[]){
-    arco SoluzioneCandidata[NUMEROARCHI];
+void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
     int NodiCiclo[NUMERONODI];
     int NumeroNodiCiclo;
-    memcpy(SoluzioneCandidata,ListaArchi,NUMEROARCHI*sizeof(arco));
+    int NuovoCosto;
+    int IdNuovo;
     SoluzioneCandidata[Id-1].Selected=1;
     NumeroNodiCiclo=individuaCiclo(SoluzioneCandidata,NodiCiclo,Nodi);
-
+    IdNuovo=arcoDaRimuovere(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo);
+    SoluzioneCandidata[IdNuovo-1].Selected=0;
+    NuovoCosto=calcolaCosto(SoluzioneCandidata);
 }
 
 void main() {
@@ -75,6 +93,12 @@ void main() {
     arco ListaArchi[NUMEROARCHI];
     int IdArcoMigliore;
 
+    for(int i=0;i++;i<NUMEROARCHI) {
+        if (ListaArchi[i].Selected == 1) {
+            printf("Soluzione iniziale: arco n %d, nodi %d %d, costo %d\n", ListaArchi[i].Id, ListaArchi[i].N1,
+                   ListaArchi[i].N2, ListaArchi[i].Costo);
+        }
+    }
     IdArcoMigliore=individuaArco(ListaArchi);
     localSearch(ListaArchi,IdArcoMigliore,Nodi);
 
