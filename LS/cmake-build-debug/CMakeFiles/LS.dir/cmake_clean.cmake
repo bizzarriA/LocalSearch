@@ -3,7 +3,7 @@ file(REMOVE_RECURSE
   "LS.pdb"
   "LS.exe"
   "LS.exe.manifest"
-  "LS.lib"
+  "libLS.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
