@@ -76,6 +76,20 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
     return j+1;
 }
 
+void stampaLista(arco* ListaArchi){
+    int Costo;
+    for(int i=0;i++;i<NUMEROARCHI) {
+        if (ListaArchi[i].Selected == 1) {
+            printf("Soluzione: arco n %d, nodi %d %d, costo %d\n", ListaArchi[i].Id, ListaArchi[i].N1,
+                   ListaArchi[i].N2, ListaArchi[i].Costo);
+        }
+    }
+    Costo=calcolaCosto(ListaArchi);
+    printf("Costo spanning tree: %d\n",Costo);
+}
+
+
+
 void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
     int NodiCiclo[NUMERONODI];
     int NumeroNodiCiclo;
@@ -85,7 +99,7 @@ void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
     NumeroNodiCiclo=individuaCiclo(SoluzioneCandidata,NodiCiclo,Nodi);
     IdNuovo=arcoDaRimuovere(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo);
     SoluzioneCandidata[IdNuovo-1].Selected=0;
-    NuovoCosto=calcolaCosto(SoluzioneCandidata);
+    stampaLista(SoluzioneCandidata);
 }
 
 void main() {
@@ -93,14 +107,12 @@ void main() {
     arco ListaArchi[NUMEROARCHI];
     int IdArcoMigliore;
 
-    for(int i=0;i++;i<NUMEROARCHI) {
-        if (ListaArchi[i].Selected == 1) {
-            printf("Soluzione iniziale: arco n %d, nodi %d %d, costo %d\n", ListaArchi[i].Id, ListaArchi[i].N1,
-                   ListaArchi[i].N2, ListaArchi[i].Costo);
-        }
+    stampaLista(ListaArchi);
+    //IdArcoMigliore=individuaArco(ListaArchi);
+    for(IdArcoMigliore=1;IdArcoMigliore<=NUMEROARCHI;IdArcoMigliore++) {
+        if(ListaArchi[IdArcoMigliore].Selected==0)
+        localSearch(ListaArchi, IdArcoMigliore, Nodi);
     }
-    IdArcoMigliore=individuaArco(ListaArchi);
-    localSearch(ListaArchi,IdArcoMigliore,Nodi);
 
 
 
