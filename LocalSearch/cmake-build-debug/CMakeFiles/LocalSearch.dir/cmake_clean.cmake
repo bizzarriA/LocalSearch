@@ -3,7 +3,7 @@ file(REMOVE_RECURSE
   "LocalSearch.pdb"
   "LocalSearch.exe"
   "LocalSearch.exe.manifest"
-  "LocalSearch.lib"
+  "libLocalSearch.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
