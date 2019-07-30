@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\alice\OneDrive\Documents\GitHub\Ricerca-Operativa\LocalSearch
+"C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\alice\OneDrive\Documents\GitHub\LocalSearch\LocalSearch
 -- The C compiler identification is MSVC 19.20.27508.1
 -- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.20.27508/bin/Hostx86/x86/cl.exe
 -- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.20.27508/bin/Hostx86/x86/cl.exe -- works
@@ -8,4 +8,4 @@
 -- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/alice/OneDrive/Documents/GitHub/Ricerca-Operativa/LocalSearch/cmake-build-debug
+-- Build files have been written to: C:/Users/alice/OneDrive/Documents/GitHub/LocalSearch/LocalSearch/cmake-build-debug
