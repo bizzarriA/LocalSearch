@@ -4,6 +4,7 @@
 
 #define NUMERONODI 5
 #define NUMEROARCHI 10
+#define KMASSIMO 3
 
 typedef struct s_arco{
     int Id;
@@ -154,7 +155,8 @@ void main() {
     //IdArcoMigliore=individuaArco(ListaArchi);
     for(IdArcoMigliore=1;IdArcoMigliore<=NUMEROARCHI;IdArcoMigliore++) {
         if(ListaArchi[IdArcoMigliore-1].Selected==0)
-        localSearch(ListaArchi, IdArcoMigliore, Nodi);
+            if(Nodi[ListaArchi[IdArcoMigliore-1].N1-1]<KMASSIMO || Nodi[ListaArchi[IdArcoMigliore-1].N2-1]<KMASSIMO)
+                localSearch(ListaArchi, IdArcoMigliore, Nodi);
     }
 
 
