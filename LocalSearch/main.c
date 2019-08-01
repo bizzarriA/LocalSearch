@@ -78,9 +78,10 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
 
 void stampaLista(arco* ListaArchi){
     int Costo,i;
+    printf("Soluzione:\n");
     for(i=0;i<NUMEROARCHI;i++) {
         if (ListaArchi[i].Selected == 1) {
-            printf("Soluzione: arco n %d, nodi %d %d, costo %d\n", ListaArchi[i].Id, ListaArchi[i].N1,
+            printf("Arco n %d, nodi %d-%d, costo %d\n", ListaArchi[i].Id, ListaArchi[i].N1,
                    ListaArchi[i].N2, ListaArchi[i].Costo);
         }
     }
