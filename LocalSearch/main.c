@@ -117,14 +117,43 @@ int arcoDaRimuovere(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCicl
     return IdMax;
 }
 
+int arcoObbligato(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo, int NodoObbligato){
+    int CostoMax=0;
+    int N1, N2, IdArco, IdMax;
+    N1=NodoObbligato;
+    for(int j=0;j<NumeroNodiCiclo; j++){
+        if(N1!=NodiCiclo[j]){
+            N2=NodiCiclo[j];
+            if(N1<N2)
+                IdArco=trovaArco(N1,N2,SoluzioneCandidata);
+            else
+                IdArco=trovaArco(N2,N1,SoluzioneCandidata);
+            if(SoluzioneCandidata[IdArco-1].Selected==1 && SoluzioneCandidata[IdArco-1].Costo > CostoMax) {
+                CostoMax = SoluzioneCandidata[IdArco - 1].Costo;
+                IdMax=IdArco;
+            }
+        }
+    }
+    return IdMax;
+}
+
 void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
     int NodiCiclo[NUMERONODI];
     int NumeroNodiCiclo;
     int IdNuovo;
-    SoluzioneCandidata[Id-1].Selected=1;
-    NumeroNodiCiclo=individuaCiclo(SoluzioneCandidata,NodiCiclo,Nodi);
-    IdNuovo=arcoDaRimuovere(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo);
+    SoluzioneCandidata[Id-1].Selected=1;    /*aggiungi l'arco al ciclo*/
+    Nodi[SoluzioneCandidata[Id-1].N1-1]++;  /*aumenta il grado dei nodi, in seguito all'aggiunta*/
+    Nodi[SoluzioneCandidata[Id-1].N2-1]++;
+    NumeroNodiCiclo=individuaCiclo(SoluzioneCandidata,NodiCiclo,Nodi);  /*trova i nodi connessi da un ciclo*/
+    if(Nodi[SoluzioneCandidata[Id-1].N1-1]>KMASSIMO)
+        IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1); /*trova i due archi del ciclo che sono associati al nodo con grado maggiore del massimo (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore*/
+    else if(Nodi[SoluzioneCandidata[Id-1].N2-1]>KMASSIMO)
+        IdNuovo=arcoObbligato(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo,SoluzioneCandidata[Id-1].N2);
+    else
+        IdNuovo=arcoDaRimuovere(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo);
     SoluzioneCandidata[IdNuovo-1].Selected=0;
+    Nodi[SoluzioneCandidata[IdNuovo-1].N1-1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
+    Nodi[SoluzioneCandidata[IdNuovo-1].N2-1]--;
     stampaLista(SoluzioneCandidata);
 }
 
@@ -155,7 +184,7 @@ void main() {
     //IdArcoMigliore=individuaArco(ListaArchi);
     for(IdArcoMigliore=1;IdArcoMigliore<=NUMEROARCHI;IdArcoMigliore++) {
         if(ListaArchi[IdArcoMigliore-1].Selected==0)
-            if(Nodi[ListaArchi[IdArcoMigliore-1].N1-1]<KMASSIMO || Nodi[ListaArchi[IdArcoMigliore-1].N2-1]<KMASSIMO)
+            if(Nodi[ListaArchi[IdArcoMigliore-1].N1-1]<KMASSIMO || Nodi[ListaArchi[IdArcoMigliore-1].N2-1]<KMASSIMO) /*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno entrambi grado pari al massimo consentito, altrimenti scarta l'arco e prendine un'altro*/
                 localSearch(ListaArchi, IdArcoMigliore, Nodi);
     }
 
