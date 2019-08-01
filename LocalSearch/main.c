@@ -70,7 +70,7 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
     int j=0;
     for(int i=0;i<NUMERONODI;i++){
         if(NodiNew[i]!=0){
-            NodiCiclo[j]=i;
+            NodiCiclo[j]=i+1; /*perchè i nodi partono da 1, non da 0*/
             j++;
         }
     }
