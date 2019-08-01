@@ -141,6 +141,8 @@ void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
     int NodiCiclo[NUMERONODI];
     int NumeroNodiCiclo;
     int IdNuovo;
+    int CostoIniziale, CostoFinale;
+    CostoIniziale=calcolaCosto(SoluzioneCandidata);
     SoluzioneCandidata[Id-1].Selected=1;    /*aggiungi l'arco al ciclo*/
     Nodi[SoluzioneCandidata[Id-1].N1-1]++;  /*aumenta il grado dei nodi, in seguito all'aggiunta*/
     Nodi[SoluzioneCandidata[Id-1].N2-1]++;
@@ -154,7 +156,9 @@ void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
     SoluzioneCandidata[IdNuovo-1].Selected=0;
     Nodi[SoluzioneCandidata[IdNuovo-1].N1-1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
     Nodi[SoluzioneCandidata[IdNuovo-1].N2-1]--;
-    stampaLista(SoluzioneCandidata);
+    CostoFinale=calcolaCosto(SoluzioneCandidata);
+    if(CostoFinale<CostoIniziale)
+        stampaLista(SoluzioneCandidata);
 }
 
 void main() {
