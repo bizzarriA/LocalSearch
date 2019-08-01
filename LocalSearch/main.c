@@ -139,7 +139,12 @@ void main() {
     }
 
     while(scan!=EOF){
-        scan=fscanf(fd,"%d/%d/%d/%d/%d",&ListaArchi[i].Id,&ListaArchi[i].N1,&ListaArchi[i].N2,&ListaArchi[i].Costo,&ListaArchi[i].Selected);
+       if(i<NUMERONODI) {
+           for (i = 0; i < NUMERONODI; i++) {
+               scan = fscanf(fd, "%d", &Nodi[i]);
+           }
+       }
+        scan=fscanf(fd,"%d/%d/%d/%d/%d",&ListaArchi[i-NUMERONODI].Id,&ListaArchi[i-NUMERONODI].N1,&ListaArchi[i-NUMERONODI].N2,&ListaArchi[i-NUMERONODI].Costo,&ListaArchi[i-NUMERONODI].Selected);
         i++;
     }
     fclose(fd);
