@@ -62,7 +62,7 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
             if (NodiNew[i] == 1) {
                 NodiNew[i] = 0;
                 Estremo = findEstremo(SoluzioneCandidata,i);
-                NodiNew[Estremo]--;
+                NodiNew[Estremo-1]--;
                 trovato = 1;
             }
         }
@@ -74,7 +74,7 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
             j++;
         }
     }
-    return j+1;
+    return j;
 }
 
 void stampaLista(arco* ListaArchi){
