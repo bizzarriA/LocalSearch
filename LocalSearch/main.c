@@ -2,8 +2,8 @@
 #include <mem.h>
 #include <stdlib.h>
 
-#define NUMERONODI 5
-#define NUMEROARCHI 10
+#define NUMERONODI 7
+#define NUMEROARCHI 21
 #define KMASSIMO 3
 
 typedef struct s_arco{
@@ -168,7 +168,7 @@ void main() {
     int IdArcoMigliore, scan=0, i=0;
 
     FILE *fd;
-    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze.txt", "r");
+    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
     if(fd==NULL){
         printf("Errore apertura file");
         exit(1);
