@@ -95,6 +95,7 @@ int trovaArco(int N1, int N2, arco* SoluzioneCandidata){
     for(int i=0; i<NUMEROARCHI; i++){
         if(SoluzioneCandidata[i].N1==N1 && SoluzioneCandidata[i].N2==N2){
             IdArco=SoluzioneCandidata[i].Id;
+            break;
         }
     }
     return IdArco;
