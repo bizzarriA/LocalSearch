@@ -87,7 +87,7 @@ void stampaLista(arco* ListaArchi){
         }
     }
     Costo=calcolaCosto(ListaArchi);
-    printf("Costo spanning tree: %d\n",Costo);
+    printf("Costo spanning tree: %d\n\n",Costo);
 }
 
 int trovaArco(int N1, int N2, arco* SoluzioneCandidata){
