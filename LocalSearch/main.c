@@ -39,11 +39,11 @@ int findEstremo(arco* SoluzioneCandidata,int i){
     int IdNodo=i+1;
     int Estremo;
     for(int j=0;j<NUMEROARCHI;j++){
-        if(SoluzioneCandidata[j].N1==IdNodo) {
+        if(SoluzioneCandidata[j].N1==IdNodo && SoluzioneCandidata[j].Selected==1) {
             Estremo = SoluzioneCandidata[j].N2;
             break;
         }
-        if(SoluzioneCandidata[j].N2==IdNodo) {
+        if(SoluzioneCandidata[j].N2==IdNodo && SoluzioneCandidata[j].Selected==1) {
             Estremo = SoluzioneCandidata[j].N1;
             break;
         }
