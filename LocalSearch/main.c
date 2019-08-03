@@ -4,7 +4,7 @@
 
 #define NUMERONODI 7
 #define NUMEROARCHI 21
-#define KMASSIMO 3
+#define KMASSIMO 2
 
 typedef struct s_arco{
     int Id;
@@ -191,6 +191,10 @@ void main() {
         if(i<NUMERONODI) {
             for (i = 0; i < NUMERONODI; i++) {
                 scan = fscanf(fd, "%d", &Nodi[i]);
+                if(Nodi[i]>KMASSIMO){
+                    printf("ERRORE: grado nodo %d maggiore di %d, istanza non ammissibile",i+1, KMASSIMO);
+                    exit(-1);
+                }
             }
         }
         scan=fscanf(fd,"%d/%d/%d/%d/%d",&ListaArchi[i-NUMERONODI].Id,&ListaArchi[i-NUMERONODI].N1,&ListaArchi[i-NUMERONODI].N2,&ListaArchi[i-NUMERONODI].Costo,&ListaArchi[i-NUMERONODI].Selected);
