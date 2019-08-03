@@ -14,6 +14,7 @@ typedef struct s_arco{
     int Selected;
 }arco;
 
+//OBSOLETO
 int individuaArco(arco ListaArchi[]){
     int min_costo=100;
     int ArcoMigliore;
@@ -26,15 +27,17 @@ int individuaArco(arco ListaArchi[]){
     return ArcoMigliore;
 }
 
+//CALCOLA IL COSTO DELA SOLUZIONE CONSIDERATA
 int calcolaCosto(arco ListaArchi[]){
     int CostoTot=0;
     for(int i=0;i<NUMEROARCHI;i++){
         if(ListaArchi[i].Selected==1)
-           CostoTot=CostoTot+ListaArchi[i].Costo;
+            CostoTot=CostoTot+ListaArchi[i].Costo;
     }
     return CostoTot;
 }
 
+//HO UN ESTREMO E L'ARCO RESTITUISCO L'ALTRO ESTREMO
 int findEstremo(arco* SoluzioneCandidata,int i){
     int IdNodo=i+1;
     int Estremo;
@@ -51,6 +54,7 @@ int findEstremo(arco* SoluzioneCandidata,int i){
     return Estremo;
 }
 
+//CERCO TUTTI I NODI CON GRADO UNO E LI RIMUOVO, ITERO IL PROCEDIMENTO FINO A CHE NON HO PIù NODI DI GRADO 1. IL RISULTATO SARà IL CICLO CERCATO
 int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
     int* NodiNew=malloc(NUMERONODI*sizeof(int));
     memcpy(NodiNew,Nodi,NUMERONODI*sizeof(int));
@@ -77,6 +81,7 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
     return j;
 }
 
+//STAMPA LA LISTA DEGLI ARCHI SELEZIONATI E IL COSTO TOTALE
 void stampaLista(arco* ListaArchi){
     int Costo,i;
     printf("Soluzione:\n");
@@ -90,6 +95,7 @@ void stampaLista(arco* ListaArchi){
     printf("Costo spanning tree: %d\n\n",Costo);
 }
 
+//RESTITUISCO ID ARCO CHE VA DA N1 A N2
 int trovaArco(int N1, int N2, arco* SoluzioneCandidata){
     int IdArco;
     for(int i=0; i<NUMEROARCHI; i++){
@@ -101,6 +107,7 @@ int trovaArco(int N1, int N2, arco* SoluzioneCandidata){
     return IdArco;
 }
 
+//RESTITUISCO L'ID DELL'ARCO DI COSTO MAGGIORE TRA QUELLI DI UN CICLO DATO
 int arcoDaRimuovere(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo){
     int CostoMax=0;
     int N1, N2, IdArco, IdMax;
@@ -118,6 +125,7 @@ int arcoDaRimuovere(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCicl
     return IdMax;
 }
 
+//RESTITUISCO L'ARCO ASSOCIATO AD UN NODO OBBLIGATO E DI COSTO MAGGIORE TRA QUELLI DI UN CICLO
 int arcoObbligato(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo, int NodoObbligato){
     int CostoMax=0;
     int N1, N2, IdArco, IdMax;
@@ -138,6 +146,7 @@ int arcoObbligato(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo,
     return IdMax;
 }
 
+//ESEGUO LOCAL SEARCH CON LIMITE GRADO NODI <= K
 void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
     int NodiCiclo[NUMERONODI];
     int NumeroNodiCiclo;
@@ -148,8 +157,10 @@ void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
     Nodi[SoluzioneCandidata[Id-1].N1-1]++;  /*aumenta il grado dei nodi, in seguito all'aggiunta*/
     Nodi[SoluzioneCandidata[Id-1].N2-1]++;
     NumeroNodiCiclo=individuaCiclo(SoluzioneCandidata,NodiCiclo,Nodi);  /*trova i nodi connessi da un ciclo*/
+    /*cerco i due archi del ciclo che sono associati al nodo con grado maggiore del massimo se c'è
+     * (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore*/
     if(Nodi[SoluzioneCandidata[Id-1].N1-1]>KMASSIMO)
-        IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1); /*trova i due archi del ciclo che sono associati al nodo con grado maggiore del massimo (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore*/
+        IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1);
     else if(Nodi[SoluzioneCandidata[Id-1].N2-1]>KMASSIMO)
         IdNuovo=arcoObbligato(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo,SoluzioneCandidata[Id-1].N2);
     else
@@ -167,19 +178,21 @@ void main() {
     arco ListaArchi[NUMEROARCHI];
     int IdArcoMigliore, scan=0, i=0;
 
+    //APRO FILE E LEGGO ISTANZE
     FILE *fd;
-    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
+    fd=fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
+    //fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
     if(fd==NULL){
         printf("Errore apertura file");
         exit(1);
     }
 
     while(scan!=EOF){
-       if(i<NUMERONODI) {
-           for (i = 0; i < NUMERONODI; i++) {
-               scan = fscanf(fd, "%d", &Nodi[i]);
-           }
-       }
+        if(i<NUMERONODI) {
+            for (i = 0; i < NUMERONODI; i++) {
+                scan = fscanf(fd, "%d", &Nodi[i]);
+            }
+        }
         scan=fscanf(fd,"%d/%d/%d/%d/%d",&ListaArchi[i-NUMERONODI].Id,&ListaArchi[i-NUMERONODI].N1,&ListaArchi[i-NUMERONODI].N2,&ListaArchi[i-NUMERONODI].Costo,&ListaArchi[i-NUMERONODI].Selected);
         i++;
     }
@@ -189,7 +202,8 @@ void main() {
     //IdArcoMigliore=individuaArco(ListaArchi);
     for(IdArcoMigliore=1;IdArcoMigliore<=NUMEROARCHI;IdArcoMigliore++) {
         if(ListaArchi[IdArcoMigliore-1].Selected==0)
-            if(Nodi[ListaArchi[IdArcoMigliore-1].N1-1]<KMASSIMO || Nodi[ListaArchi[IdArcoMigliore-1].N2-1]<KMASSIMO) /*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno entrambi grado pari al massimo consentito, altrimenti scarta l'arco e prendine un'altro*/
+        /*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno grado minore di K altrimenti scarta l'arco e prendine un'altro*/
+            if(Nodi[ListaArchi[IdArcoMigliore-1].N1-1]<KMASSIMO || Nodi[ListaArchi[IdArcoMigliore-1].N2-1]<KMASSIMO)
                 localSearch(ListaArchi, IdArcoMigliore, Nodi);
     }
 
