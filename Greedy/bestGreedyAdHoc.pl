@@ -14,8 +14,7 @@ is_arco(N1,N2,ListaArchi,ArchiSpanning):-
 		)	
 	).
 	
-/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*prova percorso N3*/
+/*-VALIDITA'-PERCORSO-----------------------------------------------------------------------------------------------------------------------------*/
 
 is_percorso([_,N1,N2,_],ListaNodi):-
 	nth1(N1,ListaNodi,Val1),
@@ -26,20 +25,7 @@ is_percorso([_,N1,N2,_],ListaNodi):-
 	).
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*
-is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning):-
-	is_arco(N1,N2,ListaArchi,ArchiSpanning),!.
-is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning):-
-	N_1 is N1+1,
-	nodi(Nnodi),
-	N::[1..Nnodi],
-	is_percorso_aux(N1,N,ListaArchi,ArchiSpanning),is_arco(N,N2).
 
-is_percorso([_,N1,N2,_],ListaArchi,ArchiSpanning):-
-	is_percorso_aux(N1,N2,ListaArchi,ArchiSpanning).
-	*/
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	
 nodi_presi([_,N1,N2,_],ListaNodi):-
 	nth1(N1,ListaNodi,Val1,_),
 	nth1(N2,ListaNodi,Val2,_),
@@ -72,7 +58,7 @@ controllo_grado_loop(N,[[Id,N1,N2,_]|ListaArchi], ArchiSpanning,C):-
 controllo_grado([_,N1,N2,_], ListaArchi, ArchiSpanning, K):-
 	controllo_grado_loop(N1, ListaArchi, ArchiSpanning, C1),
 	controllo_grado_loop(N2, ListaArchi, ArchiSpanning, C2),
-	((C1>=K; C2>=K)
+	((C1>K; C2>K)
 		->true
 		;false
 	).
