@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Sara/Documents/GitHub/LocalSearch/LocalSearch/main.c
+stdio.h
+-
+mem.h
+-
+stdlib.h
+-
+
