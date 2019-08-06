@@ -210,7 +210,7 @@ void main() {
     int ListaId[NUMEROARCHI];
     arco ListaArchi[NUMEROARCHI],SoluzioneTemporanea[NUMEROARCHI];
     int IdArcoMigliore, CostoMiglioreAttuale, CostoAttuale,IdRim,IdAggiunto,IdRimosso;
-    int scan=0, i=0;
+    int scan=0, i=0,k=0;
     int FindBest=1;
 
     //APRO FILE E LEGGO ISTANZE
@@ -261,6 +261,7 @@ void main() {
                     FindBest=1;
                 }
         }
+        k++;
         if(FindBest){   //aggiungo e toglo la coppia di archi che mi permette di avere la soluzione migliore per quell'intorno
             ListaArchi[IdAggiunto-1].Selected=1;
             ListaArchi[IdRimosso-1].Selected=0;
@@ -268,6 +269,8 @@ void main() {
             Nodi[ListaArchi[IdAggiunto-1].N2-1]++;
             Nodi[ListaArchi[IdRimosso-1].N1-1]--;
             Nodi[ListaArchi[IdRimosso-1].N2-1]--;
+            printf("Iterazione %d:\n",k);
+            stampaLista(ListaArchi);
         }
     }
 
