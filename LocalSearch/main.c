@@ -45,10 +45,10 @@ void shuffleRandom ( int arr1[], int n ){
     }
 }
 
-void permuta(int* ListaId){     //bisogna passargli la lista id appena usata, perchè shuffleRandom la modifica direttamente
-    int n = sizeof(ListaId)/ sizeof(ListaId[0]);
+void permuta(int* ListaId,int n){     //bisogna passargli la lista id appena usata, perchè shuffleRandom la modifica direttamente
+    int m = n/ sizeof(ListaId[0]);
     int i;
-    shuffleRandom (ListaId, n);
+    shuffleRandom (ListaId, m);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
@@ -211,6 +211,7 @@ void main() {
     int IdArcoMigliore, CostoMiglioreAttuale, CostoAttuale,IdRim,IdAggiunto,IdRimosso;
     int scan=0, i=0,k=0;
     int FindBest=1;
+    int n;
 
     //APRO FILE E LEGGO ISTANZE
     FILE *fd;
@@ -241,9 +242,10 @@ void main() {
     CostoMiglioreAttuale=calcolaCosto(ListaArchi);
 
     individuaId(ListaArchi,ListaId);
+    n = sizeof(ListaId);
 
     while(FindBest) {   //se ad un ciclo non trova una soluzione migliore della precedente, vuol dire che ha raggiunto l'ottimo locale
-        permuta(ListaId);
+        permuta(ListaId,n);
         FindBest=0;
         for (int j = 0; j <= NUMEROARCHI; j++) {
             if (ListaArchi[ListaId[j] - 1].Selected == 0) {
@@ -254,7 +256,7 @@ void main() {
                     memcpy(NodiTemporanei, Nodi, sizeof(Nodi));
                     localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim);
                     CostoAttuale = calcolaCosto(SoluzioneTemporanea);
-                    if (CostoAttuale < CostoMiglioreAttuale) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
+                    if (CostoAttuale < CostoMiglioreAttuale && IdAggiunto!=IdRimosso) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
                         CostoMiglioreAttuale = CostoAttuale;
                         IdAggiunto = ListaId[j];
                         IdRimosso = IdRim;
