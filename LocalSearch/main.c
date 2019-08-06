@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <mem.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define NUMERONODI 7
 #define NUMEROARCHI 21
@@ -26,6 +27,31 @@ int individuaArco(arco ListaArchi[]){
     }
     return ArcoMigliore;
 }
+
+//---Funzioni per la generazione delle permutazioni della lista Id per la local search------------------------------------------------------------------------
+
+void changeValues (int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void shuffleRandom ( int arr1[], int n ){
+    srand ( time(NULL) );
+    for (int i = n-1; i > 0; i--)
+    {
+        int j = rand() % (i+1);
+        changeValues(&arr1[i], &arr1[j]);
+    }
+}
+
+void permuta(int* ListaId){     //bisogna passargli la lista id appena usata, perchè shuffleRandom la modifica direttamente
+    int n = sizeof(ListaId)/ sizeof(ListaId[0]);
+    int i;
+    shuffleRandom (ListaId, n);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------
 
 //CALCOLA IL COSTO DELA SOLUZIONE CONSIDERATA
 int calcolaCosto(arco ListaArchi[]){
@@ -147,12 +173,11 @@ int arcoObbligato(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo,
 }
 
 //ESEGUO LOCAL SEARCH CON LIMITE GRADO NODI <= K
-void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
+void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[],int* IdNuovo){  //ritorna anche l'arco che ha appena rimosso
     int NodiCiclo[NUMERONODI];
     int NumeroNodiCiclo;
-    int IdNuovo;
-    int CostoIniziale, CostoFinale;
-    CostoIniziale=calcolaCosto(SoluzioneCandidata);
+    //int CostoIniziale, CostoFinale;       NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
+    //CostoIniziale=calcolaCosto(SoluzioneCandidata);
     SoluzioneCandidata[Id-1].Selected=1;    /*aggiungi l'arco al ciclo*/
     Nodi[SoluzioneCandidata[Id-1].N1-1]++;  /*aumenta il grado dei nodi, in seguito all'aggiunta*/
     Nodi[SoluzioneCandidata[Id-1].N2-1]++;
@@ -168,20 +193,30 @@ void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[]){
     SoluzioneCandidata[IdNuovo-1].Selected=0;
     Nodi[SoluzioneCandidata[IdNuovo-1].N1-1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
     Nodi[SoluzioneCandidata[IdNuovo-1].N2-1]--;
-    CostoFinale=calcolaCosto(SoluzioneCandidata);
-    if(CostoFinale<CostoIniziale)
-        stampaLista(SoluzioneCandidata);
+    //CostoFinale=calcolaCosto(SoluzioneCandidata);  NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
+    //if(CostoFinale<CostoIniziale)
+    //   stampaLista(SoluzioneCandidata);
+}
+
+//CREA UNA LISTA DEI SOLI ID
+individuaId(arco* ListaArchi,int* ListaId){
+    for(int i=0;i<NUMEROARCHI;i++){
+        ListaId[i]=ListaArchi[i].Id;
+    }
 }
 
 void main() {
-    int Nodi[NUMERONODI];
-    arco ListaArchi[NUMEROARCHI];
-    int IdArcoMigliore, scan=0, i=0;
+    int Nodi[NUMERONODI],NodiTemporanei[NUMERONODI];
+    int ListaId[NUMEROARCHI];
+    arco ListaArchi[NUMEROARCHI],SoluzioneTemporanea[NUMEROARCHI];
+    int IdArcoMigliore, CostoMiglioreAttuale, CostoAttuale,IdRim,IdAggiunto,IdRimosso;
+    int scan=0, i=0;
+    int FindBest=1;
 
     //APRO FILE E LEGGO ISTANZE
     FILE *fd;
-    fd=fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
-    //fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
+   // fd=fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
+    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
     if(fd==NULL){
         printf("Errore apertura file");
         exit(1);
@@ -203,14 +238,38 @@ void main() {
     fclose(fd);
 
     stampaLista(ListaArchi);
-    //IdArcoMigliore=individuaArco(ListaArchi);
-    for(IdArcoMigliore=1;IdArcoMigliore<=NUMEROARCHI;IdArcoMigliore++) {
-        if(ListaArchi[IdArcoMigliore-1].Selected==0)
-        /*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno grado minore di K altrimenti scarta l'arco e prendine un'altro*/
-            if(Nodi[ListaArchi[IdArcoMigliore-1].N1-1]<KMASSIMO || Nodi[ListaArchi[IdArcoMigliore-1].N2-1]<KMASSIMO)
-                localSearch(ListaArchi, IdArcoMigliore, Nodi);
-    }
+    CostoMiglioreAttuale=calcolaCosto(ListaArchi);
 
+    individuaId(ListaArchi,ListaId);
+
+    while(FindBest) {   //se ad un ciclo non trova una soluzione migliore della precedente, vuol dire che ha raggiunto l'ottimo locale
+        permuta(ListaId);
+        FindBest=0;
+        for (int j = 0; j <= NUMEROARCHI; j++) {
+            if (ListaArchi[ListaId[j] - 1].Selected == 0)
+                /*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno grado minore di K altrimenti scarta l'arco e prendine un'altro*/
+                if (Nodi[ListaArchi[ListaId[j] - 1].N1 - 1] < KMASSIMO ||
+                    Nodi[ListaArchi[ListaId[j] - 1].N2 - 1] < KMASSIMO)
+                    memcpy(SoluzioneTemporanea,ListaArchi,sizeof(ListaArchi));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intornos
+                    memcpy(NodiTemporanei,Nodi,sizeof(Nodi));
+                    localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei,&IdRim);
+                CostoAttuale=calcolaCosto(SoluzioneTemporanea);
+                if(CostoAttuale<CostoMiglioreAttuale) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
+                    CostoMiglioreAttuale=CostoAttuale;
+                    IdAggiunto = ListaId[j];
+                    IdRimosso=IdRim;
+                    FindBest=1;
+                }
+        }
+        if(FindBest){   //aggiungo e toglo la coppia di archi che mi permette di avere la soluzione migliore per quell'intorno
+            ListaArchi[IdAggiunto-1].Selected=1;
+            ListaArchi[IdRimosso-1].Selected=0;
+            Nodi[ListaArchi[IdAggiunto-1].N1-1]++;
+            Nodi[ListaArchi[IdAggiunto-1].N2-1]++;
+            Nodi[ListaArchi[IdRimosso-1].N1-1]--;
+            Nodi[ListaArchi[IdRimosso-1].N2-1]--;
+        }
+    }
 
 
 }
