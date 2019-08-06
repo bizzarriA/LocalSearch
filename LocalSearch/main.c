@@ -110,7 +110,6 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
 //STAMPA LA LISTA DEGLI ARCHI SELEZIONATI E IL COSTO TOTALE
 void stampaLista(arco* ListaArchi){
     int Costo,i;
-    printf("Soluzione:\n");
     for(i=0;i<NUMEROARCHI;i++) {
         if (ListaArchi[i].Selected == 1) {
             printf("Arco n %d, nodi %d-%d, costo %d\n", ListaArchi[i].Id, ListaArchi[i].N1,
@@ -237,6 +236,7 @@ void main() {
     }
     fclose(fd);
 
+    printf("Soluzione iniziale:\n");
     stampaLista(ListaArchi);
     CostoMiglioreAttuale=calcolaCosto(ListaArchi);
 
