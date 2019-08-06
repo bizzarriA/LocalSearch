@@ -272,6 +272,10 @@ void main() {
             printf("Iterazione %d:\n",k);
             stampaLista(ListaArchi);
         }
+        if(!FindBest){
+            printf("All'iterazione %d non è stata trovata soluzione migliore.\nL'ottimo locale trovato risulta quindi:\n");
+            stampaLista(ListaArchi);
+        }
     }
 
 
