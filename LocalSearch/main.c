@@ -5,7 +5,7 @@
 
 #define NUMERONODI 7
 #define NUMEROARCHI 21
-#define KMASSIMO 2
+#define KMASSIMO 3
 
 typedef struct s_arco{
     int Id;
@@ -64,15 +64,15 @@ int calcolaCosto(arco ListaArchi[]){
 }
 
 //HO UN ESTREMO E L'ARCO RESTITUISCO L'ALTRO ESTREMO
-int findEstremo(arco* SoluzioneCandidata,int i){
+int findEstremo(arco* SoluzioneCandidata,int i,int* Nodi){
     int IdNodo=i+1;
     int Estremo;
     for(int j=0;j<NUMEROARCHI;j++){
-        if(SoluzioneCandidata[j].N1==IdNodo && SoluzioneCandidata[j].Selected==1) {
+        if(SoluzioneCandidata[j].N1==IdNodo && SoluzioneCandidata[j].Selected==1 && Nodi[SoluzioneCandidata[j].N2-1]!=0) {
             Estremo = SoluzioneCandidata[j].N2;
             break;
         }
-        if(SoluzioneCandidata[j].N2==IdNodo && SoluzioneCandidata[j].Selected==1) {
+        if(SoluzioneCandidata[j].N2==IdNodo && SoluzioneCandidata[j].Selected==1 && Nodi[SoluzioneCandidata[j].N1-1]!=0) {
             Estremo = SoluzioneCandidata[j].N1;
             break;
         }
@@ -91,7 +91,7 @@ int individuaCiclo(arco* SoluzioneCandidata, int* NodiCiclo,int* Nodi){
         for (int i = 0; i < NUMERONODI; i++) {
             if (NodiNew[i] == 1) {
                 NodiNew[i] = 0;
-                Estremo = findEstremo(SoluzioneCandidata,i);
+                Estremo = findEstremo(SoluzioneCandidata,i,NodiNew);
                 NodiNew[Estremo-1]--;
                 trovato = 1;
             }
@@ -185,21 +185,21 @@ void localSearch(arco* SoluzioneCandidata,int Id,int Nodi[],int* IdNuovo){  //ri
     /*cerco i due archi del ciclo che sono associati al nodo con grado maggiore del massimo se c'è
      * (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore*/
     if(Nodi[SoluzioneCandidata[Id-1].N1-1]>KMASSIMO)
-        IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1);
+        *IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1);
     else if(Nodi[SoluzioneCandidata[Id-1].N2-1]>KMASSIMO)
-        IdNuovo=arcoObbligato(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo,SoluzioneCandidata[Id-1].N2);
+        *IdNuovo=arcoObbligato(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo,SoluzioneCandidata[Id-1].N2);
     else
-        IdNuovo=arcoDaRimuovere(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo);
-    SoluzioneCandidata[IdNuovo-1].Selected=0;
-    Nodi[SoluzioneCandidata[IdNuovo-1].N1-1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
-    Nodi[SoluzioneCandidata[IdNuovo-1].N2-1]--;
+        *IdNuovo=arcoDaRimuovere(NodiCiclo,SoluzioneCandidata,NumeroNodiCiclo);
+    SoluzioneCandidata[*IdNuovo-1].Selected=0;
+    Nodi[SoluzioneCandidata[*IdNuovo-1].N1-1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
+    Nodi[SoluzioneCandidata[*IdNuovo-1].N2-1]--;
     //CostoFinale=calcolaCosto(SoluzioneCandidata);  NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
     //if(CostoFinale<CostoIniziale)
     //   stampaLista(SoluzioneCandidata);
 }
 
 //CREA UNA LISTA DEI SOLI ID
-individuaId(arco* ListaArchi,int* ListaId){
+void individuaId(arco* ListaArchi,int* ListaId){
     for(int i=0;i<NUMEROARCHI;i++){
         ListaId[i]=ListaArchi[i].Id;
     }
@@ -246,20 +246,22 @@ void main() {
         permuta(ListaId);
         FindBest=0;
         for (int j = 0; j <= NUMEROARCHI; j++) {
-            if (ListaArchi[ListaId[j] - 1].Selected == 0)
+            if (ListaArchi[ListaId[j] - 1].Selected == 0) {
                 /*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno grado minore di K altrimenti scarta l'arco e prendine un'altro*/
                 if (Nodi[ListaArchi[ListaId[j] - 1].N1 - 1] < KMASSIMO ||
-                    Nodi[ListaArchi[ListaId[j] - 1].N2 - 1] < KMASSIMO)
-                    memcpy(SoluzioneTemporanea,ListaArchi,sizeof(ListaArchi));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intornos
-                    memcpy(NodiTemporanei,Nodi,sizeof(Nodi));
-                    localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei,&IdRim);
-                CostoAttuale=calcolaCosto(SoluzioneTemporanea);
-                if(CostoAttuale<CostoMiglioreAttuale) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
-                    CostoMiglioreAttuale=CostoAttuale;
-                    IdAggiunto = ListaId[j];
-                    IdRimosso=IdRim;
-                    FindBest=1;
+                    Nodi[ListaArchi[ListaId[j] - 1].N2 - 1] < KMASSIMO){
+                    memcpy(SoluzioneTemporanea, ListaArchi,sizeof(ListaArchi));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intornos
+                    memcpy(NodiTemporanei, Nodi, sizeof(Nodi));
+                    localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim);
+                    CostoAttuale = calcolaCosto(SoluzioneTemporanea);
+                    if (CostoAttuale < CostoMiglioreAttuale) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
+                        CostoMiglioreAttuale = CostoAttuale;
+                        IdAggiunto = ListaId[j];
+                        IdRimosso = IdRim;
+                        FindBest = 1;
+                    }
                 }
+            }
         }
         k++;
         if(FindBest){   //aggiungo e toglo la coppia di archi che mi permette di avere la soluzione migliore per quell'intorno
@@ -273,7 +275,7 @@ void main() {
             stampaLista(ListaArchi);
         }
         if(!FindBest){
-            printf("All'iterazione %d non è stata trovata soluzione migliore.\nL'ottimo locale trovato risulta quindi:\n");
+            printf("All'iterazione %d non e' stata trovata soluzione migliore.\nL'ottimo locale trovato risulta quindi:\n",k);
             stampaLista(ListaArchi);
         }
     }
