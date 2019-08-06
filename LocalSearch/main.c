@@ -271,7 +271,7 @@ void main() {
             Nodi[ListaArchi[IdAggiunto-1].N2-1]++;
             Nodi[ListaArchi[IdRimosso-1].N1-1]--;
             Nodi[ListaArchi[IdRimosso-1].N2-1]--;
-            printf("Iterazione %d:\n",k);
+            printf("Iterazione %d:\nAggiunto arco %d e rimosso arco %d.\n",k,IdAggiunto,IdRimosso);
             stampaLista(ListaArchi);
         }
         if(!FindBest){
