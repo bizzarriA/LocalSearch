@@ -138,14 +138,17 @@ void main() {
     }
 
     while(scan!=EOF){   //questa scanf legge solo gli archi perchè l'array con i gradi dei nodi se lo calcola la greedy
-        scan=fscanf(fd,"%d/%d/%d/%d/%d",&ListaArchi[i-NUMERONODI].Id,&ListaArchi[i-NUMERONODI].N1,&ListaArchi[i-NUMERONODI].N2,&ListaArchi[i-NUMERONODI].Costo,&ListaArchi[i-NUMERONODI].Selected);
+        scan=fscanf(fd,"%d/%d/%d/%d/%d",&ListaArchi[i].Id,&ListaArchi[i].N1,&ListaArchi[i].N2,&ListaArchi[i].Costo,&ListaArchi[i].Selected);
+        ListaArchi[i].Ammissibile=1;
         i++;
     }
     fclose(fd);
 
     for(int j=0;j<NUMEROITERAZIONI;j++){
-        memset(ListaSoluzioni[i].ListaNodi,0, NUMERONODI*sizeof(int));
-        greedyCostruttiva(ListaSoluzioni[i].ListaArchi,ListaSoluzioni[i].ListaNodi,ListaArchi);
+        memset(ListaSoluzioni[j].ListaNodi,0, NUMERONODI*sizeof(int));
+        greedyCostruttiva(ListaSoluzioni[j].ListaArchi,ListaSoluzioni[j].ListaNodi,ListaArchi);
+        printf("Soluzione iniziale n %d\n",j);
+        stampaLista(ListaSoluzioni[i].ListaArchi);
         //localSearch(SoluzioneAttuale,NodiAttuali,CostoAttuale);
         //if(CostoAttuale<CostoMigliore){
             //la soluzione migliore(con relativi nodi) viene sostituita da quella attuale
@@ -153,5 +156,4 @@ void main() {
 
     stampaLista(SoluzioneMigliore.ListaArchi);
     printf("Costo spanning tree: %d\n",SoluzioneMigliore.Costo);
-    //ciao
 }
