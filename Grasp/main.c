@@ -70,7 +70,7 @@ int notInLista(int Id,int* Lista,int Length){   //ritona 1 se l'elemento id non 
     return 1;
 }
 
-int trovaMigliore(arco* SoluzioneAttuale, int* DaRicontrollare,j,int* IdArchiMigliori,int i){ //trova l'i-esimo arco migliore che non sia già stato preso tra i migliori e che non sia tra quelli momentaneamente non accettabili perchè non adiacenti
+int trovaMigliore(arco* SoluzioneAttuale, int* DaRicontrollare,int j,int* IdArchiMigliori,int i){ //trova l'i-esimo arco migliore che non sia già stato preso tra i migliori e che non sia tra quelli momentaneamente non accettabili perchè non adiacenti
     int IdMin=0;
     int Min=10000;  //valore fittizzio, da stabilire, magari letto da file
     for(int j=0;j<NUMEROARCHI;j++){
@@ -138,8 +138,9 @@ void main() {
     }
 
     while(scan!=EOF){   //questa scanf legge solo gli archi perchè l'array con i gradi dei nodi se lo calcola la greedy
-        scan=fscanf(fd,"%d/%d/%d/%d/%d",&ListaArchi[i].Id,&ListaArchi[i].N1,&ListaArchi[i].N2,&ListaArchi[i].Costo,&ListaArchi[i].Selected);
-        ListaArchi[i].Ammissibile=1;
+        scan=fscanf(fd,"%d/%d/%d/%d",&ListaArchi[i].Id,&ListaArchi[i].N1,&ListaArchi[i].N2,&ListaArchi[i].Costo);
+        ListaArchi[i].Selected=0;   //all'inizio nessun arco è selezionato
+        ListaArchi[i].Ammissibile=1;    //all'inizio della greedy, tutti gli archi possono essere ammissibili
         i++;
     }
     fclose(fd);
