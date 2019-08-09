@@ -6,8 +6,8 @@
 #define NUMERONODI 7
 #define NUMEROARCHI 21
 #define KMASSIMO 3
-#define NUMEROITERAZIONI 5
-#define KMIGLIORI 3
+#define NUMEROITERAZIONI 10
+#define KMIGLIORI 4
 
 typedef struct s_arco{
     int Id;
