@@ -36,6 +36,8 @@ void stampaLista(arco* ListaArchi){
     }
 }
 
+//--------------------FUNZIONI PER IMPLEMENTAZIONE GREEDY-----------------------------------------------------------------------------------------------------------------------
+
 int allNodes(int* NodiAttuali){ //ritorna 1 se tutti i nodi sono stati presi (ovvero se nessuno ha grado 0)
     for(int i=0;i<NUMERONODI;i++){
         if(NodiAttuali[i]==0)
@@ -118,6 +120,8 @@ void greedyCostruttiva(arco* SoluzioneAttuale, int* NodiAttuali, arco* ListaArch
         }
     }
 }
+
+//------------------------------FINE PARTE GREEDY-------------------------------------------------------------------------------------------------------------------------------
 
 void main() {
     arco ListaArchi[NUMEROARCHI];
