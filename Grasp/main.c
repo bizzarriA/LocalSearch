@@ -97,7 +97,7 @@ void greedyCostruttiva(arco* SoluzioneAttuale, int* NodiAttuali, arco* ListaArch
     int PrimoGiro=1;    //al posto della funzione che ogni volta controlla i gradi dei nodi per vedere se almeno uno è stato preso, setto una semplice variabile
     int DaRicontrollare[NUMEROARCHI]={0}; //contiene gli Id di archi che non potevano essere presi al momento perchè non adiacenti ad altri
     SoluzioneAttuale=malloc(NUMEROARCHI*sizeof(arco));
-    memcpy(SoluzioneAttuale,ListaArchi,NUMERONODI*sizeof(int));
+    memcpy(SoluzioneAttuale,ListaArchi,NUMEROARCHI*sizeof(arco));
     while(!allNodes(NodiAttuali)) {
         cercaArchi(SoluzioneAttuale,DaRicontrollare,j,IdArchiMigliori);
         srand ( time(NULL) );
