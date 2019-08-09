@@ -5,7 +5,7 @@
 
 #define NUMERONODI 7
 #define NUMEROARCHI 21
-#define KMASSIMO 2
+#define KMASSIMO 3
 #define NUMEROITERAZIONI 5
 #define KMIGLIORI 3
 
@@ -74,7 +74,7 @@ int trovaMigliore(arco* SoluzioneAttuale, int* DaRicontrollare,int j,int* IdArch
     int IdMin=0;
     int Min=10000;  //valore fittizzio, da stabilire, magari letto da file
     for(int j=0;j<NUMEROARCHI;j++){
-        if(SoluzioneAttuale[j].Costo<Min && notInLista(SoluzioneAttuale[j].Id,DaRicontrollare,j) && notInLista(SoluzioneAttuale[j].Id,IdArchiMigliori,i)){
+        if(SoluzioneAttuale[j].Costo<Min && SoluzioneAttuale[j].Ammissibile==1 && SoluzioneAttuale[j].Selected!=1 && notInLista(SoluzioneAttuale[j].Id,DaRicontrollare,j) && notInLista(SoluzioneAttuale[j].Id,IdArchiMigliori,i)){
             Min=SoluzioneAttuale[j].Costo;
             IdMin=SoluzioneAttuale[j].Id;
         }
@@ -96,8 +96,6 @@ void greedyCostruttiva(arco* SoluzioneAttuale, int* NodiAttuali, arco* ListaArch
     int j=0;
     int PrimoGiro=1;    //al posto della funzione che ogni volta controlla i gradi dei nodi per vedere se almeno uno è stato preso, setto una semplice variabile
     int DaRicontrollare[NUMEROARCHI]={0}; //contiene gli Id di archi che non potevano essere presi al momento perchè non adiacenti ad altri
-    SoluzioneAttuale=malloc(NUMEROARCHI*sizeof(arco));
-    memcpy(SoluzioneAttuale,ListaArchi,NUMEROARCHI*sizeof(arco));
     while(!allNodes(NodiAttuali)) {
         cercaArchi(SoluzioneAttuale,DaRicontrollare,j,IdArchiMigliori);
         srand ( time(NULL) );
@@ -111,8 +109,8 @@ void greedyCostruttiva(arco* SoluzioneAttuale, int* NodiAttuali, arco* ListaArch
             SoluzioneAttuale[IdArco-1].Selected=1;
             NodiAttuali[SoluzioneAttuale[IdArco-1].N1-1]++;
             NodiAttuali[SoluzioneAttuale[IdArco-1].N2-1]++;
-            j=0;
             memset(DaRicontrollare,0, (j+1)*sizeof(int));   //svuota la lista dei nodi che non potevano essere presi perchè non adiacenti
+            j=0;
         }
         else {
             DaRicontrollare[j]=SoluzioneAttuale[IdArco-1].Id;
@@ -127,6 +125,7 @@ void main() {
     int IdSoluzioneMigliore;
     solution SoluzioneMigliore;
     int scan=0, i=0;
+    int k;
 
     //APRO FILE E LEGGO ISTANZE
     FILE *fd;
@@ -147,14 +146,17 @@ void main() {
 
     for(int j=0;j<NUMEROITERAZIONI;j++){
         memset(ListaSoluzioni[j].ListaNodi,0, NUMERONODI*sizeof(int));
+        memcpy(ListaSoluzioni[j].ListaArchi,ListaArchi,NUMEROARCHI*sizeof(arco));
         greedyCostruttiva(ListaSoluzioni[j].ListaArchi,ListaSoluzioni[j].ListaNodi,ListaArchi);
-        printf("Soluzione iniziale n %d\n",j);
-        stampaLista(ListaSoluzioni[i].ListaArchi);
+        k=j+1;
+        printf("\nSoluzione iniziale n %d\n",k);
+        stampaLista(ListaSoluzioni[j].ListaArchi);
         //localSearch(SoluzioneAttuale,NodiAttuali,CostoAttuale);
         //if(CostoAttuale<CostoMigliore){
             //la soluzione migliore(con relativi nodi) viene sostituita da quella attuale
     }
 
+    printf("\nMigliore ottimo locale trovato\n");
     stampaLista(SoluzioneMigliore.ListaArchi);
     printf("Costo spanning tree: %d\n",SoluzioneMigliore.Costo);
 }
