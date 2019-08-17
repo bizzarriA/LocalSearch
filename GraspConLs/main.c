@@ -6,7 +6,7 @@
 #define NUMERONODI 7
 #define NUMEROARCHI 21
 #define KMASSIMO 3
-#define NUMEROITERAZIONI 10
+#define NUMEROITERAZIONI 50
 #define KMIGLIORI 4
 
 typedef struct s_arco{
@@ -391,7 +391,7 @@ void main() {
         printf("\nSoluzione iniziale n %d\n",k);
         stampaLista(ListaSoluzioni[j].ListaArchi);
         ListaSoluzioni[j].Costo=calcolaCosto(ListaSoluzioni[j].ListaArchi);
-        printf("Costo spanning tree iniziale: %d\n\n",ListaSoluzioni[j].Costo);
+        printf("Costo spanning tree iniziale: %d\n\n ",ListaSoluzioni[j].Costo);
         ListaSoluzioni[j].Costo=localSearch(ListaSoluzioni[j].ListaArchi,ListaSoluzioni[j].ListaNodi);
         if(ListaSoluzioni[j].Costo<CostoMigliore){
             IdSoluzioneMigliore=j;
