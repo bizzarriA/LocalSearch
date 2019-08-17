@@ -328,7 +328,7 @@ int localSearch(arco* SoluzioneIniziale, int* NodiIniziali) {
                     memcpy(NodiTemporanei, NodiIniziali, sizeof(NodiTemporanei));
                     esploraIntorno(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim);
                     CostoAttuale = calcolaCosto(SoluzioneTemporanea);
-                    if (CostoAttuale < CostoMiglioreAttuale && IdAggiunto != IdRimosso) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
+                    if (CostoAttuale < CostoMiglioreAttuale && ListaId[j] != IdRim) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
                         CostoMiglioreAttuale = CostoAttuale;
                         IdAggiunto = ListaId[j];
                         IdRimosso = IdRim;
