@@ -324,8 +324,8 @@ int localSearch(arco* SoluzioneIniziale, int* NodiIniziali) {
                 /*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno grado minore di K altrimenti scarta l'arco e prendine un'altro*/
                 if (NodiIniziali[SoluzioneIniziale[ListaId[j] - 1].N1 - 1] < KMASSIMO ||
                     NodiIniziali[SoluzioneIniziale[ListaId[j] - 1].N2 - 1] < KMASSIMO) {
-                    memcpy(SoluzioneTemporanea, SoluzioneIniziale, sizeof(SoluzioneIniziale));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
-                    memcpy(NodiTemporanei, NodiIniziali, sizeof(NodiIniziali));
+                    memcpy(SoluzioneTemporanea, SoluzioneIniziale, sizeof(SoluzioneTemporanea));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
+                    memcpy(NodiTemporanei, NodiIniziali, sizeof(NodiTemporanei));
                     esploraIntorno(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim);
                     CostoAttuale = calcolaCosto(SoluzioneTemporanea);
                     if (CostoAttuale < CostoMiglioreAttuale && IdAggiunto != IdRimosso) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
@@ -368,7 +368,7 @@ void main() {
     //APRO FILE E LEGGO ISTANZE
     FILE *fd;
     // fd=fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
-    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\Grasp\\istanzeGrasp.txt", "r");
+    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\GraspConLS\\istanzeGrasp.txt", "r");
     if(fd==NULL){
         printf("Errore apertura file");
         exit(1);
@@ -390,6 +390,8 @@ void main() {
         k=j+1;
         printf("\nSoluzione iniziale n %d\n",k);
         stampaLista(ListaSoluzioni[j].ListaArchi);
+        ListaSoluzioni[j].Costo=calcolaCosto(ListaSoluzioni[j].ListaArchi);
+        printf("Costo spanning tree iniziale: %d\n\n",ListaSoluzioni[j].Costo);
         ListaSoluzioni[j].Costo=localSearch(ListaSoluzioni[j].ListaArchi,ListaSoluzioni[j].ListaNodi);
         if(ListaSoluzioni[j].Costo<CostoMigliore){
             IdSoluzioneMigliore=j;
