@@ -185,7 +185,7 @@ int arcoObbligato(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo,
 }
 
 //ESEGUO LOCAL SEARCH CON LIMITE GRADO NODI <= K
-void localSearch(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo) {  //ritorna anche l'arco che ha appena rimosso
+void localSearch(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo,int* TabuList,int t) {  //ritorna anche l'arco che ha appena rimosso
     int NodiCiclo[NUMERONODI];
     int NumeroNodiCiclo;
     //int CostoIniziale, CostoFinale;       NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
@@ -219,12 +219,12 @@ void individuaId(arco* ListaArchi, int* ListaId) {
 
 void main() {
     int Nodi[NUMERONODI], NodiTemporanei[NUMERONODI];
-    int ListaId[NUMEROARCHI];
-    arco ListaArchi[NUMEROARCHI], SoluzioneTemporanea[NUMEROARCHI],SoluzioneMigliore[NUMEROARCHI],TabuList[TABUSIZE];
+    int ListaId[NUMEROARCHI],TabuList[TABUSIZE]={0};
+    arco ListaArchi[NUMEROARCHI], SoluzioneTemporanea[NUMEROARCHI],SoluzioneMigliore[NUMEROARCHI];
     int IdArcoMigliore, IdRim, IdAggiunto, IdRimosso;
     int CostoMiglioreAttuale, CostoAttuale, CostoPrecedente,CostoMiglioreAssoluto;    //il primo rappresenta in ogni ciclo il costo migliore fin'ora trovato per singolo intorno, il secondo rappresenta il costo della soluzione temporanea che si sta esaminando in quel momento, il terzo è il costo della soluzione migliore dell'intorno precedente, il quarto è il costo della miglior soluzione in assoluto trovata
     int VincoliInfrantiPrec=0,VincoliInfrantiOra=0;
-    int scan = 0, i = 0, k = 0;
+    int scan = 0, i = 0, k = 0, t=0;
     int Stallo = 0, NoImprovement=0;
     int n;
 
@@ -257,7 +257,7 @@ void main() {
 
     VincoliInfrantiPrec=vincoliInfranti(Nodi);    //guardo quanti sono i nodi nella soluzione iniziale che non rispettano il vincolo sul grado
     CostoPrecedente = calcolaCosto(ListaArchi)+VincoliInfrantiPrec*PENALIZZAZIONE; //costo della soluzione iniziale
-    CostoMiglioreAssoluto=CostoPrecedente; //al primo giro, la miglior soluzione è l'iniziale
+    CostoMiglioreAssoluto=CostoPrecedente; //al primo giro, la miglior soluzione è l'iniziale quindi ne inizializzo il costo
     memcpy(SoluzioneMigliore,ListaArchi,sizeof(ListaArchi));    //la soluzione migliore viene inizializzata a quella iniziale
 
     individuaId(ListaArchi, ListaId);   //trovo la lista degli id degli archi per permutarla successivamente
@@ -272,7 +272,7 @@ void main() {
             if (ListaArchi[ListaId[j] - 1].Selected == 0) {
                 memcpy(SoluzioneTemporanea, ListaArchi, sizeof(ListaArchi));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
                 memcpy(NodiTemporanei, Nodi, sizeof(Nodi));
-                localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim);   //DEVE DIVENTARE UNA TABU!!!
+                localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim,TabuList,t);   //DEVE DIVENTARE UNA TABU!!!
                 VincoliInfrantiOra=vincoliInfranti(NodiTemporanei); //vincoli infranti dalla nuova soluzione trovata
                 if (ListaId[j] != IdRim) { //se la soluzione è diversa da quella corrente (ovvero se non ho aggiunto e tolto lo stesso arco), controlla se è la migliore dell'intorno
                     CostoAttuale = CostoPrecedente+SoluzioneTemporanea[ListaId[j] - 1].Costo+SoluzioneTemporanea[IdRim - 1].Costo+(VincoliInfrantiOra-VincoliInfrantiPrec)*PENALIZZAZIONE;  //il nuovo costo dopo l'inserimento di un arco e la rimozione di un altro è pari al costo della soluzione precedente + il costo dell'arco aggiunto - costo arco rimosso + le penalizzazioni aggiunte (se si infrangono nuovi vincoli) o rimosse (se vincoli prima infranti ora sono rispettati)
@@ -282,7 +282,8 @@ void main() {
                         IdRimosso = IdRim;
                     }
                 }
-            }
+            }//QUESTO E' DA SISTEMARE PER LA FACCENDA DI ACCETTARE LE TABU' MIGLIORATIVE IN CASO DI ASSENZA DI MIGLIORATIVE NON TABU'
+            //Questa prima parte infatti potrebbe essere sistemata per cercare la migliore tra le soluzioni non tabù. Se nessuna di quelle trovate è migliore della soluzione precedente allora guardo tra le tabù e alla fine decido
         }
         k++;    //mantiene il numero dell'iterazione corrente
         if(CostoMiglioreAttuale<CostoMiglioreAssoluto) //se il costo della soluzione appena trovata nell'intorno è minore della migliore trovata in assoluto
@@ -292,6 +293,13 @@ void main() {
         if(NoImprovement==MAXITERAZIONI)
             Stallo=1;
         if (!Stallo) {   //aggiungo e tolgo la coppia di archi che mi permette di avere la soluzione migliore per quell'intorno, diversa dalla soluzione corrente (anche se peggiore di quest'ultima)
+            if(t<TABUSIZE){ //aggiunta dell'arco appena aggiunto alla tabu list di archi da non rimuovere
+                TabuList[t]=IdAggiunto;
+                t++;
+            }else if(t==TABUSIZE){  //quando è piena, si riazzera così agisce FIFO
+                t=0;
+                TabuList[t]=IdAggiunto;
+            }
             ListaArchi[IdAggiunto - 1].Selected = 1;
             ListaArchi[IdRimosso - 1].Selected = 0;
             Nodi[ListaArchi[IdAggiunto - 1].N1 - 1]++;
@@ -310,7 +318,7 @@ void main() {
         }
         if (Stallo) {
             printf("All'iterazione %d è stata raggiunta la situazione di stallo.\nL'ottimo locale trovato risulta quindi:\n", k);
-            stampaLista(ListaArchi);    //deve stampare la migliore, non listaArchi che contiene l'ultima trovata
+            stampaLista(SoluzioneMigliore);    //deve stampare la migliore
         }
     }
 
