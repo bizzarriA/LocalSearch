@@ -220,7 +220,7 @@ void individuaId(arco* ListaArchi, int* ListaId) {
 void main() {
     int Nodi[NUMERONODI], NodiTemporanei[NUMERONODI];
     int ListaId[NUMEROARCHI];
-    arco ListaArchi[NUMEROARCHI], SoluzioneTemporanea[NUMEROARCHI],TabuList[TABUSIZE];
+    arco ListaArchi[NUMEROARCHI], SoluzioneTemporanea[NUMEROARCHI],SoluzioneMigliore[NUMEROARCHI],TabuList[TABUSIZE];
     int IdArcoMigliore, IdRim, IdAggiunto, IdRimosso;
     int CostoMiglioreAttuale, CostoAttuale, CostoPrecedente,CostoMiglioreAssoluto;    //il primo rappresenta in ogni ciclo il costo migliore fin'ora trovato per singolo intorno, il secondo rappresenta il costo della soluzione temporanea che si sta esaminando in quel momento, il terzo è il costo della soluzione migliore dell'intorno precedente, il quarto è il costo della miglior soluzione in assoluto trovata
     int VincoliInfrantiPrec=0,VincoliInfrantiOra=0;
@@ -258,6 +258,7 @@ void main() {
     VincoliInfrantiPrec=vincoliInfranti(Nodi);    //guardo quanti sono i nodi nella soluzione iniziale che non rispettano il vincolo sul grado
     CostoPrecedente = calcolaCosto(ListaArchi)+VincoliInfrantiPrec*PENALIZZAZIONE; //costo della soluzione iniziale
     CostoMiglioreAssoluto=CostoPrecedente; //al primo giro, la miglior soluzione è l'iniziale
+    memcpy(SoluzioneMigliore,ListaArchi,sizeof(ListaArchi));    //la soluzione migliore viene inizializzata a quella iniziale
 
     individuaId(ListaArchi, ListaId);   //trovo la lista degli id degli archi per permutarla successivamente
     n = sizeof(ListaId);    //dato necessario per effettuare la permutazione
@@ -265,7 +266,6 @@ void main() {
     while (!Stallo) {   //finchè non raggiungo lo stallo, continuo a cercare una soluzione migliore
         permuta(ListaId, n);
         CostoMiglioreAttuale=100000; //valore fittizio per partire nel singolo intorno. A differenza della local search non può essere inizializzato al valore della soluzione iniziale perchè qui devo considerare solo l'intorno tranne la soluzione iniziale
-        NoImprovement++;    //se all'interno del ciclo si trova un miglioramento, questo valore viene riportato a 0, altrimenti l'incremento viene mantenuto fino a raggiungere un valore stabilito che indica che si è ad uno stallo
         IdAggiunto = -1;
         IdRimosso = -2;
         for (int j = 0; j <= NUMEROARCHI; j++) {    //ciclo sugli archi, nell'ordine dato dalla ListaId permutata
@@ -285,11 +285,11 @@ void main() {
             }
         }
         k++;    //mantiene il numero dell'iterazione corrente
-        if(CostoMiglioreAttuale<CostoMiglioreAssoluto) { //se il costo della soluzione appena trovata nell'intorno è minore della migliore trovata in assoluto
+        if(CostoMiglioreAttuale<CostoMiglioreAssoluto) //se il costo della soluzione appena trovata nell'intorno è minore della migliore trovata in assoluto
             NoImprovement = 0;    //lo azzero perchè ho appena trovato un miglioramento
-            //QUI DEVO MEMORIZZARE DA QUALCHE PARTE LA SOLUZIONE MIGLIORE IN ASSOLUTO
-        }
-        if(NoImprovement>MAXITERAZIONI)
+        else
+            NoImprovement++;    //se all'interno del ciclo si trova un miglioramento, questo valore viene riportato a 0, altrimenti l'incremento viene mantenuto fino a raggiungere un valore stabilito che indica che si è ad uno stallo
+        if(NoImprovement==MAXITERAZIONI)
             Stallo=1;
         if (!Stallo) {   //aggiungo e tolgo la coppia di archi che mi permette di avere la soluzione migliore per quell'intorno, diversa dalla soluzione corrente (anche se peggiore di quest'ultima)
             ListaArchi[IdAggiunto - 1].Selected = 1;
@@ -298,14 +298,19 @@ void main() {
             Nodi[ListaArchi[IdAggiunto - 1].N2 - 1]++;
             Nodi[ListaArchi[IdRimosso - 1].N1 - 1]--;
             Nodi[ListaArchi[IdRimosso - 1].N2 - 1]--;
+            if(CostoMiglioreAttuale<CostoMiglioreAssoluto){
+                CostoMiglioreAssoluto=CostoMiglioreAttuale;
+                memcpy(SoluzioneMigliore,ListaArchi,sizeof(ListaArchi));//DEVO MEMORIZZARE LA SOLUZIONE MIGLIORE IN ASSOLUTO FIN'ORA TROVATA
+            }
             CostoPrecedente=CostoMiglioreAttuale;   //siccome la modifica trovata diventa definitiva, aggiorno i costi
             VincoliInfrantiPrec=VincoliInfrantiOra;
             printf("Iterazione %d:\nAggiunto arco %d e rimosso arco %d.\n", k, IdAggiunto, IdRimosso);
             stampaLista(ListaArchi);
+            printf("Numero di iterazioni senza miglioramenti: %d\n",NoImprovement);
         }
         if (Stallo) {
-            printf("All'iterazione %d non e' stata trovata soluzione migliore.\nL'ottimo locale trovato risulta quindi:\n", k);
-            stampaLista(ListaArchi);
+            printf("All'iterazione %d è stata raggiunta la situazione di stallo.\nL'ottimo locale trovato risulta quindi:\n", k);
+            stampaLista(ListaArchi);    //deve stampare la migliore, non listaArchi che contiene l'ultima trovata
         }
     }
 
