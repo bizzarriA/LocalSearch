@@ -145,8 +145,16 @@ int trovaArco(int N1, int N2, arco* SoluzioneCandidata) {
     return IdArco;
 }
 
-//RESTITUISCO L'ID DELL'ARCO DI COSTO MAGGIORE TRA QUELLI DI UN CICLO DATO
-int arcoDaRimuovere(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo) {
+int notInLista(int Id,int* Lista,int Length){   //ritona 1 se l'elemento id non appartiene all'array Lista
+    for(int i=0;i<Length;i++){
+        if(Lista[i]==Id)
+            return 0;
+    }
+    return 1;
+}
+
+//RESTITUISCO L'ID DELL'ARCO DI COSTO MAGGIORE TRA QUELLI DI UN CICLO DATO CHE NON FACCIA PARTE DELLA TABULIST
+int arcoDaRimuovere(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo,int* TabuList,int t) {
     int CostoMax = 0;
     int N1, N2, IdArco, IdMax;
     for (int i = 0; i < NumeroNodiCiclo; i++) {
@@ -154,7 +162,7 @@ int arcoDaRimuovere(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCicl
         for (int j = i + 1; j < NumeroNodiCiclo; j++) {
             N2 = NodiCiclo[j];
             IdArco = trovaArco(N1, N2, SoluzioneCandidata);
-            if (SoluzioneCandidata[IdArco - 1].Selected == 1 && SoluzioneCandidata[IdArco - 1].Costo > CostoMax) {
+            if (SoluzioneCandidata[IdArco - 1].Selected == 1 && SoluzioneCandidata[IdArco - 1].Costo > CostoMax && notInLista(IdArco,TabuList,t)) {
                 CostoMax = SoluzioneCandidata[IdArco - 1].Costo;
                 IdMax = IdArco;
             }
@@ -194,14 +202,13 @@ void localSearch(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo,int*
     Nodi[SoluzioneCandidata[Id - 1].N1 - 1]++;  /*aumenta il grado dei nodi, in seguito all'aggiunta*/
     Nodi[SoluzioneCandidata[Id - 1].N2 - 1]++;
     NumeroNodiCiclo = individuaCiclo(SoluzioneCandidata, NodiCiclo, Nodi);  /*trova i nodi connessi da un ciclo*/
-    /*cerco i due archi del ciclo che sono associati al nodo con grado maggiore del massimo se c'è
-     * (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore*/
+    /*questo controllo non serve perchè può trovare anche soluzioni che non rispettano i vincoli perchè tanto saranno penalizzate postume dal calcolo del costo
     if (Nodi[SoluzioneCandidata[Id - 1].N1 - 1] > KMASSIMO)
         * IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1);
     else if (Nodi[SoluzioneCandidata[Id - 1].N2 - 1] > KMASSIMO)
         * IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N2);
-    else
-        *IdNuovo = arcoDaRimuovere(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo);
+    else*/
+        *IdNuovo = arcoDaRimuovere(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo,TabuList,t);
     SoluzioneCandidata[*IdNuovo - 1].Selected = 0;
     Nodi[SoluzioneCandidata[*IdNuovo - 1].N1 - 1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
     Nodi[SoluzioneCandidata[*IdNuovo - 1].N2 - 1]--;
@@ -272,7 +279,7 @@ void main() {
             if (ListaArchi[ListaId[j] - 1].Selected == 0) {
                 memcpy(SoluzioneTemporanea, ListaArchi, sizeof(ListaArchi));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
                 memcpy(NodiTemporanei, Nodi, sizeof(Nodi));
-                localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim,TabuList,t);   //DEVE DIVENTARE UNA TABU!!!
+                localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim,TabuList,t);   //guarda solo mosse non tabu
                 VincoliInfrantiOra=vincoliInfranti(NodiTemporanei); //vincoli infranti dalla nuova soluzione trovata
                 if (ListaId[j] != IdRim) { //se la soluzione è diversa da quella corrente (ovvero se non ho aggiunto e tolto lo stesso arco), controlla se è la migliore dell'intorno
                     CostoAttuale = CostoPrecedente+SoluzioneTemporanea[ListaId[j] - 1].Costo+SoluzioneTemporanea[IdRim - 1].Costo+(VincoliInfrantiOra-VincoliInfrantiPrec)*PENALIZZAZIONE;  //il nuovo costo dopo l'inserimento di un arco e la rimozione di un altro è pari al costo della soluzione precedente + il costo dell'arco aggiunto - costo arco rimosso + le penalizzazioni aggiunte (se si infrangono nuovi vincoli) o rimosse (se vincoli prima infranti ora sono rispettati)
