@@ -222,7 +222,7 @@ void main() {
     int ListaId[NUMEROARCHI];
     arco ListaArchi[NUMEROARCHI], SoluzioneTemporanea[NUMEROARCHI],TabuList[TABUSIZE];
     int IdArcoMigliore, IdRim, IdAggiunto, IdRimosso;
-    int CostoMiglioreAttuale, CostoAttuale, CostoPrecedente;
+    int CostoMiglioreAttuale, CostoAttuale, CostoPrecedente,CostoMiglioreAssoluto;    //il primo rappresenta in ogni ciclo il costo migliore fin'ora trovato per singolo intorno, il secondo rappresenta il costo della soluzione temporanea che si sta esaminando in quel momento, il terzo è il costo della soluzione migliore dell'intorno precedente, il quarto è il costo della miglior soluzione in assoluto trovata
     int VincoliInfrantiPrec=0,VincoliInfrantiOra=0;
     int scan = 0, i = 0, k = 0;
     int Stallo = 0, NoImprovement=0;
@@ -255,39 +255,42 @@ void main() {
     printf("Soluzione iniziale:\n");
     stampaLista(ListaArchi);
 
-    VincoliInfrantiPrec=vincoliInfranti(Nodi);    //guardo quanti sono i nodi che non rispettano il vincolo sul grado
+    VincoliInfrantiPrec=vincoliInfranti(Nodi);    //guardo quanti sono i nodi nella soluzione iniziale che non rispettano il vincolo sul grado
     CostoPrecedente = calcolaCosto(ListaArchi)+VincoliInfrantiPrec*PENALIZZAZIONE; //costo della soluzione iniziale
+    CostoMiglioreAssoluto=CostoPrecedente; //al primo giro, la miglior soluzione è l'iniziale
 
-    individuaId(ListaArchi, ListaId);
-    n = sizeof(ListaId);
+    individuaId(ListaArchi, ListaId);   //trovo la lista degli id degli archi per permutarla successivamente
+    n = sizeof(ListaId);    //dato necessario per effettuare la permutazione
 
     while (!Stallo) {   //finchè non raggiungo lo stallo, continuo a cercare una soluzione migliore
         permuta(ListaId, n);
-        CostoMiglioreAttuale=100000; //valore fittizio per partire. A differenza della local search non può essere inizializzato al valore della soluzione iniziale perchè qui devo considerare solo l'intorno tranne la soluzione iniziale
-        Stallo = 1;
-        NoImprovement++;
+        CostoMiglioreAttuale=100000; //valore fittizio per partire nel singolo intorno. A differenza della local search non può essere inizializzato al valore della soluzione iniziale perchè qui devo considerare solo l'intorno tranne la soluzione iniziale
+        NoImprovement++;    //se all'interno del ciclo si trova un miglioramento, questo valore viene riportato a 0, altrimenti l'incremento viene mantenuto fino a raggiungere un valore stabilito che indica che si è ad uno stallo
         IdAggiunto = -1;
         IdRimosso = -2;
-        for (int j = 0; j <= NUMEROARCHI; j++) {
+        for (int j = 0; j <= NUMEROARCHI; j++) {    //ciclo sugli archi, nell'ordine dato dalla ListaId permutata
             if (ListaArchi[ListaId[j] - 1].Selected == 0) {
                 memcpy(SoluzioneTemporanea, ListaArchi, sizeof(ListaArchi));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
                 memcpy(NodiTemporanei, Nodi, sizeof(Nodi));
-                localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim);
-                VincoliInfrantiOra=vincoliInfranti(NodiTemporanei);
-                if (ListaId[j] != IdRim) { //se la soluzione è diversa da quella corrente, controlla se è la migliore dell'intorno
-                    CostoAttuale = CostoPrecedente+SoluzioneTemporanea[ListaId[j] - 1].Costo+SoluzioneTemporanea[IdRim - 1].Costo+(VincoliInfrantiOra-VincoliInfrantiPrec)*PENALIZZAZIONE;  //il nuovo costo dopo l'inserimento di un arco e la rimozione di un altro è pari al costo precedente + il costo dell'arco aggiunto - costo arco rimosso + le penalizzazioni aggiunte (se si infrangono nuovi vincoli) o rimosse (se vincoli prima infranti ora sono rispettati)
+                localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim);   //DEVE DIVENTARE UNA TABU!!!
+                VincoliInfrantiOra=vincoliInfranti(NodiTemporanei); //vincoli infranti dalla nuova soluzione trovata
+                if (ListaId[j] != IdRim) { //se la soluzione è diversa da quella corrente (ovvero se non ho aggiunto e tolto lo stesso arco), controlla se è la migliore dell'intorno
+                    CostoAttuale = CostoPrecedente+SoluzioneTemporanea[ListaId[j] - 1].Costo+SoluzioneTemporanea[IdRim - 1].Costo+(VincoliInfrantiOra-VincoliInfrantiPrec)*PENALIZZAZIONE;  //il nuovo costo dopo l'inserimento di un arco e la rimozione di un altro è pari al costo della soluzione precedente + il costo dell'arco aggiunto - costo arco rimosso + le penalizzazioni aggiunte (se si infrangono nuovi vincoli) o rimosse (se vincoli prima infranti ora sono rispettati)
                     if (CostoAttuale < CostoMiglioreAttuale) {
                         CostoMiglioreAttuale = CostoAttuale;
                         IdAggiunto = ListaId[j];
                         IdRimosso = IdRim;
-                        NoImprovement=0;
                     }
                 }
             }
         }
-        k++;
-        if(NoImprovement<MAXITERAZIONI)
-            Stallo=0;
+        k++;    //mantiene il numero dell'iterazione corrente
+        if(CostoMiglioreAttuale<CostoMiglioreAssoluto) { //se il costo della soluzione appena trovata nell'intorno è minore della migliore trovata in assoluto
+            NoImprovement = 0;    //lo azzero perchè ho appena trovato un miglioramento
+            //QUI DEVO MEMORIZZARE DA QUALCHE PARTE LA SOLUZIONE MIGLIORE IN ASSOLUTO
+        }
+        if(NoImprovement>MAXITERAZIONI)
+            Stallo=1;
         if (!Stallo) {   //aggiungo e tolgo la coppia di archi che mi permette di avere la soluzione migliore per quell'intorno, diversa dalla soluzione corrente (anche se peggiore di quest'ultima)
             ListaArchi[IdAggiunto - 1].Selected = 1;
             ListaArchi[IdRimosso - 1].Selected = 0;
@@ -295,7 +298,7 @@ void main() {
             Nodi[ListaArchi[IdAggiunto - 1].N2 - 1]++;
             Nodi[ListaArchi[IdRimosso - 1].N1 - 1]--;
             Nodi[ListaArchi[IdRimosso - 1].N2 - 1]--;
-            CostoPrecedente=CostoMiglioreAttuale;
+            CostoPrecedente=CostoMiglioreAttuale;   //siccome la modifica trovata diventa definitiva, aggiorno i costi
             VincoliInfrantiPrec=VincoliInfrantiOra;
             printf("Iterazione %d:\nAggiunto arco %d e rimosso arco %d.\n", k, IdAggiunto, IdRimosso);
             stampaLista(ListaArchi);
