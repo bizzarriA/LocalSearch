@@ -302,11 +302,11 @@ void main() {
         if (!Stallo) {   //aggiungo e tolgo la coppia di archi che mi permette di avere la soluzione migliore per quell'intorno, diversa dalla soluzione corrente (anche se peggiore di quest'ultima)
             if(t<TABUSIZE){ //aggiunta dell'arco appena aggiunto alla tabu list di archi da non rimuovere
                 TabuList[t]=IdAggiunto;
-                t++;
             }else if(t==TABUSIZE){  //quando è piena, si riazzera così agisce FIFO
                 t=0;
                 TabuList[t]=IdAggiunto;
             }
+            t++;
             ListaArchi[IdAggiunto - 1].Selected = 1;
             ListaArchi[IdRimosso - 1].Selected = 0;
             Nodi[ListaArchi[IdAggiunto - 1].N1 - 1]++;
