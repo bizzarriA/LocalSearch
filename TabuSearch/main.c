@@ -156,15 +156,18 @@ int notInLista(int Id,int* Lista,int Length){   //ritona 1 se l'elemento id non 
 //RESTITUISCO L'ID DELL'ARCO DI COSTO MAGGIORE TRA QUELLI DI UN CICLO DATO CHE NON FACCIA PARTE DELLA TABULIST
 int arcoDaRimuovere(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo,int* TabuList,int t) {
     int CostoMax = 0;
-    int N1, N2, IdArco, IdMax;
-    for (int i = 0; i < NumeroNodiCiclo; i++) {
-        N1 = NodiCiclo[i];
-        for (int j = i + 1; j < NumeroNodiCiclo; j++) {
-            N2 = NodiCiclo[j];
-            IdArco = trovaArco(N1, N2, SoluzioneCandidata);
-            if (SoluzioneCandidata[IdArco - 1].Selected == 1 && SoluzioneCandidata[IdArco - 1].Costo > CostoMax && notInLista(IdArco,TabuList,t)) {
-                CostoMax = SoluzioneCandidata[IdArco - 1].Costo;
-                IdMax = IdArco;
+    int N1, N2, IdArco, IdMax=-1;
+    if (NumeroNodiCiclo > 1) {//Se ho un ciclo elimino l'arco di costo maggiore del ciclo
+        for (int i = 0; i < NumeroNodiCiclo; i++) {
+            N1 = NodiCiclo[i];
+            for (int j = i + 1; j < NumeroNodiCiclo; j++) {
+                N2 = NodiCiclo[j];
+                IdArco = trovaArco(N1, N2, SoluzioneCandidata);
+                if (SoluzioneCandidata[IdArco - 1].Selected == 1 && SoluzioneCandidata[IdArco - 1].Costo > CostoMax &&
+                    notInLista(IdArco, TabuList, t)) {
+                    CostoMax = SoluzioneCandidata[IdArco - 1].Costo;
+                    IdMax = IdArco;
+                }
             }
         }
     }
@@ -208,7 +211,7 @@ void localSearch(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo,int*
     else if (Nodi[SoluzioneCandidata[Id - 1].N2 - 1] > KMASSIMO)
         * IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N2);
     else*/
-        *IdNuovo = arcoDaRimuovere(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo,TabuList,t);
+    *IdNuovo = arcoDaRimuovere(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo,TabuList,t);
     SoluzioneCandidata[*IdNuovo - 1].Selected = 0;
     Nodi[SoluzioneCandidata[*IdNuovo - 1].N1 - 1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
     Nodi[SoluzioneCandidata[*IdNuovo - 1].N2 - 1]--;
@@ -234,11 +237,13 @@ void main() {
     int scan = 0, i = 0, k = 0, t=0;
     int Stallo = 0, NoImprovement=0;
     int n;
+    IdAggiunto = -1;
+    IdRimosso = -2;
 
     //APRO FILE E LEGGO ISTANZE
     FILE* fd;
-    //fd = fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
-    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
+    fd = fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
+    //fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
     if (fd == NULL) {
         printf("Errore apertura file");
         exit(1);
@@ -272,9 +277,7 @@ void main() {
 
     while (!Stallo) {   //finchè non raggiungo lo stallo, continuo a cercare una soluzione migliore
         permuta(ListaId, n);
-        CostoMiglioreAttuale=100000; //valore fittizio per partire nel singolo intorno. A differenza della local search non può essere inizializzato al valore della soluzione iniziale perchè qui devo considerare solo l'intorno tranne la soluzione iniziale
-        IdAggiunto = -1;
-        IdRimosso = -2;
+        CostoMiglioreAttuale=100000000; //valore fittizio per partire nel singolo intorno. A differenza della local search non può essere inizializzato al valore della soluzione iniziale perchè qui devo considerare solo l'intorno tranne la soluzione iniziale
         for (int j = 0; j <= NUMEROARCHI; j++) {    //ciclo sugli archi, nell'ordine dato dalla ListaId permutata
             if (ListaArchi[ListaId[j] - 1].Selected == 0) {
                 memcpy(SoluzioneTemporanea, ListaArchi, sizeof(ListaArchi));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
@@ -282,7 +285,7 @@ void main() {
                 localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim,TabuList,t);   //guarda solo mosse non tabu
                 VincoliInfrantiOra=vincoliInfranti(NodiTemporanei); //vincoli infranti dalla nuova soluzione trovata
                 if (ListaId[j] != IdRim) { //se la soluzione è diversa da quella corrente (ovvero se non ho aggiunto e tolto lo stesso arco), controlla se è la migliore dell'intorno
-                    CostoAttuale = CostoPrecedente+SoluzioneTemporanea[ListaId[j] - 1].Costo+SoluzioneTemporanea[IdRim - 1].Costo+(VincoliInfrantiOra-VincoliInfrantiPrec)*PENALIZZAZIONE;  //il nuovo costo dopo l'inserimento di un arco e la rimozione di un altro è pari al costo della soluzione precedente + il costo dell'arco aggiunto - costo arco rimosso + le penalizzazioni aggiunte (se si infrangono nuovi vincoli) o rimosse (se vincoli prima infranti ora sono rispettati)
+                    CostoAttuale = CostoPrecedente+SoluzioneTemporanea[ListaId[j] - 1].Costo-SoluzioneTemporanea[IdRim - 1].Costo+(VincoliInfrantiOra-VincoliInfrantiPrec)*PENALIZZAZIONE;  //il nuovo costo dopo l'inserimento di un arco e la rimozione di un altro è pari al costo della soluzione precedente + il costo dell'arco aggiunto - costo arco rimosso + le penalizzazioni aggiunte (se si infrangono nuovi vincoli) o rimosse (se vincoli prima infranti ora sono rispettati)
                     if (CostoAttuale < CostoMiglioreAttuale) {
                         CostoMiglioreAttuale = CostoAttuale;
                         IdAggiunto = ListaId[j];
@@ -319,12 +322,17 @@ void main() {
             }
             CostoPrecedente=CostoMiglioreAttuale;   //siccome la modifica trovata diventa definitiva, aggiorno i costi
             VincoliInfrantiPrec=VincoliInfrantiOra;
-            printf("Iterazione %d:\nAggiunto arco %d e rimosso arco %d.\n", k, IdAggiunto, IdRimosso);
-            stampaLista(ListaArchi);
-            printf("Numero di iterazioni senza miglioramenti: %d\n",NoImprovement);
+            if(NoImprovement==0) {
+                printf("Iterazione %d:\nAggiunto arco %d e rimosso arco %d.\n", k, IdAggiunto, IdRimosso);
+                stampaLista(ListaArchi);
+                printf("Numero di iterazioni senza miglioramenti: %d\n", NoImprovement);
+            }else {
+                printf("Iterazione %d:non ha apportato modifiche\n", k);
+                printf("Numero di iterazioni senza miglioramenti: %d\n", NoImprovement);
+            }
         }
         if (Stallo) {
-            printf("All'iterazione %d è stata raggiunta la situazione di stallo.\nL'ottimo locale trovato risulta quindi:\n", k);
+            printf("All'iterazione %d e' stata raggiunta la situazione di stallo.\nL'ottimo locale trovato risulta quindi:\n", k);
             stampaLista(SoluzioneMigliore);    //deve stampare la migliore
         }
     }
