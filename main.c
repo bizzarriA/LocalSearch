@@ -238,9 +238,16 @@ void localSearch(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo,int*
     if(TabuOn)
         *IdNuovo = arcoDaRimuovereTabu(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo,TabuList,t);
     else *IdNuovo = arcoDaRimuovere(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo,TabuList,t);
-    SoluzioneCandidata[*IdNuovo - 1].Selected = 0;
-    Nodi[SoluzioneCandidata[*IdNuovo - 1].N1 - 1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
-    Nodi[SoluzioneCandidata[*IdNuovo - 1].N2 - 1]--;
+    if(*IdNuovo==-1){ //Se non trovo nessun arco da rimuovere tolgo quello appena inserito
+        SoluzioneCandidata[Id - 1].Selected = 0;
+        Nodi[SoluzioneCandidata[Id - 1].N1 - 1]--;  /*ripristina il grado dei nodi*/
+        Nodi[SoluzioneCandidata[Id - 1].N2 - 1]--;
+        *IdNuovo=Id;
+    }else {
+        SoluzioneCandidata[*IdNuovo - 1].Selected = 0;
+        Nodi[SoluzioneCandidata[*IdNuovo - 1].N1 - 1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
+        Nodi[SoluzioneCandidata[*IdNuovo - 1].N2 - 1]--;
+    }
     //CostoFinale=calcolaCosto(SoluzioneCandidata);  NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
     //if(CostoFinale<CostoIniziale)
     //   stampaLista(SoluzioneCandidata);
@@ -263,7 +270,8 @@ void main() {
     int scan = 0, i = 0, k = 0, t=0;
     int Stallo = 0, NoImprovement=0;
     int n;
-    int IdAggiuntoT=-1, IdRimossoT=-2;
+    int IdAggiuntoT=-1;
+    int IdRimossoT=-2;
     IdAggiunto = -1;
     IdRimosso = -2;
     int TabuOn;
@@ -306,7 +314,7 @@ void main() {
     while (!Stallo) {   //finchè non raggiungo lo stallo, continuo a cercare una soluzione migliore
         permuta(ListaId, n);
         CostoMiglioreAttuale=100000000; //valore fittizio per partire nel singolo intorno. A differenza della local search non può essere inizializzato al valore della soluzione iniziale perchè qui devo considerare solo l'intorno tranne la soluzione iniziale
-        for (int j = 0; j <= NUMEROARCHI; j++) {    //ciclo sugli archi, nell'ordine dato dalla ListaId permutata
+        for (int j = 0; j < NUMEROARCHI; j++) {    //ciclo sugli archi, nell'ordine dato dalla ListaId permutata
             TabuOn=0;
             if (ListaArchi[ListaId[j] - 1].Selected == 0) {
                 memcpy(SoluzioneTemporanea, ListaArchi,
@@ -336,6 +344,7 @@ void main() {
                                 NodiTemporaneiTabu); //vincoli infranti dalla nuova soluzione trovata
                         if (ListaId[j] !=
                             IdRim) { //se la soluzione è diversa da quella corrente (ovvero se non ho aggiunto e tolto lo stesso arco), controlla se è la migliore dell'intorno
+
                             CostoAttuale = CostoPrecedente + SoluzioneTemporaneaTabu[ListaId[j] - 1].Costo -
                                            SoluzioneTemporaneaTabu[IdRim - 1].Costo +
                                            (VincoliInfrantiOra - VincoliInfrantiPrec) *
@@ -345,7 +354,7 @@ void main() {
                                 IdAggiuntoT = ListaId[j];
                                 IdRimossoT = IdRim;
                             }
-                        }
+                        }else TabuOn=0; //Se ho rimosso e inserito lo stesso arco non eseguo mosse Tabu
                     }
                 }
             }
@@ -353,7 +362,7 @@ void main() {
         if(TabuOn==1 && CostoMiglioreAttuale<CostoMiglioreAssoluto){//Se ho un opzione tabu la considero solo se migliora la precedente
             IdAggiunto=IdAggiuntoT;
             IdRimosso=IdRimossoT;
-        }
+        } else TabuOn=0;
         k++;    //mantiene il numero dell'iterazione corrente
         if(CostoMiglioreAttuale<CostoMiglioreAssoluto) //se il costo della soluzione appena trovata nell'intorno è minore della migliore trovata in assoluto
             NoImprovement = 0;    //lo azzero perchè ho appena trovato un miglioramento
@@ -383,6 +392,8 @@ void main() {
             CostoPrecedente=CostoMiglioreAttuale;   //siccome la modifica trovata diventa definitiva, aggiorno i costi
             VincoliInfrantiPrec=VincoliInfrantiOra;
             if(NoImprovement==0) {
+                if(TabuOn)
+                    printf("Criterio di aspirazione: accettata soluzione Tabu\n");
                 printf("Iterazione %d:\nAggiunto arco %d e rimosso arco %d.\n", k, IdAggiunto, IdRimosso);
                 stampaLista(ListaArchi);
                 printf("Numero di iterazioni senza miglioramenti: %d\n\n", NoImprovement);
