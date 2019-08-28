@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Sara/Documents/GitHub/LocalSearch/CreaIstanze/main.c
+stdio.h
+-
+stdlib.h
+-
+mem.h
+-
+time.h
+-
+

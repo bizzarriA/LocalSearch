@@ -1,0 +1,3 @@
+C:/Users/Sara/Documents/GitHub/LocalSearch/CreaIstanze/cmake-build-debug/CMakeFiles/CreaIstanze.dir
+C:/Users/Sara/Documents/GitHub/LocalSearch/CreaIstanze/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Sara/Documents/GitHub/LocalSearch/CreaIstanze/cmake-build-debug/CMakeFiles/rebuild_cache.dir
