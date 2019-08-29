@@ -60,10 +60,10 @@ void greedyCostruttiva(arco* SoluzioneAttuale, int* NodiAttuali, int Numero_nodi
         i=rand() % (Numero_archi);
         i=rand() % (Numero_archi);
         IdArco=IdArchi[i];
-        if((SoluzioneAttuale[IdArco-1].Selected!=1 && is_percorso(SoluzioneAttuale[IdArco-1],NodiAttuali)) || gradoEccessivo(SoluzioneAttuale[IdArco-1],NodiAttuali,Grado_massimo)) {
+        if(SoluzioneAttuale[IdArco-1].Selected!=1 && (is_percorso(SoluzioneAttuale[IdArco-1],NodiAttuali) || gradoEccessivo(SoluzioneAttuale[IdArco-1],NodiAttuali,Grado_massimo))) {
             SoluzioneAttuale[IdArco-1].Ammissibile=0;
         }
-        else if((SoluzioneAttuale[IdArco-1].Selected!=1 && PrimoGiro) || almenoUnNodo(SoluzioneAttuale[IdArco-1],NodiAttuali)){
+        else if(SoluzioneAttuale[IdArco-1].Selected!=1 && (PrimoGiro || almenoUnNodo(SoluzioneAttuale[IdArco-1],NodiAttuali))){
             PrimoGiro=0;
             SoluzioneAttuale[IdArco-1].Selected=1;
             NodiAttuali[SoluzioneAttuale[IdArco-1].N1-1]++;
@@ -91,13 +91,12 @@ void main() {
     int ListaId[NUMEROARCHI];
     int ListaNodi[NUMERONODI]={0};
 
-  /*printf("Per quale tipo di ricerca si vuole generare l'istanza?\nG: greedy\nL: local search\nR: grasp\nT: tabu\n");
+  printf("Per quale tipo di ricerca si vuole generare l'istanza?\nG: greedy\nL: local search\nR: grasp\nT: tabu\n");
     scanf("%c",&c);
     printf("Quanti nodi deve avere il grafo?\n");
     scanf("%d",&n);
     printf("Qual e' il grado massimo consentito per ciascun nodo?\n");
-    scanf("%d",&g);*/
-    c='L';
+    scanf("%d",&g);
 
     FILE *fp;
     FILE *fd;
@@ -119,11 +118,9 @@ void main() {
             }
         }
     }else if(c=='L'){
-        n=5;
-        g=3;
         //creo un file con archi, ma nessuno è preso
-        fp=fopen("C:\\Users\\Alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt", "w");
-        //fp=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt","w");
+        //fp=fopen("C:\\Users\\Alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt", "w");
+        fp=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt","w");
         if(fp==NULL){
             printf("Errore apertura file");
             exit(1);
@@ -138,8 +135,8 @@ void main() {
         //chiudo file per salvare inserimento
         fclose(fp);
         //apro il file per leggere gli archi e darli in pasto alla greedy che calcolerà la soluzione iniziale
-        //fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt", "r");
-        fd=fopen("C:\\Users\\Alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt", "r");
+        fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt", "r");
+        //fd=fopen("C:\\Users\\Alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt", "r");
         if(fd==NULL){
             printf("Errore apertura file");
             exit(1);
@@ -155,8 +152,8 @@ void main() {
         fclose(fd);
         individuaId(ListaArchi,ListaId);
         greedyCostruttiva(ListaArchi,ListaNodi,n,ListaId,count-1,g);
-        fp=fopen("C:\\Users\\Alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt", "w");
-        //fp=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt","w");
+        //fp=fopen("C:\\Users\\Alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt", "w");
+        fp=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza.txt","w");
         if(fp==NULL){
             printf("Errore apertura file");
             exit(1);
