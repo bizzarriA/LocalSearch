@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define NUMERONODI 7
-#define NUMEROARCHI 21
+#define NUMERONODI 50
+#define NUMEROARCHI 1225
 #define KMASSIMO 3
 
 typedef struct s_arco {
@@ -134,9 +134,9 @@ int trovaArco(int N1, int N2, arco* SoluzioneCandidata) {
 
 //RESTITUISCO L'ID DELL'ARCO DI COSTO MAGGIORE TRA QUELLI DI UN CICLO DATO
 int arcoDaRimuovere(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo) {
-	int CostoMax = 0;
+	int CostoMax = -1;
 	int N1, N2, IdArco, IdMax;
-	for (int i = 0; i < NumeroNodiCiclo; i++) {
+	for (int i = 0; i < NumeroNodiCiclo-1; i++) {
 		N1 = NodiCiclo[i];
 		for (int j = i + 1; j < NumeroNodiCiclo; j++) {
 			N2 = NodiCiclo[j];
@@ -152,7 +152,7 @@ int arcoDaRimuovere(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCicl
 
 //RESTITUISCO L'ARCO ASSOCIATO AD UN NODO OBBLIGATO E DI COSTO MAGGIORE TRA QUELLI DI UN CICLO
 int arcoObbligato(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo, int NodoObbligato) {
-	int CostoMax = 0;
+	int CostoMax = -1;
 	int N1, N2, IdArco, IdMax;
 	N1 = NodoObbligato;
 	for (int j = 0; j < NumeroNodiCiclo; j++) {
@@ -173,7 +173,7 @@ int arcoObbligato(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo,
 
 //ESEGUO LOCAL SEARCH CON LIMITE GRADO NODI <= K
 void localSearch(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo) {  //ritorna anche l'arco che ha appena rimosso
-	int NodiCiclo[NUMERONODI];
+	int NodiCiclo[NUMERONODI]={0};
 	int NumeroNodiCiclo;
 	//int CostoIniziale, CostoFinale;       NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
 	//CostoIniziale=calcolaCosto(SoluzioneCandidata);
@@ -184,9 +184,9 @@ void localSearch(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo) {  
 	/*cerco i due archi del ciclo che sono associati al nodo con grado maggiore del massimo se c'è
 	 * (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore*/
 	if (Nodi[SoluzioneCandidata[Id - 1].N1 - 1] > KMASSIMO)
-		* IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1);
+        *IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1);
 	else if (Nodi[SoluzioneCandidata[Id - 1].N2 - 1] > KMASSIMO)
-		* IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N2);
+        *IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N2);
 	else
 		*IdNuovo = arcoDaRimuovere(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo);
 	SoluzioneCandidata[*IdNuovo - 1].Selected = 0;
@@ -215,8 +215,8 @@ void main() {
 
 	//APRO FILE E LEGGO ISTANZE
 	FILE* fd;
-	fd = fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
-	//fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
+	//fd = fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
+	fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza_ls_50.txt", "r");
 	if (fd == NULL) {
 		printf("Errore apertura file");
 		exit(1);
@@ -258,7 +258,7 @@ void main() {
 					memcpy(NodiTemporanei, Nodi, sizeof(Nodi));
 					localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim);
 					CostoAttuale = calcolaCosto(SoluzioneTemporanea);
-					if (CostoAttuale < CostoMiglioreAttuale && IdAggiunto != IdRimosso) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
+					if (CostoAttuale < CostoMiglioreAttuale && ListaId[j] != IdRim) { //se la soluzione è migliore, si segna quale arco è stato aggiunto e quale rimosso per raggiungerla
 						CostoMiglioreAttuale = CostoAttuale;
 						IdAggiunto = ListaId[j];
 						IdRimosso = IdRim;
@@ -283,7 +283,5 @@ void main() {
 			stampaLista(ListaArchi);
 		}
 	}
-
-	printf("Anche io Sara <3\n");
 
 }
