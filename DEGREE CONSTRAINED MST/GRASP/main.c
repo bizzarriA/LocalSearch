@@ -38,7 +38,8 @@ void stampaLista(arco* ListaArchi){
 
 //--------------------FUNZIONI PER IMPLEMENTAZIONE GREEDY-----------------------------------------------------------------------------------------------------------------------
 
-int allNodes(int* NodiAttuali){ //ritorna 1 se tutti i nodi sono stati presi (ovvero se nessuno ha grado 0)
+//CONTROLLA SE SONO STATI SELEZIONATI TUTTI I NODI DI UNA LISTA
+int allNodes(int* NodiAttuali){
     for(int i=0;i<NUMERONODI;i++){
         if(NodiAttuali[i]==0)
             return 0;
@@ -46,25 +47,29 @@ int allNodes(int* NodiAttuali){ //ritorna 1 se tutti i nodi sono stati presi (ov
     return 1;
 }
 
-int almenoUnNodo(arco ArcoAttuale,int* NodiAttuali){    //ritona 1 se almeno uno dei due nodi in cui incide ArcoAttuale è già stato preso, ovvero se ArcoAttuale è adiacente ad un arco che fa già parte dell'albero
+//CONTROLLA SE ARCO ATTUALE è INCIDENTE AD ALMENO UN NODO GIà APPARTENENTE ALL'ALBERO
+int almenoUnNodo(arco ArcoAttuale,int* NodiAttuali){
     if(NodiAttuali[ArcoAttuale.N1-1]!=0 || NodiAttuali[ArcoAttuale.N2-1]!=0)
         return 1;
     return 0;
 }
 
-int is_percorso(arco ArcoAttuale,int* NodiAttuali){ //ritorna 1 se entrambi i nodi in cui incide il nuovo arco sono già stati presi, ovvero se c'è già un percorso tra loro
+//CONTROLLA SE ESISTE GIà UN PERCORSO FRA I DUE NODI INCIDENTI ALL'ARCO SELEZIONATO
+int is_percorso(arco ArcoAttuale,int* NodiAttuali){
     if(NodiAttuali[ArcoAttuale.N1-1]!=0 && NodiAttuali[ArcoAttuale.N2-1]!=0)
         return 1;
     return 0;
 }
 
-int gradoEccessivo(arco ArcoAttuale, int* NodiAttuali){ //ritorna 1 se almeno uno dei nodi in cui incide il nuovo arco ha già raggiunto il grado massimo consentito
+//CONTROLLA CHE AGGIUNGENDO L'ARCO I NODI NON SUPERINO IL GRADO MASSIMO CONSENTITO
+int gradoEccessivo(arco ArcoAttuale, int* NodiAttuali){
     if(NodiAttuali[ArcoAttuale.N1-1]==KMASSIMO || NodiAttuali[ArcoAttuale.N2-1]==KMASSIMO)
         return 1;
     return 0;
 }
 
-int notInLista(int Id,int* Lista,int Length){   //ritona 1 se l'elemento id non appartiene all'array Lista
+//CONTROLLA SE L'ELEMENTO "Id" è PRESENTE NELLA LISTA "Lista" O NO
+int notInLista(int Id,int* Lista,int Length){
     for(int i=0;i<Length;i++){
         if(Lista[i]==Id)
             return 0;
@@ -72,7 +77,8 @@ int notInLista(int Id,int* Lista,int Length){   //ritona 1 se l'elemento id non 
     return 1;
 }
 
-int trovaMigliore(arco* SoluzioneAttuale, int* DaRicontrollare,int j,int* IdArchiMigliori,int i){ //trova l'i-esimo arco migliore che non sia già stato preso tra i migliori e che non sia tra quelli momentaneamente non accettabili perchè non adiacenti
+//TROVA L'I-ESMIO ARCO MIGLIORE CHE NON SIA GIà STATO PRESO TRA I MIGLIORI E CHE NON SIA TRA QUELLI MOMENTANEAMENTE NON ACCETTABILI PERCHè NON ADIACENTI
+int trovaMigliore(arco* SoluzioneAttuale, int* DaRicontrollare,int j,int* IdArchiMigliori,int i){
     int IdMin=0;
     int Min=10000;  //valore fittizzio, da stabilire, magari letto da file
     for(int j=0;j<NUMEROARCHI;j++){
@@ -271,14 +277,12 @@ int arcoObbligato(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo,
 void esploraIntorno(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo) {  //ritorna anche l'arco che ha appena rimosso
     int NodiCiclo[NUMERONODI];
     int NumeroNodiCiclo;
-    //int CostoIniziale, CostoFinale;       NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
-    //CostoIniziale=calcolaCosto(SoluzioneCandidata);
     SoluzioneCandidata[Id - 1].Selected = 1;    /*aggiungi l'arco al ciclo*/
     Nodi[SoluzioneCandidata[Id - 1].N1 - 1]++;  /*aumenta il grado dei nodi, in seguito all'aggiunta*/
     Nodi[SoluzioneCandidata[Id - 1].N2 - 1]++;
     NumeroNodiCiclo = individuaCiclo(SoluzioneCandidata, NodiCiclo, Nodi);  /*trova i nodi connessi da un ciclo*/
-    /*cerco i due archi del ciclo che sono associati al nodo con grado maggiore del massimo se c'è
-     * (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore*/
+    /* Se nel nuovo ciclo c'è un nodo con grado maggiore al massimo consentito cerco i due archi del ciclo che lo hanno come estremo
+	 * (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore */
     if (Nodi[SoluzioneCandidata[Id - 1].N1 - 1] > KMASSIMO)
         * IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1);
     else if (Nodi[SoluzioneCandidata[Id - 1].N2 - 1] > KMASSIMO)
@@ -288,9 +292,6 @@ void esploraIntorno(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo) 
     SoluzioneCandidata[*IdNuovo - 1].Selected = 0;
     Nodi[SoluzioneCandidata[*IdNuovo - 1].N1 - 1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
     Nodi[SoluzioneCandidata[*IdNuovo - 1].N2 - 1]--;
-    //CostoFinale=calcolaCosto(SoluzioneCandidata);  NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
-    //if(CostoFinale<CostoIniziale)
-    //   stampaLista(SoluzioneCandidata);
 }
 
 //CREA UNA LISTA DEI SOLI ID
@@ -321,7 +322,7 @@ int localSearch(arco* SoluzioneIniziale, int* NodiIniziali) {
         IdRimosso = -2;
         for (int j = 0; j <= NUMEROARCHI; j++) {
             if (SoluzioneIniziale[ListaId[j] - 1].Selected == 0) {
-                /*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno grado minore di K altrimenti scarta l'arco e prendine un'altro*/
+                /*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno grado maggiore di K altrimenti scarta l'arco e prendine un'altro*/
                 if (NodiIniziali[SoluzioneIniziale[ListaId[j] - 1].N1 - 1] < KMASSIMO ||
                     NodiIniziali[SoluzioneIniziale[ListaId[j] - 1].N2 - 1] < KMASSIMO) {
                     memcpy(SoluzioneTemporanea, SoluzioneIniziale, sizeof(SoluzioneTemporanea));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
