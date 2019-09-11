@@ -15,19 +15,6 @@ typedef struct s_arco {
 	int Selected;
 }arco;
 
-//OBSOLETO
-int individuaArco(arco ListaArchi[]) {
-	int min_costo = 100;
-	int ArcoMigliore;
-	for (int i = 0; i < NUMEROARCHI; i++) {
-		if (ListaArchi[i].Costo < min_costo&& ListaArchi[i].Selected == 0) {
-			min_costo = ListaArchi[i].Costo;
-			ArcoMigliore = ListaArchi[i].Id;
-		}
-	}
-	return ArcoMigliore;
-}
-
 //---Funzioni per la generazione delle permutazioni della lista Id per la local search------------------------------------------------------------------------
 
 void changeValues(int* a, int* b) {
@@ -175,26 +162,22 @@ int arcoObbligato(int* NodiCiclo, arco* SoluzioneCandidata, int NumeroNodiCiclo,
 void localSearch(arco* SoluzioneCandidata, int Id, int Nodi[], int* IdNuovo) {  //ritorna anche l'arco che ha appena rimosso
 	int NodiCiclo[NUMERONODI]={0};
 	int NumeroNodiCiclo;
-	//int CostoIniziale, CostoFinale;       NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
-	//CostoIniziale=calcolaCosto(SoluzioneCandidata);
+
 	SoluzioneCandidata[Id - 1].Selected = 1;    /*aggiungi l'arco al ciclo*/
 	Nodi[SoluzioneCandidata[Id - 1].N1 - 1]++;  /*aumenta il grado dei nodi, in seguito all'aggiunta*/
 	Nodi[SoluzioneCandidata[Id - 1].N2 - 1]++;
 	NumeroNodiCiclo = individuaCiclo(SoluzioneCandidata, NodiCiclo, Nodi);  /*trova i nodi connessi da un ciclo*/
-	/*cerco i due archi del ciclo che sono associati al nodo con grado maggiore del massimo se c'è
-	 * (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore*/
+	/* Se nel nuovo ciclo c'è un nodo con grado maggiore al massimo consentito cerco i due archi del ciclo che lo hanno come estremo
+	 * (ovvero l'arco appena inserito e quello che c'era già) ed elimina quello che tra i due ha costo maggiore */
 	if (Nodi[SoluzioneCandidata[Id - 1].N1 - 1] > KMASSIMO)
         *IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N1);
 	else if (Nodi[SoluzioneCandidata[Id - 1].N2 - 1] > KMASSIMO)
         *IdNuovo = arcoObbligato(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo, SoluzioneCandidata[Id - 1].N2);
-	else
+	else //altrimenti elimino l'arco del ciclo di costo maggiore (anche se è quello appena inserito)
 		*IdNuovo = arcoDaRimuovere(NodiCiclo, SoluzioneCandidata, NumeroNodiCiclo);
 	SoluzioneCandidata[*IdNuovo - 1].Selected = 0;
 	Nodi[SoluzioneCandidata[*IdNuovo - 1].N1 - 1]--;  /*riduce il grado dei nodi, in seguito alla rimozione*/
 	Nodi[SoluzioneCandidata[*IdNuovo - 1].N2 - 1]--;
-	//CostoFinale=calcolaCosto(SoluzioneCandidata);  NELLA NUOVA VERSIONE DI LOCAL SEARCH NON SERVE, VIENE FATTO FUORI DALLA FUNZIONE
-	//if(CostoFinale<CostoIniziale)
-	//   stampaLista(SoluzioneCandidata);
 }
 
 //CREA UNA LISTA DEI SOLI ID
@@ -208,7 +191,7 @@ void main() {
 	int Nodi[NUMERONODI], NodiTemporanei[NUMERONODI];
 	int ListaId[NUMEROARCHI];
 	arco ListaArchi[NUMEROARCHI], SoluzioneTemporanea[NUMEROARCHI];
-	int IdArcoMigliore, CostoMiglioreAttuale, CostoAttuale, IdRim, IdAggiunto, IdRimosso;
+	int CostoMiglioreAttuale, CostoAttuale, IdRim, IdAggiunto, IdRimosso;
 	int scan = 0, i = 0, k = 0;
 	int FindBest = 1;
 	int n;
@@ -236,7 +219,7 @@ void main() {
 		i++;
 	}
 	fclose(fd);
-
+    //Stampo la soluzione iniziale setto il relativo costo
 	printf("Soluzione iniziale:\n");
 	stampaLista(ListaArchi);
 	CostoMiglioreAttuale = calcolaCosto(ListaArchi);
@@ -251,7 +234,7 @@ void main() {
         IdRimosso = -2;
 		for (int j = 0; j <= NUMEROARCHI; j++) {
 			if (ListaArchi[ListaId[j] - 1].Selected == 0) {
-				/*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno grado minore di K altrimenti scarta l'arco e prendine un'altro*/
+				/*effettua la local search solo se l'arco da controllare non va ad attaccarsi su nodi che hanno grado maggiore di K altrimenti scarta l'arco e prendine un'altro*/
 				if (Nodi[ListaArchi[ListaId[j] - 1].N1 - 1] < KMASSIMO ||
 					Nodi[ListaArchi[ListaId[j] - 1].N2 - 1] < KMASSIMO) {
 					memcpy(SoluzioneTemporanea, ListaArchi, sizeof(ListaArchi));  //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
