@@ -304,7 +304,7 @@ void main() {
     int ListaId[NUMEROARCHI],TabuList[TABUSIZE]={0};
     arco ListaArchi[NUMEROARCHI], SoluzioneTemporanea[NUMEROARCHI],SoluzioneTemporaneaTabu[NUMEROARCHI],SoluzioneMigliore[NUMEROARCHI];
     int IdRim, IdAggiunto=-1, IdRimosso=-2,IdAggiuntoT=-1, IdRimossoT=-2;
-    int trovato=0, TabuOn=0, cicloTabu=0, solTabu=0;
+    int trovato=0, TabuOn=0, cicloTabu=0, solTabu=0, poche=1;
     int VincoliInfrantiPrec=0,VincoliInfrantiOra=0,VincoliInfrantiSolMigliore=0;
     int scan = 0, i = 0, k = 0, t=0, n;
     int Stallo = 0, NoImprovement=0, Repeat=0;
@@ -317,10 +317,10 @@ void main() {
 
     //APRO FILE E LEGGO ISTANZE
     FILE* fd;
-    //fd=fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\TabuSearch\\istanzeTest.txt", "r");
+    fd=fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\TabuSearch\\istanzeTest.txt", "r");
     //fd=fopen("C:\\Users\\Sara\\Desktop\\Diversificazione\\istanzeTest.txt", "r");
     //fd = fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza_tabu.txt", "r");
-    fd = fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\100nodi.txt", "r");
+    //fd = fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\100nodi.txt", "r");
     //fd = fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\200.txt", "r");
     //fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
     if (fd == NULL) {
@@ -363,7 +363,7 @@ void main() {
          * perchè qui devo considerare solo l'intorno tranne la soluzione iniziale*/
         printf("\nITERAZIONE %d\nEsploro l'intorno\n",k+1);
         for (int j = 0; j < NUMEROARCHI; j++) {    //ciclo sugli archi, nell'ordine dato dalla ListaId permutata
-            TabuOn=0;
+            TabuOn = 0;
             if (ListaArchi[ListaId[j] - 1].Selected == 0) {
                 memcpy(SoluzioneTemporanea, ListaArchi, sizeof(ListaArchi));
                 /* Serve una copia perchè devo poter controllare arco per arco.
@@ -372,51 +372,63 @@ void main() {
                 //Guardo solo mosse non tabu e restituisco IdRim=-1 se non ci sono mosse non tabu.
                 localSearch(SoluzioneTemporanea, ListaId[j], NodiTemporanei, &IdRim, TabuList, t, TabuOn);
                 VincoliInfrantiOra = vincoliInfranti(NodiTemporanei); //vincoli infranti dalla nuova soluzione trovata
-                if (IdRim!=-1) {
+                if (IdRim != -1) {
                     //Se ha trovato un arco non tabu da rimuovere, controlla se la soluzione creatasi così è la migliore dell'intorno.
                     //Calcolo nuovo costo
-                    CostoAttuale = CostoPrecedente                                          //costo della soluzione precedente
-                            + SoluzioneTemporanea[ListaId[j] - 1].Costo                     //+ il costo dell'arco aggiunto
+                    CostoAttuale =
+                            CostoPrecedente                                          //costo della soluzione precedente
+                            + SoluzioneTemporanea[ListaId[j] -1].Costo                     //+ il costo dell'arco aggiunto
                             - SoluzioneTemporanea[IdRim - 1].Costo                          //- costo arco rimosso
-                            + (VincoliInfrantiOra - VincoliInfrantiPrec) * PENALIZZAZIONE;  //+ le penalizzazioni aggiunte
+                            +(VincoliInfrantiOra - VincoliInfrantiPrec) * PENALIZZAZIONE;  //+ le penalizzazioni aggiunte
                     //Stampo per ogni possibile soluzione arco IN e arco OUT e relativo costo
-                    //printf("IN:%d\tOUT:%d\tCOSTO ATTUALE:%d\n",ListaId[j],IdRim,CostoAttuale);
+                    if(poche==1)
+                        printf("IN:%d\tOUT:%d\tCOSTO ATTUALE:%d\n", ListaId[j], IdRim, CostoAttuale);
                     //Se è migliorativo nell'intorno mi salvo la soluzione e il suo costo
                     if (CostoAttuale < CostoMiglioreAttuale) {
                         trovato = 1;
                         CostoMiglioreAttuale = CostoAttuale;
                         IdAggiunto = ListaId[j];
                         IdRimosso = IdRim;
-                        solTabu=0;
+                        solTabu = 0;
                     }
                 }
-                if(IdRim==-1) //Se non ho trovato sluzione non Tabu prendo per forza fra una soluzione Tabu.
-                    cicloTabu=1;
-                if (IdRim==-1 || CostoMiglioreAttuale <= CostoAttuale) { //se non esistono mosse non tabu o se esistevano ma non erano migliorative, controlla le tabu
-                        TabuOn = 1;
-                        //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
-                        memcpy(SoluzioneTemporaneaTabu, ListaArchi,sizeof(ListaArchi));
-                        memcpy(NodiTemporaneiTabu, Nodi, sizeof(Nodi));
-                        if(t>0) { //se la lista tabu è vuota, non ha senso fare una local search
-                            localSearch(SoluzioneTemporaneaTabu, ListaId[j], NodiTemporaneiTabu, &IdRim, TabuList, t, TabuOn);//guarda solo mosse tabu
-                            VincoliInfrantiOra = vincoliInfranti(NodiTemporaneiTabu); //vincoli infranti dalla nuova soluzione trovata
-                        }else
-                            IdRim=-1;
-                        if (IdRim!=-1) { //se esistono mosse tabu, controlla se la soluzione così generata è la migliore dell'intorno
-                            CostoAttuale = CostoPrecedente +
-                                            SoluzioneTemporaneaTabu[ListaId[j] - 1].Costo -
-                                            SoluzioneTemporaneaTabu[IdRim - 1].Costo +
-                                            (VincoliInfrantiOra - VincoliInfrantiPrec) * PENALIZZAZIONE;
-                            //Stampo per ogni possibile soluzione arco IN e arco OUT e relativo costo
-                            //printf("IN:%d\tOUT:%d\tCOSTO ATTUALE:%d\tTABU\n",ListaId[j],IdRim,CostoAttuale);
-                            //Se il costo della TABU è migliorativo o se non ho altra soluzione possibile aggiorno costi e soluzione.
-                            if (CostoAttuale < CostoMiglioreAttuale || cicloTabu==1) {
-                                CostoMiglioreAttuale = CostoAttuale;
-                                IdAggiuntoT = ListaId[j];
-                                IdRimossoT = IdRim;
-                                solTabu=1;
-                            }
-                        }else TabuOn=0; //Se non ho mosse tabu da eseguire, allora esco dallo stato tabu
+
+            }
+        }
+        //cerco fra le soluzioni tabu per criterio aspirazione solo se non ho trovato soluzioni migliori
+        if (IdRim == -1) //Se non ho trovato sluzione non Tabu prendo per forza fra una soluzione Tabu.
+            cicloTabu = 1;
+        if (IdRim == -1 || CostoMiglioreAttuale <= CostoAttuale) {
+            for (int j = 0; j < NUMEROARCHI; j++) {
+                //se non esistono mosse non tabu o se esistevano ma non erano migliorative, controlla le tabu
+                TabuOn = 1;
+                //serve una copia perchè devo poter controllare arco per arco. La soluzione iniziale viene modificata solo dopo aver esplorato tutto l'intorno
+                if (ListaArchi[ListaId[j] - 1].Selected == 0) {
+                    memcpy(SoluzioneTemporaneaTabu, ListaArchi, sizeof(ListaArchi));
+                    memcpy(NodiTemporaneiTabu, Nodi, sizeof(Nodi));
+                    if (t > 0) { //se la lista tabu è vuota, non ha senso fare una local search
+                        localSearch(SoluzioneTemporaneaTabu, ListaId[j], NodiTemporaneiTabu, &IdRim, TabuList, t,
+                                    TabuOn);//guarda solo mosse tabu
+                        VincoliInfrantiOra = vincoliInfranti(
+                                NodiTemporaneiTabu); //vincoli infranti dalla nuova soluzione trovata
+                    } else
+                        IdRim = -1;
+                    if (IdRim != -1) { //se esistono mosse tabu, controlla se la soluzione così generata è la migliore dell'intorno
+                        CostoAttuale = CostoPrecedente +
+                                       SoluzioneTemporaneaTabu[ListaId[j] - 1].Costo -
+                                       SoluzioneTemporaneaTabu[IdRim - 1].Costo +
+                                       (VincoliInfrantiOra - VincoliInfrantiPrec) * PENALIZZAZIONE;
+                        //Stampo per ogni possibile soluzione arco IN e arco OUT e relativo costo
+                        if(poche==1)
+                            printf("IN:%d\tOUT:%d\tCOSTO ATTUALE:%d\tTABU\n", ListaId[j], IdRim, CostoAttuale);
+                        //Se il costo della TABU è migliorativo o se non ho altra soluzione possibile aggiorno costi e soluzione.
+                        if (CostoAttuale < CostoMiglioreAttuale || cicloTabu == 1) {
+                            CostoMiglioreAttuale = CostoAttuale;
+                            IdAggiuntoT = ListaId[j];
+                            IdRimossoT = IdRim;
+                            solTabu = 1;
+                        }
+                    } else TabuOn = 0; //Se non ho mosse tabu da eseguire, allora esco dallo stato tabu
                 }
             }
         }
@@ -471,7 +483,8 @@ void main() {
             }else {
                 printf("Iterazione %d:non ha trovato miglioramenti\n", k);
                 printf("Mi sposto comunque alla soluzione migliore dell'intorno:\n");
-                //stampaLista(ListaArchi,VincoliInfrantiOra);
+                if(poche==1)
+                    stampaLista(ListaArchi,VincoliInfrantiOra);
                 printf("Numero di iterazioni senza miglioramenti: %d\n", NoImprovement);
                 printf("COSTO MIGLIORE ASSOLUTO:%d\n",CostoMiglioreAssoluto);
             }
