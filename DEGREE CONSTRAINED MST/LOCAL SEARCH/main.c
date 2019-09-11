@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define NUMERONODI 100
-#define NUMEROARCHI 4950
-#define KMASSIMO 20
+#define NUMERONODI 7
+#define NUMEROARCHI 21
+#define KMASSIMO 4
 
 typedef struct s_arco {
 	int Id;
@@ -53,7 +53,7 @@ int calcolaCosto(arco ListaArchi[]) {
 //HO UN ESTREMO E L'ARCO RESTITUISCO L'ALTRO ESTREMO
 int findEstremo(arco* SoluzioneCandidata, int i, int* Nodi) {
 	int IdNodo = i + 1;
-	int Estremo;
+	int Estremo=-1;
 	for (int j = 0; j < NUMEROARCHI; j++) {
 		if (SoluzioneCandidata[j].N1 == IdNodo && SoluzioneCandidata[j].Selected == 1 && Nodi[SoluzioneCandidata[j].N2 - 1] != 0) {
 			Estremo = SoluzioneCandidata[j].N2;
@@ -198,8 +198,8 @@ void main() {
 
 	//APRO FILE E LEGGO ISTANZE
 	FILE* fd;
-	//fd = fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
-	fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza_ls_100.txt", "r");
+	//fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\DEGREE CONSTRAINED MST\\LOCAL SEARCH\\nuova_istanza_ls_100.txt", "r");
+    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\DEGREE CONSTRAINED MST\\LOCAL SEARCH\\nuova_istanza_ls_7.txt", "r");
 	if (fd == NULL) {
 		printf("Errore apertura file");
 		exit(1);
