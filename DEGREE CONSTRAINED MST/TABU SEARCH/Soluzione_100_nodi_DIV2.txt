@@ -1,0 +1,2454 @@
+NUMERONODI 100
+NUMEROARCHI 4950
+KMASSIMO 10              
+TABUSIZE 10              
+MAXITERAZIONI 3         
+DIVERSIFICAZIONI 3
+PENALIZZAZIONE 100      
+Soluzione iniziale:
+Arco n 7, nodi 1-8, costo 78
+Arco n 105, nodi 2-8, costo 4
+Arco n 209, nodi 3-15, costo 98
+Arco n 212, nodi 3-18, costo 8
+Arco n 215, nodi 3-21, costo 89
+Arco n 219, nodi 3-25, costo 93
+Arco n 222, nodi 3-28, costo 87
+Arco n 225, nodi 3-31, costo 48
+Arco n 229, nodi 3-35, costo 80
+Arco n 232, nodi 3-38, costo 81
+Arco n 235, nodi 3-41, costo 9
+Arco n 238, nodi 3-44, costo 22
+Arco n 242, nodi 3-48, costo 79
+Arco n 245, nodi 3-51, costo 58
+Arco n 248, nodi 3-54, costo 88
+Arco n 251, nodi 3-57, costo 2
+Arco n 255, nodi 3-61, costo 28
+Arco n 258, nodi 3-64, costo 86
+Arco n 261, nodi 3-67, costo 69
+Arco n 264, nodi 3-70, costo 16
+Arco n 268, nodi 3-74, costo 51
+Arco n 271, nodi 3-77, costo 57
+Arco n 274, nodi 3-80, costo 89
+Arco n 278, nodi 3-84, costo 10
+Arco n 281, nodi 3-87, costo 61
+Arco n 284, nodi 3-90, costo 89
+Arco n 287, nodi 3-93, costo 2
+Arco n 291, nodi 3-97, costo 88
+Arco n 294, nodi 3-100, costo 57
+Arco n 298, nodi 4-8, costo 54
+Arco n 392, nodi 5-7, costo 74
+Arco n 500, nodi 6-21, costo 25
+Arco n 503, nodi 6-24, costo 2
+Arco n 506, nodi 6-27, costo 26
+Arco n 509, nodi 6-30, costo 11
+Arco n 513, nodi 6-34, costo 90
+Arco n 516, nodi 6-37, costo 63
+Arco n 519, nodi 6-40, costo 62
+Arco n 522, nodi 6-43, costo 13
+Arco n 526, nodi 6-47, costo 7
+Arco n 529, nodi 6-50, costo 58
+Arco n 532, nodi 6-53, costo 60
+Arco n 539, nodi 6-60, costo 1
+Arco n 542, nodi 6-63, costo 28
+Arco n 545, nodi 6-66, costo 5
+Arco n 552, nodi 6-73, costo 50
+Arco n 555, nodi 6-76, costo 56
+Arco n 558, nodi 6-79, costo 57
+Arco n 562, nodi 6-83, costo 71
+Arco n 565, nodi 6-86, costo 96
+Arco n 568, nodi 6-89, costo 12
+Arco n 571, nodi 6-92, costo 85
+Arco n 575, nodi 6-96, costo 29
+Arco n 578, nodi 6-99, costo 32
+Arco n 607, nodi 7-35, costo 21
+Arco n 611, nodi 7-39, costo 5
+Arco n 614, nodi 7-42, costo 98
+Arco n 617, nodi 7-45, costo 93
+Arco n 624, nodi 7-52, costo 5
+Arco n 627, nodi 7-55, costo 81
+Arco n 630, nodi 7-58, costo 41
+Arco n 637, nodi 7-65, costo 24
+Arco n 640, nodi 7-68, costo 43
+Arco n 643, nodi 7-71, costo 40
+Arco n 647, nodi 7-75, costo 18
+Arco n 650, nodi 7-78, costo 32
+Arco n 653, nodi 7-81, costo 69
+Arco n 660, nodi 7-88, costo 89
+Arco n 663, nodi 7-91, costo 53
+Arco n 666, nodi 7-94, costo 40
+Arco n 679, nodi 8-15, costo 92
+Arco n 686, nodi 8-22, costo 41
+Arco n 696, nodi 8-32, costo 92
+Arco n 777, nodi 9-22, costo 47
+Arco n 784, nodi 9-29, costo 81
+Arco n 869, nodi 10-24, costo 93
+Arco n 878, nodi 10-33, costo 34
+Arco n 891, nodi 10-46, costo 50
+Arco n 901, nodi 10-56, costo 89
+Arco n 914, nodi 10-69, costo 19
+Arco n 927, nodi 10-82, costo 37
+Arco n 940, nodi 10-95, costo 0
+Arco n 963, nodi 11-29, costo 10
+Arco n 970, nodi 11-36, costo 89
+Arco n 983, nodi 11-49, costo 74
+Arco n 993, nodi 11-59, costo 50
+Arco n 996, nodi 11-62, costo 93
+Arco n 1006, nodi 11-72, costo 5
+Arco n 1019, nodi 11-85, costo 21
+Arco n 1032, nodi 11-98, costo 68
+Arco n 1051, nodi 12-29, costo 8
+Arco n 1127, nodi 13-18, costo 38
+Arco n 1225, nodi 14-30, costo 2
+Arco n 1296, nodi 15-16, costo 91
+Arco n 1300, nodi 15-20, costo 27
+Arco n 1303, nodi 15-23, costo 97
+Arco n 1306, nodi 15-26, costo 27
+Arco n 1381, nodi 16-17, costo 63
+Arco n 1466, nodi 17-19, costo 77
+Costo spanning tree: 5261
+
+ITERAZIONE 1
+Esploro l'intorno
+Soluzione iterazione 1:
+Aggiunto arco 2908 e rimosso arco 209.
+ARCHI COUNTER:
+7       105     212     215     219     222     225     229     232     235     238     242     245     248     251
+        255     258     261     264     268     271     274     278     281     284     287     291     294     298
+        392     500     503     506     509     513     516     519     522     526     529     532     539     542
+        545     552     555     558     562     565     568     571     575     578     607     611     614     617
+        624     627     630     637     640     643     647     650     653     660     663     666     679     686
+        696     777     784     869     878     891     901     914     927     940     963     970     983     993
+        996     1006    1019    1032    1051    1127    1225    1296    1300    1303    1306    1381    1466    2908
+
+COSTO MIGLIORE ASSOLUTO:5163
+COSTO MIGLIORE ATTUALE:5163
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 2
+Esploro l'intorno
+Soluzione iterazione 2:
+Aggiunto arco 3270 e rimosso arco 614.
+ARCHI COUNTER:
+7       105     212     215     219     222     225     229     232     235     238     242     245     248     251
+        255     258     261     264     268     271     274     278     281     284     287     291     294     298
+        392     500     503     506     509     513     516     519     522     526     529     532     539     542
+        545     552     555     558     562     565     568     571     575     578     607     611     617     624
+        627     630     637     640     643     647     650     653     660     663     666     679     686     696
+        777     784     869     878     891     901     914     927     940     963     970     983     993     996
+        1006    1019    1032    1051    1127    1225    1296    1300    1303    1306    1381    1466    2908    3270
+
+COSTO MIGLIORE ASSOLUTO:5065
+COSTO MIGLIORE ATTUALE:5065
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 3
+Esploro l'intorno
+Soluzione iterazione 3:
+Aggiunto arco 1977 e rimosso arco 1303.
+ARCHI COUNTER:
+7       105     212     215     219     222     225     229     232     235     238     242     245     248     251
+        255     258     261     264     268     271     274     278     281     284     287     291     294     298
+        392     500     503     506     509     513     516     519     522     526     529     532     539     542
+        545     552     555     558     562     565     568     571     575     578     607     611     617     624
+        627     630     637     640     643     647     650     653     660     663     666     679     686     696
+        777     784     869     878     891     901     914     927     940     963     970     983     993     996
+        1006    1019    1032    1051    1127    1225    1296    1300    1306    1381    1466    1977    2908    3270
+
+COSTO MIGLIORE ASSOLUTO:4969
+COSTO MIGLIORE ATTUALE:4969
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 4
+Esploro l'intorno
+Soluzione iterazione 4:
+Aggiunto arco 4558 e rimosso arco 565.
+ARCHI COUNTER:
+7       105     212     215     219     222     225     229     232     235     238     242     245     248     251
+        255     258     261     264     268     271     274     278     281     284     287     291     294     298
+        392     500     503     506     509     513     516     519     522     526     529     532     539     542
+        545     552     555     558     562     568     571     575     578     607     611     617     624     627
+        630     637     640     643     647     650     653     660     663     666     679     686     696     777
+        784     869     878     891     901     914     927     940     963     970     983     993     996     1006
+        1019    1032    1051    1127    1225    1296    1300    1306    1381    1466    1977    2908    3270    4558
+
+COSTO MIGLIORE ASSOLUTO:4874
+COSTO MIGLIORE ATTUALE:4874
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 5
+Esploro l'intorno
+Soluzione iterazione 5:
+Aggiunto arco 887 e rimosso arco 869.
+ARCHI COUNTER:
+7       105     212     215     219     222     225     229     232     235     238     242     245     248     251
+        255     258     261     264     268     271     274     278     281     284     287     291     294     298
+        392     500     503     506     509     513     516     519     522     526     529     532     539     542
+        545     552     555     558     562     568     571     575     578     607     611     617     624     627
+        630     637     640     643     647     650     653     660     663     666     679     686     696     777
+        784     878     887     891     901     914     927     940     963     970     983     993     996     1006
+        1019    1032    1051    1127    1225    1296    1300    1306    1381    1466    1977    2908    3270    4558
+
+COSTO MIGLIORE ASSOLUTO:4781
+COSTO MIGLIORE ATTUALE:4781
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 6
+Esploro l'intorno
+Soluzione iterazione 6:
+Aggiunto arco 2132 e rimosso arco 219.
+ARCHI COUNTER:
+7       105     212     215     222     225     229     232     235     238     242     245     248     251     255
+        258     261     264     268     271     274     278     281     284     287     291     294     298     392
+        500     503     506     509     513     516     519     522     526     529     532     539     542     545
+        552     555     558     562     568     571     575     578     607     611     617     624     627     630
+        637     640     643     647     650     653     660     663     666     679     686     696     777     784
+        878     887     891     901     914     927     940     963     970     983     993     996     1006    1019
+        1032    1051    1127    1225    1296    1300    1306    1381    1466    1977    2132    2908    3270    4558
+
+COSTO MIGLIORE ASSOLUTO:4688
+COSTO MIGLIORE ATTUALE:4688
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 7
+Esploro l'intorno
+Soluzione iterazione 7:
+Aggiunto arco 1432 e rimosso arco 679.
+ARCHI COUNTER:
+7       105     212     215     222     225     229     232     235     238     242     245     248     251     255
+        258     261     264     268     271     274     278     281     284     287     291     294     298     392
+        500     503     506     509     513     516     519     522     526     529     532     539     542     545
+        552     555     558     562     568     571     575     578     607     611     617     624     627     630
+        637     640     643     647     650     653     660     663     666     686     696     777     784     878
+        887     891     901     914     927     940     963     970     983     993     996     1006    1019    1032
+        1051    1127    1225    1296    1300    1306    1381    1432    1466    1977    2132    2908    3270    4558
+
+COSTO MIGLIORE ASSOLUTO:4596
+COSTO MIGLIORE ATTUALE:4596
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 8
+Esploro l'intorno
+Soluzione iterazione 8:
+Aggiunto arco 4233 e rimosso arco 996.
+ARCHI COUNTER:
+7       105     212     215     222     225     229     232     235     238     242     245     248     251     255
+        258     261     264     268     271     274     278     281     284     287     291     294     298     392
+        500     503     506     509     513     516     519     522     526     529     532     539     542     545
+        552     555     558     562     568     571     575     578     607     611     617     624     627     630
+        637     640     643     647     650     653     660     663     666     686     696     777     784     878
+        887     891     901     914     927     940     963     970     983     993     1006    1019    1032    1051
+        1127    1225    1296    1300    1306    1381    1432    1466    1977    2132    2908    3270    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:4504
+COSTO MIGLIORE ATTUALE:4504
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 9
+Esploro l'intorno
+Soluzione iterazione 9:
+Aggiunto arco 226 e rimosso arco 696.
+ARCHI COUNTER:
+7       105     212     215     222     225     226     229     232     235     238     242     245     248     251
+        255     258     261     264     268     271     274     278     281     284     287     291     294     298
+        392     500     503     506     509     513     516     519     522     526     529     532     539     542
+        545     552     555     558     562     568     571     575     578     607     611     617     624     627
+        630     637     640     643     647     650     653     660     663     666     686     777     784     878
+        887     891     901     914     927     940     963     970     983     993     1006    1019    1032    1051
+        1127    1225    1296    1300    1306    1381    1432    1466    1977    2132    2908    3270    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:4412
+COSTO MIGLIORE ATTUALE:4412
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 10
+Esploro l'intorno
+Soluzione iterazione 10:
+Aggiunto arco 2196 e rimosso arco 1296.
+ARCHI COUNTER:
+7       105     212     215     222     225     226     229     232     235     238     242     245     248     251
+        255     258     261     264     268     271     274     278     281     284     287     291     294     298
+        392     500     503     506     509     513     516     519     522     526     529     532     539     542
+        545     552     555     558     562     568     571     575     578     607     611     617     624     627
+        630     637     640     643     647     650     653     660     663     666     686     777     784     878
+        887     891     901     914     927     940     963     970     983     993     1006    1019    1032    1051
+        1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2908    3270    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:4321
+COSTO MIGLIORE ATTUALE:4321
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 11
+Esploro l'intorno
+Soluzione iterazione 11:
+Aggiunto arco 628 e rimosso arco 215.
+ARCHI COUNTER:
+7       105     212     222     225     226     229     232     235     238     242     245     248     251     255
+        258     261     264     268     271     274     278     281     284     287     291     294     298     392
+        500     503     506     509     513     516     519     522     526     529     532     539     542     545
+        552     555     558     562     568     571     575     578     607     611     617     624     627     628
+        630     637     640     643     647     650     653     660     663     666     686     777     784     878
+        887     891     901     914     927     940     963     970     983     993     1006    1019    1032    1051
+        1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2908    3270    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:4232
+COSTO MIGLIORE ATTUALE:4232
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 12
+Esploro l'intorno
+Soluzione iterazione 12:
+Aggiunto arco 187 e rimosso arco 284.
+ARCHI COUNTER:
+7       105     187     212     222     225     226     229     232     235     238     242     245     248     251
+        255     258     261     264     268     271     274     278     281     287     291     294     298     392
+        500     503     506     509     513     516     519     522     526     529     532     539     542     545
+        552     555     558     562     568     571     575     578     607     611     617     624     627     628
+        630     637     640     643     647     650     653     660     663     666     686     777     784     878
+        887     891     901     914     927     940     963     970     983     993     1006    1019    1032    1051
+        1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2908    3270    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:4143
+COSTO MIGLIORE ATTUALE:4143
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 13
+Esploro l'intorno
+Soluzione iterazione 13:
+Aggiunto arco 980 e rimosso arco 901.
+ARCHI COUNTER:
+7       105     187     212     222     225     226     229     232     235     238     242     245     248     251
+        255     258     261     264     268     271     274     278     281     287     291     294     298     392
+        500     503     506     509     513     516     519     522     526     529     532     539     542     545
+        552     555     558     562     568     571     575     578     607     611     617     624     627     628
+        630     637     640     643     647     650     653     660     663     666     686     777     784     878
+        887     891     914     927     940     963     970     980     983     993     1006    1019    1032    1051
+        1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2908    3270    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:4054
+COSTO MIGLIORE ATTUALE:4054
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 14
+Esploro l'intorno
+Soluzione iterazione 14:
+Aggiunto arco 4 e rimosso arco 970.
+ARCHI COUNTER:
+4       7       105     187     212     222     225     226     229     232     235     238     242     245     248
+        251     255     258     261     264     268     271     274     278     281     287     291     294     298
+        392     500     503     506     509     513     516     519     522     526     529     532     539     542
+        545     552     555     558     562     568     571     575     578     607     611     617     624     627
+        628     630     637     640     643     647     650     653     660     663     666     686     777     784
+        878     887     891     914     927     940     963     980     983     993     1006    1019    1032    1051
+        1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2908    3270    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:3965
+COSTO MIGLIORE ATTUALE:3965
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 15
+Esploro l'intorno
+Soluzione iterazione 15:
+Aggiunto arco 2754 e rimosso arco 513.
+ARCHI COUNTER:
+4       7       105     187     212     222     225     226     229     232     235     238     242     245     248
+        251     255     258     261     264     268     271     274     278     281     287     291     294     298
+        392     500     503     506     509     516     519     522     526     529     532     539     542     545
+        552     555     558     562     568     571     575     578     607     611     617     624     627     628
+        630     637     640     643     647     650     653     660     663     666     686     777     784     878
+        887     891     914     927     940     963     980     983     993     1006    1019    1032    1051    1127
+        1225    1300    1306    1381    1432    1466    1977    2132    2196    2754    2908    3270    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:3876
+COSTO MIGLIORE ATTUALE:3876
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 16
+Esploro l'intorno
+Soluzione iterazione 16:
+Aggiunto arco 3430 e rimosso arco 617.
+ARCHI COUNTER:
+4       7       105     187     212     222     225     226     229     232     235     238     242     245     248
+        251     255     258     261     264     268     271     274     278     281     287     291     294     298
+        392     500     503     506     509     516     519     522     526     529     532     539     542     545
+        552     555     558     562     568     571     575     578     607     611     624     627     628     630
+        637     640     643     647     650     653     660     663     666     686     777     784     878     887
+        891     914     927     940     963     980     983     993     1006    1019    1032    1051    1127    1225
+        1300    1306    1381    1432    1466    1977    2132    2196    2754    2908    3270    3430    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:3787
+COSTO MIGLIORE ATTUALE:3787
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 17
+Esploro l'intorno
+Soluzione iterazione 17:
+Aggiunto arco 3823 e rimosso arco 248.
+ARCHI COUNTER:
+4       7       105     187     212     222     225     226     229     232     235     238     242     245     251
+        255     258     261     264     268     271     274     278     281     287     291     294     298     392
+        500     503     506     509     516     519     522     526     529     532     539     542     545     552
+        555     558     562     568     571     575     578     607     611     624     627     628     630     637
+        640     643     647     650     653     660     663     666     686     777     784     878     887     891
+        914     927     940     963     980     983     993     1006    1019    1032    1051    1127    1225    1300
+        1306    1381    1432    1466    1977    2132    2196    2754    2908    3270    3430    3823    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:3699
+COSTO MIGLIORE ATTUALE:3699
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 18
+Esploro l'intorno
+Soluzione iterazione 18:
+Aggiunto arco 2867 e rimosso arco 291.
+ARCHI COUNTER:
+4       7       105     187     212     222     225     226     229     232     235     238     242     245     251
+        255     258     261     264     268     271     274     278     281     287     294     298     392     500
+        503     506     509     516     519     522     526     529     532     539     542     545     552     555
+        558     562     568     571     575     578     607     611     624     627     628     630     637     640
+        643     647     650     653     660     663     666     686     777     784     878     887     891     914
+        927     940     963     980     983     993     1006    1019    1032    1051    1127    1225    1300    1306
+        1381    1432    1466    1977    2132    2196    2754    2867    2908    3270    3430    3823    4233    4558
+
+COSTO MIGLIORE ASSOLUTO:3611
+COSTO MIGLIORE ATTUALE:3611
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 19
+Esploro l'intorno
+Soluzione iterazione 19:
+Aggiunto arco 4654 e rimosso arco 274.
+ARCHI COUNTER:
+4       7       105     187     212     222     225     226     229     232     235     238     242     245     251
+        255     258     261     264     268     271     278     281     287     294     298     392     500     503
+        506     509     516     519     522     526     529     532     539     542     545     552     555     558
+        562     568     571     575     578     607     611     624     627     628     630     637     640     643
+        647     650     653     660     663     666     686     777     784     878     887     891     914     927
+        940     963     980     983     993     1006    1019    1032    1051    1127    1225    1300    1306    1381
+        1432    1466    1977    2132    2196    2754    2867    2908    3270    3430    3823    4233    4558    4654
+
+COSTO MIGLIORE ASSOLUTO:3524
+COSTO MIGLIORE ATTUALE:3524
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 20
+Esploro l'intorno
+Soluzione iterazione 20:
+Aggiunto arco 4077 e rimosso arco 660.
+ARCHI COUNTER:
+4       7       105     187     212     222     225     226     229     232     235     238     242     245     251
+        255     258     261     264     268     271     278     281     287     294     298     392     500     503
+        506     509     516     519     522     526     529     532     539     542     545     552     555     558
+        562     568     571     575     578     607     611     624     627     628     630     637     640     643
+        647     650     653     663     666     686     777     784     878     887     891     914     927     940
+        963     980     983     993     1006    1019    1032    1051    1127    1225    1300    1306    1381    1432
+        1466    1977    2132    2196    2754    2867    2908    3270    3430    3823    4077    4233    4558    4654
+
+COSTO MIGLIORE ASSOLUTO:3437
+COSTO MIGLIORE ATTUALE:3437
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 21
+Esploro l'intorno
+Soluzione iterazione 21:
+Aggiunto arco 2386 e rimosso arco 222.
+ARCHI COUNTER:
+4       7       105     187     212     225     226     229     232     235     238     242     245     251     255
+        258     261     264     268     271     278     281     287     294     298     392     500     503     506
+        509     516     519     522     526     529     532     539     542     545     552     555     558     562
+        568     571     575     578     607     611     624     627     628     630     637     640     643     647
+        650     653     663     666     686     777     784     878     887     891     914     927     940     963
+        980     983     993     1006    1019    1032    1051    1127    1225    1300    1306    1381    1432    1466
+        1977    2132    2196    2386    2754    2867    2908    3270    3430    3823    4077    4233    4558    4654
+
+COSTO MIGLIORE ASSOLUTO:3350
+COSTO MIGLIORE ATTUALE:3350
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 22
+Esploro l'intorno
+Soluzione iterazione 22:
+Aggiunto arco 3112 e rimosso arco 571.
+ARCHI COUNTER:
+4       7       105     187     212     225     226     229     232     235     238     242     245     251     255
+        258     261     264     268     271     278     281     287     294     298     392     500     503     506
+        509     516     519     522     526     529     532     539     542     545     552     555     558     562
+        568     575     578     607     611     624     627     628     630     637     640     643     647     650
+        653     663     666     686     777     784     878     887     891     914     927     940     963     980
+        983     993     1006    1019    1032    1051    1127    1225    1300    1306    1381    1432    1466    1977
+        2132    2196    2386    2754    2867    2908    3112    3270    3430    3823    4077    4233    4558    4654
+
+COSTO MIGLIORE ASSOLUTO:3265
+COSTO MIGLIORE ATTUALE:3265
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 23
+Esploro l'intorno
+Soluzione iterazione 23:
+Aggiunto arco 4307 e rimosso arco 258.
+ARCHI COUNTER:
+4       7       105     187     212     225     226     229     232     235     238     242     245     251     255
+        261     264     268     271     278     281     287     294     298     392     500     503     506     509
+        516     519     522     526     529     532     539     542     545     552     555     558     562     568
+        575     578     607     611     624     627     628     630     637     640     643     647     650     653
+        663     666     686     777     784     878     887     891     914     927     940     963     980     983
+        993     1006    1019    1032    1051    1127    1225    1300    1306    1381    1432    1466    1977    2132
+        2196    2386    2754    2867    2908    3112    3270    3430    3823    4077    4233    4307    4558    4654
+
+COSTO MIGLIORE ASSOLUTO:3181
+COSTO MIGLIORE ATTUALE:3181
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 24
+Esploro l'intorno
+Soluzione iterazione 24:
+Aggiunto arco 3329 e rimosso arco 784.
+ARCHI COUNTER:
+4       7       105     187     212     225     226     229     232     235     238     242     245     251     255
+        261     264     268     271     278     281     287     294     298     392     500     503     506     509
+        516     519     522     526     529     532     539     542     545     552     555     558     562     568
+        575     578     607     611     624     627     628     630     637     640     643     647     650     653
+        663     666     686     777     878     887     891     914     927     940     963     980     983     993
+        1006    1019    1032    1051    1127    1225    1300    1306    1381    1432    1466    1977    2132    2196
+        2386    2754    2867    2908    3112    3270    3329    3430    3823    4077    4233    4307    4558    4654
+
+COSTO MIGLIORE ASSOLUTO:3100
+COSTO MIGLIORE ATTUALE:3100
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 25
+Esploro l'intorno
+Soluzione iterazione 25:
+Aggiunto arco 2694 e rimosso arco 627.
+ARCHI COUNTER:
+4       7       105     187     212     225     226     229     232     235     238     242     245     251     255
+        261     264     268     271     278     281     287     294     298     392     500     503     506     509
+        516     519     522     526     529     532     539     542     545     552     555     558     562     568
+        575     578     607     611     624     628     630     637     640     643     647     650     653     663
+        666     686     777     878     887     891     914     927     940     963     980     983     993     1006
+        1019    1032    1051    1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2386
+        2694    2754    2867    2908    3112    3270    3329    3430    3823    4077    4233    4307    4558    4654
+
+COSTO MIGLIORE ASSOLUTO:3019
+COSTO MIGLIORE ATTUALE:3019
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 26
+Esploro l'intorno
+Soluzione iterazione 26:
+Aggiunto arco 4801 e rimosso arco 229.
+ARCHI COUNTER:
+4       7       105     187     212     225     226     232     235     238     242     245     251     255     261
+        264     268     271     278     281     287     294     298     392     500     503     506     509     516
+        519     522     526     529     532     539     542     545     552     555     558     562     568     575
+        578     607     611     624     628     630     637     640     643     647     650     653     663     666
+        686     777     878     887     891     914     927     940     963     980     983     993     1006    1019
+        1032    1051    1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2386    2694
+        2754    2867    2908    3112    3270    3329    3430    3823    4077    4233    4307    4558    4654    4801
+
+COSTO MIGLIORE ASSOLUTO:2939
+COSTO MIGLIORE ATTUALE:2939
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 27
+Esploro l'intorno
+Soluzione iterazione 27:
+Aggiunto arco 3623 e rimosso arco 242.
+ARCHI COUNTER:
+4       7       105     187     212     225     226     232     235     238     245     251     255     261     264
+        268     271     278     281     287     294     298     392     500     503     506     509     516     519
+        522     526     529     532     539     542     545     552     555     558     562     568     575     578
+        607     611     624     628     630     637     640     643     647     650     653     663     666     686
+        777     878     887     891     914     927     940     963     980     983     993     1006    1019    1032
+        1051    1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2386    2694    2754
+        2867    2908    3112    3270    3329    3430    3623    3823    4077    4233    4307    4558    4654    4801
+
+COSTO MIGLIORE ASSOLUTO:2860
+COSTO MIGLIORE ATTUALE:2860
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 28
+Esploro l'intorno
+Soluzione iterazione 28:
+Aggiunto arco 771 e rimosso arco 7.
+ARCHI COUNTER:
+4       105     187     212     225     226     232     235     238     245     251     255     261     264     268
+        271     278     281     287     294     298     392     500     503     506     509     516     519     522
+        526     529     532     539     542     545     552     555     558     562     568     575     578     607
+        611     624     628     630     637     640     643     647     650     653     663     666     686     771
+        777     878     887     891     914     927     940     963     980     983     993     1006    1019    1032
+        1051    1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2386    2694    2754
+        2867    2908    3112    3270    3329    3430    3623    3823    4077    4233    4307    4558    4654    4801
+
+COSTO MIGLIORE ASSOLUTO:2782
+COSTO MIGLIORE ATTUALE:2782
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 29
+Esploro l'intorno
+Soluzione iterazione 29:
+Aggiunto arco 1060 e rimosso arco 232.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     261     264     268     271
+        278     281     287     294     298     392     500     503     506     509     516     519     522     526
+        529     532     539     542     545     552     555     558     562     568     575     578     607     611
+        624     628     630     637     640     643     647     650     653     663     666     686     771     777
+        878     887     891     914     927     940     963     980     983     993     1006    1019    1032    1051
+        1060    1127    1225    1300    1306    1381    1432    1466    1977    2132    2196    2386    2694    2754
+        2867    2908    3112    3270    3329    3430    3623    3823    4077    4233    4307    4558    4654    4801
+
+COSTO MIGLIORE ASSOLUTO:2705
+COSTO MIGLIORE ATTUALE:2705
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 30
+Esploro l'intorno
+Soluzione iterazione 30:
+Aggiunto arco 1676 e rimosso arco 1466.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     261     264     268     271
+        278     281     287     294     298     392     500     503     506     509     516     519     522     526
+        529     532     539     542     545     552     555     558     562     568     575     578     607     611
+        624     628     630     637     640     643     647     650     653     663     666     686     771     777
+        878     887     891     914     927     940     963     980     983     993     1006    1019    1032    1051
+        1060    1127    1225    1300    1306    1381    1432    1676    1977    2132    2196    2386    2694    2754
+        2867    2908    3112    3270    3329    3430    3623    3823    4077    4233    4307    4558    4654    4801
+
+COSTO MIGLIORE ASSOLUTO:2629
+COSTO MIGLIORE ATTUALE:2629
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 31
+Esploro l'intorno
+Soluzione iterazione 31:
+Aggiunto arco 528 e rimosso arco 983.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     261     264     268     271
+        278     281     287     294     298     392     500     503     506     509     516     519     522     526
+        528     529     532     539     542     545     552     555     558     562     568     575     578     607
+        611     624     628     630     637     640     643     647     650     653     663     666     686     771
+        777     878     887     891     914     927     940     963     980     993     1006    1019    1032    1051
+        1060    1127    1225    1300    1306    1381    1432    1676    1977    2132    2196    2386    2694    2754
+        2867    2908    3112    3270    3329    3430    3623    3823    4077    4233    4307    4558    4654    4801
+
+COSTO MIGLIORE ASSOLUTO:2555
+COSTO MIGLIORE ATTUALE:2555
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 32
+Esploro l'intorno
+Soluzione iterazione 32:
+Aggiunto arco 467 e rimosso arco 392.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     261     264     268     271
+        278     281     287     294     298     467     500     503     506     509     516     519     522     526
+        528     529     532     539     542     545     552     555     558     562     568     575     578     607
+        611     624     628     630     637     640     643     647     650     653     663     666     686     771
+        777     878     887     891     914     927     940     963     980     993     1006    1019    1032    1051
+        1060    1127    1225    1300    1306    1381    1432    1676    1977    2132    2196    2386    2694    2754
+        2867    2908    3112    3270    3329    3430    3623    3823    4077    4233    4307    4558    4654    4801
+
+COSTO MIGLIORE ASSOLUTO:2481
+COSTO MIGLIORE ATTUALE:2481
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 33
+Esploro l'intorno
+Soluzione iterazione 33:
+Aggiunto arco 3598 e rimosso arco 562.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     261     264     268     271
+        278     281     287     294     298     467     500     503     506     509     516     519     522     526
+        528     529     532     539     542     545     552     555     558     568     575     578     607     611
+        624     628     630     637     640     643     647     650     653     663     666     686     771     777
+        878     887     891     914     927     940     963     980     993     1006    1019    1032    1051    1060
+        1127    1225    1300    1306    1381    1432    1676    1977    2132    2196    2386    2694    2754    2867
+        2908    3112    3270    3329    3430    3598    3623    3823    4077    4233    4307    4558    4654    4801
+
+COSTO MIGLIORE ASSOLUTO:2410
+COSTO MIGLIORE ATTUALE:2410
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 34
+Esploro l'intorno
+Soluzione iterazione 34:
+Aggiunto arco 1262 e rimosso arco 261.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     264     268     271     278
+        281     287     294     298     467     500     503     506     509     516     519     522     526     528
+        529     532     539     542     545     552     555     558     568     575     578     607     611     624
+        628     630     637     640     643     647     650     653     663     666     686     771     777     878
+        887     891     914     927     940     963     980     993     1006    1019    1032    1051    1060    1127
+        1225    1262    1300    1306    1381    1432    1676    1977    2132    2196    2386    2694    2754    2867
+        2908    3112    3270    3329    3430    3598    3623    3823    4077    4233    4307    4558    4654    4801
+
+COSTO MIGLIORE ASSOLUTO:2341
+COSTO MIGLIORE ATTUALE:2341
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 35
+Esploro l'intorno
+Soluzione iterazione 35:
+Aggiunto arco 4655 e rimosso arco 653.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     264     268     271     278
+        281     287     294     298     467     500     503     506     509     516     519     522     526     528
+        529     532     539     542     545     552     555     558     568     575     578     607     611     624
+        628     630     637     640     643     647     650     663     666     686     771     777     878     887
+        891     914     927     940     963     980     993     1006    1019    1032    1051    1060    1127    1225
+        1262    1300    1306    1381    1432    1676    1977    2132    2196    2386    2694    2754    2867    2908
+        3112    3270    3329    3430    3598    3623    3823    4077    4233    4307    4558    4654    4655    4801
+
+COSTO MIGLIORE ASSOLUTO:2274
+COSTO MIGLIORE ATTUALE:2274
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 36
+Esploro l'intorno
+Soluzione iterazione 36:
+Aggiunto arco 4933 e rimosso arco 1032.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     264     268     271     278
+        281     287     294     298     467     500     503     506     509     516     519     522     526     528
+        529     532     539     542     545     552     555     558     568     575     578     607     611     624
+        628     630     637     640     643     647     650     663     666     686     771     777     878     887
+        891     914     927     940     963     980     993     1006    1019    1051    1060    1127    1225    1262
+        1300    1306    1381    1432    1676    1977    2132    2196    2386    2694    2754    2867    2908    3112
+        3270    3329    3430    3598    3623    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:2209
+COSTO MIGLIORE ATTUALE:2209
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 37
+Esploro l'intorno
+Soluzione iterazione 37:
+Aggiunto arco 2973 e rimosso arco 516.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     264     268     271     278
+        281     287     294     298     467     500     503     506     509     519     522     526     528     529
+        532     539     542     545     552     555     558     568     575     578     607     611     624     628
+        630     637     640     643     647     650     663     666     686     771     777     878     887     891
+        914     927     940     963     980     993     1006    1019    1051    1060    1127    1225    1262    1300
+        1306    1381    1432    1676    1977    2132    2196    2386    2694    2754    2867    2908    2973    3112
+        3270    3329    3430    3598    3623    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:2146
+COSTO MIGLIORE ATTUALE:2146
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 38
+Esploro l'intorno
+Soluzione iterazione 38:
+Aggiunto arco 3140 e rimosso arco 519.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     264     268     271     278
+        281     287     294     298     467     500     503     506     509     522     526     528     529     532
+        539     542     545     552     555     558     568     575     578     607     611     624     628     630
+        637     640     643     647     650     663     666     686     771     777     878     887     891     914
+        927     940     963     980     993     1006    1019    1051    1060    1127    1225    1262    1300    1306
+        1381    1432    1676    1977    2132    2196    2386    2694    2754    2867    2908    2973    3112    3140
+        3270    3329    3430    3598    3623    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:2085
+COSTO MIGLIORE ATTUALE:2085
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 39
+Esploro l'intorno
+Soluzione iterazione 39:
+Aggiunto arco 277 e rimosso arco 281.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     264     268     271     277
+        278     287     294     298     467     500     503     506     509     522     526     528     529     532
+        539     542     545     552     555     558     568     575     578     607     611     624     628     630
+        637     640     643     647     650     663     666     686     771     777     878     887     891     914
+        927     940     963     980     993     1006    1019    1051    1060    1127    1225    1262    1300    1306
+        1381    1432    1676    1977    2132    2196    2386    2694    2754    2867    2908    2973    3112    3140
+        3270    3329    3430    3598    3623    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:2024
+COSTO MIGLIORE ATTUALE:2024
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 40
+Esploro l'intorno
+Soluzione iterazione 40:
+Aggiunto arco 1488 e rimosso arco 1381.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     264     268     271     277
+        278     287     294     298     467     500     503     506     509     522     526     528     529     532
+        539     542     545     552     555     558     568     575     578     607     611     624     628     630
+        637     640     643     647     650     663     666     686     771     777     878     887     891     914
+        927     940     963     980     993     1006    1019    1051    1060    1127    1225    1262    1300    1306
+        1432    1488    1676    1977    2132    2196    2386    2694    2754    2867    2908    2973    3112    3140
+        3270    3329    3430    3598    3623    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1964
+COSTO MIGLIORE ATTUALE:1964
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 41
+Esploro l'intorno
+Soluzione iterazione 41:
+Aggiunto arco 1983 e rimosso arco 532.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     245     251     255     264     268     271     277
+        278     287     294     298     467     500     503     506     509     522     526     528     529     539
+        542     545     552     555     558     568     575     578     607     611     624     628     630     637
+        640     643     647     650     663     666     686     771     777     878     887     891     914     927
+        940     963     980     993     1006    1019    1051    1060    1127    1225    1262    1300    1306    1432
+        1488    1676    1977    1983    2132    2196    2386    2694    2754    2867    2908    2973    3112    3140
+        3270    3329    3430    3598    3623    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1905
+COSTO MIGLIORE ATTUALE:1905
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 42
+Esploro l'intorno
+Soluzione iterazione 42:
+Aggiunto arco 3766 e rimosso arco 245.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     251     255     264     268     271     277     278
+        287     294     298     467     500     503     506     509     522     526     528     529     539     542
+        545     552     555     558     568     575     578     607     611     624     628     630     637     640
+        643     647     650     663     666     686     771     777     878     887     891     914     927     940
+        963     980     993     1006    1019    1051    1060    1127    1225    1262    1300    1306    1432    1488
+        1676    1977    1983    2132    2196    2386    2694    2754    2867    2908    2973    3112    3140    3270
+        3329    3430    3598    3623    3766    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1847
+COSTO MIGLIORE ATTUALE:1847
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 43
+Esploro l'intorno
+Soluzione iterazione 43:
+Aggiunto arco 3189 e rimosso arco 529.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     251     255     264     268     271     277     278
+        287     294     298     467     500     503     506     509     522     526     528     539     542     545
+        552     555     558     568     575     578     607     611     624     628     630     637     640     643
+        647     650     663     666     686     771     777     878     887     891     914     927     940     963
+        980     993     1006    1019    1051    1060    1127    1225    1262    1300    1306    1432    1488    1676
+        1977    1983    2132    2196    2386    2694    2754    2867    2908    2973    3112    3140    3189    3270
+        3329    3430    3598    3623    3766    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1791
+COSTO MIGLIORE ATTUALE:1791
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 44
+Esploro l'intorno
+Soluzione iterazione 44:
+Aggiunto arco 3218 e rimosso arco 558.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     251     255     264     268     271     277     278
+        287     294     298     467     500     503     506     509     522     526     528     539     542     545
+        552     555     568     575     578     607     611     624     628     630     637     640     643     647
+        650     663     666     686     771     777     878     887     891     914     927     940     963     980
+        993     1006    1019    1051    1060    1127    1225    1262    1300    1306    1432    1488    1676    1977
+        1983    2132    2196    2386    2694    2754    2867    2908    2973    3112    3140    3189    3218    3270
+        3329    3430    3598    3623    3766    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1735
+COSTO MIGLIORE ATTUALE:1735
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 45
+Esploro l'intorno
+Soluzione iterazione 45:
+Aggiunto arco 3549 e rimosso arco 271.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     251     255     264     268     277     278     287
+        294     298     467     500     503     506     509     522     526     528     539     542     545     552
+        555     568     575     578     607     611     624     628     630     637     640     643     647     650
+        663     666     686     771     777     878     887     891     914     927     940     963     980     993
+        1006    1019    1051    1060    1127    1225    1262    1300    1306    1432    1488    1676    1977    1983
+        2132    2196    2386    2694    2754    2867    2908    2973    3112    3140    3189    3218    3270    3329
+        3430    3549    3598    3623    3766    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1680
+COSTO MIGLIORE ATTUALE:1680
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 46
+Esploro l'intorno
+Soluzione iterazione 46:
+Aggiunto arco 2249 e rimosso arco 294.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     251     255     264     268     277     278     287
+        298     467     500     503     506     509     522     526     528     539     542     545     552     555
+        568     575     578     607     611     624     628     630     637     640     643     647     650     663
+        666     686     771     777     878     887     891     914     927     940     963     980     993     1006
+        1019    1051    1060    1127    1225    1262    1300    1306    1432    1488    1676    1977    1983    2132
+        2196    2249    2386    2694    2754    2867    2908    2973    3112    3140    3189    3218    3270    3329
+        3430    3549    3598    3623    3766    3823    4077    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1625
+COSTO MIGLIORE ATTUALE:1625
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 47
+Esploro l'intorno
+Soluzione iterazione 47:
+Aggiunto arco 4189 e rimosso arco 555.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     251     255     264     268     277     278     287
+        298     467     500     503     506     509     522     526     528     539     542     545     552     568
+        575     578     607     611     624     628     630     637     640     643     647     650     663     666
+        686     771     777     878     887     891     914     927     940     963     980     993     1006    1019
+        1051    1060    1127    1225    1262    1300    1306    1432    1488    1676    1977    1983    2132    2196
+        2249    2386    2694    2754    2867    2908    2973    3112    3140    3189    3218    3270    3329    3430
+        3549    3598    3623    3766    3823    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1571
+COSTO MIGLIORE ATTUALE:1571
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 48
+Esploro l'intorno
+Soluzione iterazione 48:
+Aggiunto arco 336 e rimosso arco 298.
+ARCHI COUNTER:
+4       105     187     212     225     226     235     238     251     255     264     268     277     278     287
+        336     467     500     503     506     509     522     526     528     539     542     545     552     568
+        575     578     607     611     624     628     630     637     640     643     647     650     663     666
+        686     771     777     878     887     891     914     927     940     963     980     993     1006    1019
+        1051    1060    1127    1225    1262    1300    1306    1432    1488    1676    1977    1983    2132    2196
+        2249    2386    2694    2754    2867    2908    2973    3112    3140    3189    3218    3270    3329    3430
+        3549    3598    3623    3766    3823    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1518
+COSTO MIGLIORE ATTUALE:1518
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 49
+Esploro l'intorno
+Soluzione iterazione 49:
+Aggiunto arco 205 e rimosso arco 268.
+ARCHI COUNTER:
+4       105     187     205     212     225     226     235     238     251     255     264     277     278     287
+        336     467     500     503     506     509     522     526     528     539     542     545     552     568
+        575     578     607     611     624     628     630     637     640     643     647     650     663     666
+        686     771     777     878     887     891     914     927     940     963     980     993     1006    1019
+        1051    1060    1127    1225    1262    1300    1306    1432    1488    1676    1977    1983    2132    2196
+        2249    2386    2694    2754    2867    2908    2973    3112    3140    3189    3218    3270    3329    3430
+        3549    3598    3623    3766    3823    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1467
+COSTO MIGLIORE ATTUALE:1467
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 50
+Esploro l'intorno
+Soluzione iterazione 50:
+Aggiunto arco 3951 e rimosso arco 663.
+ARCHI COUNTER:
+4       105     187     205     212     225     226     235     238     251     255     264     277     278     287
+        336     467     500     503     506     509     522     526     528     539     542     545     552     568
+        575     578     607     611     624     628     630     637     640     643     647     650     666     686
+        771     777     878     887     891     914     927     940     963     980     993     1006    1019    1051
+        1060    1127    1225    1262    1300    1306    1432    1488    1676    1977    1983    2132    2196    2249
+        2386    2694    2754    2867    2908    2973    3112    3140    3189    3218    3270    3329    3430    3549
+        3598    3623    3766    3823    3951    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1416
+COSTO MIGLIORE ATTUALE:1416
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 51
+Esploro l'intorno
+Soluzione iterazione 51:
+Aggiunto arco 3088 e rimosso arco 640.
+ARCHI COUNTER:
+4       105     187     205     212     225     226     235     238     251     255     264     277     278     287
+        336     467     500     503     506     509     522     526     528     539     542     545     552     568
+        575     578     607     611     624     628     630     637     643     647     650     666     686     771
+        777     878     887     891     914     927     940     963     980     993     1006    1019    1051    1060
+        1127    1225    1262    1300    1306    1432    1488    1676    1977    1983    2132    2196    2249    2386
+        2694    2754    2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549
+        3598    3623    3766    3823    3951    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1273
+COSTO MIGLIORE ATTUALE:1273
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 52
+Esploro l'intorno
+Soluzione iterazione 52:
+Aggiunto arco 2637 e rimosso arco 552.
+ARCHI COUNTER:
+4       105     187     205     212     225     226     235     238     251     255     264     277     278     287
+        336     467     500     503     506     509     522     526     528     539     542     545     568     575
+        578     607     611     624     628     630     637     643     647     650     666     686     771     777
+        878     887     891     914     927     940     963     980     993     1006    1019    1051    1060    1127
+        1225    1262    1300    1306    1432    1488    1676    1977    1983    2132    2196    2249    2386    2637
+        2694    2754    2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549
+        3598    3623    3766    3823    3951    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1223
+COSTO MIGLIORE ATTUALE:1223
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 53
+Esploro l'intorno
+Soluzione iterazione 53:
+Aggiunto arco 432 e rimosso arco 891.
+ARCHI COUNTER:
+4       105     187     205     212     225     226     235     238     251     255     264     277     278     287
+        336     432     467     500     503     506     509     522     526     528     539     542     545     568
+        575     578     607     611     624     628     630     637     643     647     650     666     686     771
+        777     878     887     914     927     940     963     980     993     1006    1019    1051    1060    1127
+        1225    1262    1300    1306    1432    1488    1676    1977    1983    2132    2196    2249    2386    2637
+        2694    2754    2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549
+        3598    3623    3766    3823    3951    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1173
+COSTO MIGLIORE ATTUALE:1173
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 54
+Esploro l'intorno
+Soluzione iterazione 54:
+Aggiunto arco 1955 e rimosso arco 993.
+ARCHI COUNTER:
+4       105     187     205     212     225     226     235     238     251     255     264     277     278     287
+        336     432     467     500     503     506     509     522     526     528     539     542     545     568
+        575     578     607     611     624     628     630     637     643     647     650     666     686     771
+        777     878     887     914     927     940     963     980     1006    1019    1051    1060    1127    1225
+        1262    1300    1306    1432    1488    1676    1955    1977    1983    2132    2196    2249    2386    2637
+        2694    2754    2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549
+        3598    3623    3766    3823    3951    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1124
+COSTO MIGLIORE ATTUALE:1124
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 55
+Esploro l'intorno
+Soluzione iterazione 55:
+Aggiunto arco 2603 e rimosso arco 225.
+ARCHI COUNTER:
+4       105     187     205     212     226     235     238     251     255     264     277     278     287     336
+        432     467     500     503     506     509     522     526     528     539     542     545     568     575
+        578     607     611     624     628     630     637     643     647     650     666     686     771     777
+        878     887     914     927     940     963     980     1006    1019    1051    1060    1127    1225    1262
+        1300    1306    1432    1488    1676    1955    1977    1983    2132    2196    2249    2386    2603    2637
+        2694    2754    2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549
+        3598    3623    3766    3823    3951    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:1076
+COSTO MIGLIORE ATTUALE:1076
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 56
+Esploro l'intorno
+Soluzione iterazione 56:
+Aggiunto arco 3636 e rimosso arco 255.
+ARCHI COUNTER:
+4       105     187     205     212     226     235     238     251     264     277     278     287     336     432
+        467     500     503     506     509     522     526     528     539     542     545     568     575     578
+        607     611     624     628     630     637     643     647     650     666     686     771     777     878
+        887     914     927     940     963     980     1006    1019    1051    1060    1127    1225    1262    1300
+        1306    1432    1488    1676    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694
+        2754    2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549    3598
+        3623    3636    3766    3823    3951    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:949
+COSTO MIGLIORE ATTUALE:949
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 57
+Esploro l'intorno
+Soluzione iterazione 57:
+Aggiunto arco 157 e rimosso arco 777.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        432     467     500     503     506     509     522     526     528     539     542     545     568     575
+        578     607     611     624     628     630     637     643     647     650     666     686     771     878
+        887     914     927     940     963     980     1006    1019    1051    1060    1127    1225    1262    1300
+        1306    1432    1488    1676    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694
+        2754    2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549    3598
+        3623    3636    3766    3823    3951    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:902
+COSTO MIGLIORE ATTUALE:902
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 58
+Esploro l'intorno
+Soluzione iterazione 58:
+Aggiunto arco 4074 e rimosso arco 630.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        432     467     500     503     506     509     522     526     528     539     542     545     568     575
+        578     607     611     624     628     637     643     647     650     666     686     771     878     887
+        914     927     940     963     980     1006    1019    1051    1060    1127    1225    1262    1300    1306
+        1432    1488    1676    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754
+        2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623
+        3636    3766    3823    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:861
+COSTO MIGLIORE ATTUALE:861
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 59
+Esploro l'intorno
+Soluzione iterazione 59:
+Aggiunto arco 1863 e rimosso arco 666.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        432     467     500     503     506     509     522     526     528     539     542     545     568     575
+        578     607     611     624     628     637     643     647     650     686     771     878     887     914
+        927     940     963     980     1006    1019    1051    1060    1127    1225    1262    1300    1306    1432
+        1488    1676    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754
+        2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623
+        3636    3766    3823    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:821
+COSTO MIGLIORE ATTUALE:821
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 60
+Esploro l'intorno
+Soluzione iterazione 60:
+Aggiunto arco 407 e rimosso arco 686.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     467     500     503     506     509     522     526     528     539     542     545     568
+        575     578     607     611     624     628     637     643     647     650     771     878     887     914
+        927     940     963     980     1006    1019    1051    1060    1127    1225    1262    1300    1306    1432
+        1488    1676    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754
+        2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623
+        3636    3766    3823    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:782
+COSTO MIGLIORE ATTUALE:782
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 61
+Esploro l'intorno
+Soluzione iterazione 61:
+Aggiunto arco 456 e rimosso arco 643.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     506     509     522     526     528     539     542     545
+        568     575     578     607     611     624     628     637     647     650     771     878     887     914
+        927     940     963     980     1006    1019    1051    1060    1127    1225    1262    1300    1306    1432
+        1488    1676    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754
+        2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623
+        3636    3766    3823    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:744
+COSTO MIGLIORE ATTUALE:744
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 62
+Esploro l'intorno
+Soluzione iterazione 62:
+Aggiunto arco 1202 e rimosso arco 1127.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     506     509     522     526     528     539     542     545
+        568     575     578     607     611     624     628     637     647     650     771     878     887     914
+        927     940     963     980     1006    1019    1051    1060    1202    1225    1262    1300    1306    1432
+        1488    1676    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754
+        2867    2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623
+        3636    3766    3823    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:706
+COSTO MIGLIORE ATTUALE:706
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 63
+Esploro l'intorno
+Soluzione iterazione 63:
+Aggiunto arco 3943 e rimosso arco 927.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     506     509     522     526     528     539     542     545
+        568     575     578     607     611     624     628     637     647     650     771     878     887     914
+        940     963     980     1006    1019    1051    1060    1202    1225    1262    1300    1306    1432    1488
+        1676    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754    2867
+        2908    2973    3088    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623    3636
+        3766    3823    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:669
+COSTO MIGLIORE ATTUALE:669
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 64
+Esploro l'intorno
+Soluzione iterazione 64:
+Aggiunto arco 3089 e rimosso arco 878.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     506     509     522     526     528     539     542     545
+        568     575     578     607     611     624     628     637     647     650     771     887     914     940
+        963     980     1006    1019    1051    1060    1202    1225    1262    1300    1306    1432    1488    1676
+        1863    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754    2867    2908
+        2973    3088    3089    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623    3636
+        3766    3823    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:635
+COSTO MIGLIORE ATTUALE:635
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 65
+Esploro l'intorno
+Soluzione iterazione 65:
+Aggiunto arco 2869 e rimosso arco 578.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     506     509     522     526     528     539     542     545
+        568     575     607     611     624     628     637     647     650     771     887     914     940     963
+        980     1006    1019    1051    1060    1202    1225    1262    1300    1306    1432    1488    1676    1863
+        1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754    2867    2869    2908
+        2973    3088    3089    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623    3636
+        3766    3823    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:603
+COSTO MIGLIORE ATTUALE:603
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 66
+Esploro l'intorno
+Soluzione iterazione 66:
+Aggiunto arco 3847 e rimosso arco 650.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     506     509     522     526     528     539     542     545
+        568     575     607     611     624     628     637     647     771     887     914     940     963     980
+        1006    1019    1051    1060    1202    1225    1262    1300    1306    1432    1488    1676    1863    1955
+        1977    1983    2132    2196    2249    2386    2603    2637    2694    2754    2867    2869    2908    2973
+        3088    3089    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623    3636    3766
+        3823    3847    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4933
+
+COSTO MIGLIORE ASSOLUTO:572
+COSTO MIGLIORE ATTUALE:572
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 67
+Esploro l'intorno
+Soluzione iterazione 67:
+Aggiunto arco 4810 e rimosso arco 575.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     506     509     522     526     528     539     542     545
+        568     607     611     624     628     637     647     771     887     914     940     963     980     1006
+        1019    1051    1060    1202    1225    1262    1300    1306    1432    1488    1676    1863    1955    1977
+        1983    2132    2196    2249    2386    2603    2637    2694    2754    2867    2869    2908    2973    3088
+        3089    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623    3636    3766    3823
+        3847    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:543
+COSTO MIGLIORE ATTUALE:543
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 68
+Esploro l'intorno
+Soluzione iterazione 68:
+Aggiunto arco 691 e rimosso arco 506.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     509     522     526     528     539     542     545     568
+        607     611     624     628     637     647     691     771     887     914     940     963     980     1006
+        1019    1051    1060    1202    1225    1262    1300    1306    1432    1488    1676    1863    1955    1977
+        1983    2132    2196    2249    2386    2603    2637    2694    2754    2867    2869    2908    2973    3088
+        3089    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623    3636    3766    3823
+        3847    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:418
+COSTO MIGLIORE ATTUALE:418
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 69
+Esploro l'intorno
+Soluzione iterazione 69:
+Aggiunto arco 1774 e rimosso arco 1300.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     509     522     526     528     539     542     545     568
+        607     611     624     628     637     647     691     771     887     914     940     963     980     1006
+        1019    1051    1060    1202    1225    1262    1306    1432    1488    1676    1774    1863    1955    1977
+        1983    2132    2196    2249    2386    2603    2637    2694    2754    2867    2869    2908    2973    3088
+        3089    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623    3636    3766    3823
+        3847    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:391
+COSTO MIGLIORE ATTUALE:391
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 70
+Esploro l'intorno
+Soluzione iterazione 70:
+Aggiunto arco 1333 e rimosso arco 1306.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     509     522     526     528     539     542     545     568
+        607     611     624     628     637     647     691     771     887     914     940     963     980     1006
+        1019    1051    1060    1202    1225    1262    1333    1432    1488    1676    1774    1863    1955    1977
+        1983    2132    2196    2249    2386    2603    2637    2694    2754    2867    2869    2908    2973    3088
+        3089    3112    3140    3189    3218    3270    3329    3430    3549    3598    3623    3636    3766    3823
+        3847    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:365
+COSTO MIGLIORE ATTUALE:365
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 71
+Esploro l'intorno
+Soluzione iterazione 71:
+Aggiunto arco 3206 e rimosso arco 637.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     500     503     509     522     526     528     539     542     545     568
+        607     611     624     628     647     691     771     887     914     940     963     980     1006    1019
+        1051    1060    1202    1225    1262    1333    1432    1488    1676    1774    1863    1955    1977    1983
+        2132    2196    2249    2386    2603    2637    2694    2754    2867    2869    2908    2973    3088    3089
+        3112    3140    3189    3206    3218    3270    3329    3430    3549    3598    3623    3636    3766    3823
+        3847    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:341
+COSTO MIGLIORE ATTUALE:341
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 72
+Esploro l'intorno
+Soluzione iterazione 72:
+Aggiunto arco 2928 e rimosso arco 500.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     503     509     522     526     528     539     542     545     568     607
+        611     624     628     647     691     771     887     914     940     963     980     1006    1019    1051
+        1060    1202    1225    1262    1333    1432    1488    1676    1774    1863    1955    1977    1983    2132
+        2196    2249    2386    2603    2637    2694    2754    2867    2869    2908    2928    2973    3088    3089
+        3112    3140    3189    3206    3218    3270    3329    3430    3549    3598    3623    3636    3766    3823
+        3847    3943    3951    4074    4077    4189    4233    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:318
+COSTO MIGLIORE ATTUALE:318
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 73
+Esploro l'intorno
+Soluzione iterazione 73:
+Aggiunto arco 4258 e rimosso arco 542.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     238     251     264     277     278     287     336
+        407     432     456     467     503     509     522     526     528     539     545     568     607     611
+        624     628     647     691     771     887     914     940     963     980     1006    1019    1051    1060
+        1202    1225    1262    1333    1432    1488    1676    1774    1863    1955    1977    1983    2132    2196
+        2249    2386    2603    2637    2694    2754    2867    2869    2908    2928    2973    3088    3089    3112
+        3140    3189    3206    3218    3270    3329    3430    3549    3598    3623    3636    3766    3823    3847
+        3943    3951    4074    4077    4189    4233    4258    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:295
+COSTO MIGLIORE ATTUALE:295
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 74
+Esploro l'intorno
+Soluzione iterazione 74:
+Aggiunto arco 3379 e rimosso arco 238.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     264     277     278     287     336     407
+        432     456     467     503     509     522     526     528     539     545     568     607     611     624
+        628     647     691     771     887     914     940     963     980     1006    1019    1051    1060    1202
+        1225    1262    1333    1432    1488    1676    1774    1863    1955    1977    1983    2132    2196    2249
+        2386    2603    2637    2694    2754    2867    2869    2908    2928    2973    3088    3089    3112    3140
+        3189    3206    3218    3270    3329    3379    3430    3549    3598    3623    3636    3766    3823    3847
+        3943    3951    4074    4077    4189    4233    4258    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:274
+COSTO MIGLIORE ATTUALE:274
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 75
+Esploro l'intorno
+Soluzione iterazione 75:
+Aggiunto arco 4005 e rimosso arco 1019.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     264     277     278     287     336     407
+        432     456     467     503     509     522     526     528     539     545     568     607     611     624
+        628     647     691     771     887     914     940     963     980     1006    1051    1060    1202    1225
+        1262    1333    1432    1488    1676    1774    1863    1955    1977    1983    2132    2196    2249    2386
+        2603    2637    2694    2754    2867    2869    2908    2928    2973    3088    3089    3112    3140    3189
+        3206    3218    3270    3329    3379    3430    3549    3598    3623    3636    3766    3823    3847    3943
+        3951    4005    4074    4077    4189    4233    4258    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:254
+COSTO MIGLIORE ATTUALE:254
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 76
+Esploro l'intorno
+Soluzione iterazione 76:
+Aggiunto arco 1789 e rimosso arco 607.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     264     277     278     287     336     407
+        432     456     467     503     509     522     526     528     539     545     568     611     624     628
+        647     691     771     887     914     940     963     980     1006    1051    1060    1202    1225    1262
+        1333    1432    1488    1676    1774    1789    1863    1955    1977    1983    2132    2196    2249    2386
+        2603    2637    2694    2754    2867    2869    2908    2928    2973    3088    3089    3112    3140    3189
+        3206    3218    3270    3329    3379    3430    3549    3598    3623    3636    3766    3823    3847    3943
+        3951    4005    4074    4077    4189    4233    4258    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:234
+COSTO MIGLIORE ATTUALE:234
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 77
+Esploro l'intorno
+Soluzione iterazione 77:
+Aggiunto arco 521 e rimosso arco 914.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     264     277     278     287     336     407
+        432     456     467     503     509     521     522     526     528     539     545     568     611     624
+        628     647     691     771     887     940     963     980     1006    1051    1060    1202    1225    1262
+        1333    1432    1488    1676    1774    1789    1863    1955    1977    1983    2132    2196    2249    2386
+        2603    2637    2694    2754    2867    2869    2908    2928    2973    3088    3089    3112    3140    3189
+        3206    3218    3270    3329    3379    3430    3549    3598    3623    3636    3766    3823    3847    3943
+        3951    4005    4074    4077    4189    4233    4258    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:215
+COSTO MIGLIORE ATTUALE:215
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 78
+Esploro l'intorno
+Soluzione iterazione 78:
+Aggiunto arco 1424 e rimosso arco 647.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     264     277     278     287     336     407
+        432     456     467     503     509     521     522     526     528     539     545     568     611     624
+        628     691     771     887     940     963     980     1006    1051    1060    1202    1225    1262    1333
+        1424    1432    1488    1676    1774    1789    1863    1955    1977    1983    2132    2196    2249    2386
+        2603    2637    2694    2754    2867    2869    2908    2928    2973    3088    3089    3112    3140    3189
+        3206    3218    3270    3329    3379    3430    3549    3598    3623    3636    3766    3823    3847    3943
+        3951    4005    4074    4077    4189    4233    4258    4307    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:197
+COSTO MIGLIORE ATTUALE:197
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 79
+Esploro l'intorno
+Soluzione iterazione 79:
+Aggiunto arco 4488 e rimosso arco 264.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     277     278     287     336     407     432
+        456     467     503     509     521     522     526     528     539     545     568     611     624     628
+        691     771     887     940     963     980     1006    1051    1060    1202    1225    1262    1333    1424
+        1432    1488    1676    1774    1789    1863    1955    1977    1983    2132    2196    2249    2386    2603
+        2637    2694    2754    2867    2869    2908    2928    2973    3088    3089    3112    3140    3189    3206
+        3218    3270    3329    3379    3430    3549    3598    3623    3636    3766    3823    3847    3943    3951
+        4005    4074    4077    4189    4233    4258    4307    4488    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:181
+COSTO MIGLIORE ATTUALE:181
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 80
+Esploro l'intorno
+Soluzione iterazione 80:
+Aggiunto arco 4460 e rimosso arco 522.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     277     278     287     336     407     432
+        456     467     503     509     521     526     528     539     545     568     611     624     628     691
+        771     887     940     963     980     1006    1051    1060    1202    1225    1262    1333    1424    1432
+        1488    1676    1774    1789    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637
+        2694    2754    2867    2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218
+        3270    3329    3379    3430    3549    3598    3623    3636    3766    3823    3847    3943    3951    4005
+        4074    4077    4189    4233    4258    4307    4460    4488    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:169
+COSTO MIGLIORE ATTUALE:169
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 81
+Esploro l'intorno
+Soluzione iterazione 81:
+Aggiunto arco 1088 e rimosso arco 509.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     277     278     287     336     407     432
+        456     467     503     521     526     528     539     545     568     611     624     628     691     771
+        887     940     963     980     1006    1051    1060    1088    1202    1225    1262    1333    1424    1432
+        1488    1676    1774    1789    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637
+        2694    2754    2867    2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218
+        3270    3329    3379    3430    3549    3598    3623    3636    3766    3823    3847    3943    3951    4005
+        4074    4077    4189    4233    4258    4307    4460    4488    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:158
+COSTO MIGLIORE ATTUALE:158
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 82
+Esploro l'intorno
+Soluzione iterazione 82:
+Aggiunto arco 283 e rimosso arco 568.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     277     278     283     287     336     407
+        432     456     467     503     521     526     528     539     545     611     624     628     691     771
+        887     940     963     980     1006    1051    1060    1088    1202    1225    1262    1333    1424    1432
+        1488    1676    1774    1789    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637
+        2694    2754    2867    2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218
+        3270    3329    3379    3430    3549    3598    3623    3636    3766    3823    3847    3943    3951    4005
+        4074    4077    4189    4233    4258    4307    4460    4488    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:147
+COSTO MIGLIORE ATTUALE:147
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 83
+Esploro l'intorno
+Soluzione iterazione 83:
+Aggiunto arco 3746 e rimosso arco 963.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     277     278     283     287     336     407
+        432     456     467     503     521     526     528     539     545     611     624     628     691     771
+        887     940     980     1006    1051    1060    1088    1202    1225    1262    1333    1424    1432    1488
+        1676    1774    1789    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694
+        2754    2867    2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218    3270
+        3329    3379    3430    3549    3598    3623    3636    3746    3766    3823    3847    3943    3951    4005
+        4074    4077    4189    4233    4258    4307    4460    4488    4558    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:137
+COSTO MIGLIORE ATTUALE:137
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 84
+Esploro l'intorno
+Soluzione iterazione 84:
+Aggiunto arco 4628 e rimosso arco 278.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     235     251     277     283     287     336     407     432
+        456     467     503     521     526     528     539     545     611     624     628     691     771     887
+        940     980     1006    1051    1060    1088    1202    1225    1262    1333    1424    1432    1488    1676
+        1774    1789    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754
+        2867    2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329
+        3379    3430    3549    3598    3623    3636    3746    3766    3823    3847    3943    3951    4005    4074
+        4077    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:128
+COSTO MIGLIORE ATTUALE:128
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 85
+Esploro l'intorno
+Soluzione iterazione 85:
+Aggiunto arco 822 e rimosso arco 235.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     251     277     283     287     336     407     432     456
+        467     503     521     526     528     539     545     611     624     628     691     771     822     887
+        940     980     1006    1051    1060    1088    1202    1225    1262    1333    1424    1432    1488    1676
+        1774    1789    1863    1955    1977    1983    2132    2196    2249    2386    2603    2637    2694    2754
+        2867    2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329
+        3379    3430    3549    3598    3623    3636    3746    3766    3823    3847    3943    3951    4005    4074
+        4077    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:120
+COSTO MIGLIORE ATTUALE:120
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 86
+Esploro l'intorno
+Soluzione iterazione 86:
+Aggiunto arco 2420 e rimosso arco 1051.
+ARCHI COUNTER:
+4       105     157     187     205     212     226     251     277     283     287     336     407     432     456
+        467     503     521     526     528     539     545     611     624     628     691     771     822     887
+        940     980     1006    1060    1088    1202    1225    1262    1333    1424    1432    1488    1676    1774
+        1789    1863    1955    1977    1983    2132    2196    2249    2386    2420    2603    2637    2694    2754
+        2867    2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329
+        3379    3430    3549    3598    3623    3636    3746    3766    3823    3847    3943    3951    4005    4074
+        4077    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:113
+COSTO MIGLIORE ATTUALE:113
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 87
+Esploro l'intorno
+Soluzione iterazione 87:
+Aggiunto arco 78 e rimosso arco 526.
+ARCHI COUNTER:
+4       78      105     157     187     205     212     226     251     277     283     287     336     407     432
+        456     467     503     521     528     539     545     611     624     628     691     771     822     887
+        940     980     1006    1060    1088    1202    1225    1262    1333    1424    1432    1488    1676    1774
+        1789    1863    1955    1977    1983    2132    2196    2249    2386    2420    2603    2637    2694    2754
+        2867    2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329
+        3379    3430    3549    3598    3623    3636    3746    3766    3823    3847    3943    3951    4005    4074
+        4077    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:107
+COSTO MIGLIORE ATTUALE:107
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 88
+Esploro l'intorno
+Soluzione iterazione 88:
+Aggiunto arco 4163 e rimosso arco 1006.
+ARCHI COUNTER:
+4       78      105     157     187     205     212     226     251     277     283     287     336     407     432
+        456     467     503     521     528     539     545     611     624     628     691     771     822     887
+        940     980     1060    1088    1202    1225    1262    1333    1424    1432    1488    1676    1774    1789
+        1863    1955    1977    1983    2132    2196    2249    2386    2420    2603    2637    2694    2754    2867
+        2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329    3379
+        3430    3549    3598    3623    3636    3746    3766    3823    3847    3943    3951    4005    4074    4077
+        4163    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:103
+COSTO MIGLIORE ATTUALE:103
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 89
+Esploro l'intorno
+Soluzione iterazione 89:
+Aggiunto arco 767 e rimosso arco 545.
+ARCHI COUNTER:
+4       78      105     157     187     205     212     226     251     277     283     287     336     407     432
+        456     467     503     521     528     539     611     624     628     691     767     771     822     887
+        940     980     1060    1088    1202    1225    1262    1333    1424    1432    1488    1676    1774    1789
+        1863    1955    1977    1983    2132    2196    2249    2386    2420    2603    2637    2694    2754    2867
+        2869    2908    2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329    3379
+        3430    3549    3598    3623    3636    3746    3766    3823    3847    3943    3951    4005    4074    4077
+        4163    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:99
+COSTO MIGLIORE ATTUALE:99
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 90
+Esploro l'intorno
+Soluzione iterazione 90:
+Aggiunto arco 3961 e rimosso arco 611.
+ARCHI COUNTER:
+4       78      105     157     187     205     212     226     251     277     283     287     336     407     432
+        456     467     503     521     528     539     624     628     691     767     771     822     887     940
+        980     1060    1088    1202    1225    1262    1333    1424    1432    1488    1676    1774    1789    1863
+        1955    1977    1983    2132    2196    2249    2386    2420    2603    2637    2694    2754    2867    2869
+        2908    2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329    3379    3430
+        3549    3598    3623    3636    3746    3766    3823    3847    3943    3951    3961    4005    4074    4077
+        4163    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:95
+COSTO MIGLIORE ATTUALE:95
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 91
+Esploro l'intorno
+Soluzione iterazione 91:
+Aggiunto arco 3812 e rimosso arco 624.
+ARCHI COUNTER:
+4       78      105     157     187     205     212     226     251     277     283     287     336     407     432
+        456     467     503     521     528     539     628     691     767     771     822     887     940     980
+        1060    1088    1202    1225    1262    1333    1424    1432    1488    1676    1774    1789    1863    1955
+        1977    1983    2132    2196    2249    2386    2420    2603    2637    2694    2754    2867    2869    2908
+        2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329    3379    3430    3549
+        3598    3623    3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4074    4077
+        4163    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:91
+COSTO MIGLIORE ATTUALE:91
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 92
+Esploro l'intorno
+Soluzione iterazione 92:
+Aggiunto arco 698 e rimosso arco 105.
+ARCHI COUNTER:
+4       78      157     187     205     212     226     251     277     283     287     336     407     432     456
+        467     503     521     528     539     628     691     698     767     771     822     887     940     980
+        1060    1088    1202    1225    1262    1333    1424    1432    1488    1676    1774    1789    1863    1955
+        1977    1983    2132    2196    2249    2386    2420    2603    2637    2694    2754    2867    2869    2908
+        2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329    3379    3430    3549
+        3598    3623    3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4074    4077
+        4163    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:88
+COSTO MIGLIORE ATTUALE:88
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 93
+Esploro l'intorno
+Soluzione iterazione 93:
+Aggiunto arco 1621 e rimosso arco 212.
+ARCHI COUNTER:
+4       78      157     187     205     226     251     277     283     287     336     407     432     456     467
+        503     521     528     539     628     691     698     767     771     822     887     940     980     1060
+        1088    1202    1225    1262    1333    1424    1432    1488    1621    1676    1774    1789    1863    1955
+        1977    1983    2132    2196    2249    2386    2420    2603    2637    2694    2754    2867    2869    2908
+        2928    2973    3088    3089    3112    3140    3189    3206    3218    3270    3329    3379    3430    3549
+        3598    3623    3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4074    4077
+        4163    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:85
+COSTO MIGLIORE ATTUALE:85
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 94
+Esploro l'intorno
+Soluzione iterazione 94:
+Aggiunto arco 4034 e rimosso arco 251.
+ARCHI COUNTER:
+4       78      157     187     205     226     277     283     287     336     407     432     456     467     503
+        521     528     539     628     691     698     767     771     822     887     940     980     1060    1088
+        1202    1225    1262    1333    1424    1432    1488    1621    1676    1774    1789    1863    1955    1977
+        1983    2132    2196    2249    2386    2420    2603    2637    2694    2754    2867    2869    2908    2928
+        2973    3088    3089    3112    3140    3189    3206    3218    3270    3329    3379    3430    3549    3598
+        3623    3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077
+        4163    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:83
+COSTO MIGLIORE ATTUALE:83
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 95
+Esploro l'intorno
+Soluzione iterazione 95:
+Aggiunto arco 616 e rimosso arco 287.
+ARCHI COUNTER:
+4       78      157     187     205     226     277     283     336     407     432     456     467     503     521
+        528     539     616     628     691     698     767     771     822     887     940     980     1060    1088
+        1202    1225    1262    1333    1424    1432    1488    1621    1676    1774    1789    1863    1955    1977
+        1983    2132    2196    2249    2386    2420    2603    2637    2694    2754    2867    2869    2908    2928
+        2973    3088    3089    3112    3140    3189    3206    3218    3270    3329    3379    3430    3549    3598
+        3623    3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077
+        4163    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:82
+COSTO MIGLIORE ATTUALE:82
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 96
+Esploro l'intorno
+Soluzione iterazione 96:
+Aggiunto arco 2070 e rimosso arco 503.
+ARCHI COUNTER:
+4       78      157     187     205     226     277     283     336     407     432     456     467     521     528
+        539     616     628     691     698     767     771     822     887     940     980     1060    1088    1202
+        1225    1262    1333    1424    1432    1488    1621    1676    1774    1789    1863    1955    1977    1983
+        2070    2132    2196    2249    2386    2420    2603    2637    2694    2754    2867    2869    2908    2928
+        2973    3088    3089    3112    3140    3189    3206    3218    3270    3329    3379    3430    3549    3598
+        3623    3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077
+        4163    4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+
+COSTO MIGLIORE ASSOLUTO:81
+COSTO MIGLIORE ATTUALE:81
+Numero di iterazioni senza miglioramenti: 0
+
+
+ITERAZIONE 97
+Esploro l'intorno
+Iterazione 97:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+4       157     187     205     226     277     283     336     407     432     456     467     521     528     539
+        616     628     691     698     767     771     822     887     940     980     1060    1088    1202    1225
+        1262    1333    1424    1432    1488    1621    1676    1774    1789    1863    1955    1977    1983    2070
+        2132    2196    2249    2386    2420    2603    2637    2694    2754    2867    2869    2908    2928    2973
+        3088    3089    3112    3140    3189    3206    3218    3270    3329    3379    3430    3549    3598    3623
+        3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163
+        4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 1
+COSTO MIGLIORE ASSOLUTO:81
+
+ITERAZIONE 98
+Esploro l'intorno
+Iterazione 98:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+4       157     187     205     277     283     336     407     432     456     467     521     528     539     616
+        628     691     698     767     771     822     887     940     980     1060    1088    1202    1225    1262
+        1333    1424    1432    1488    1621    1676    1774    1789    1863    1955    1977    1983    2070    2132
+        2196    2249    2386    2420    2603    2637    2694    2754    2867    2869    2908    2928    2973    3088
+        3089    3112    3140    3189    3206    3218    3270    3329    3379    3430    3549    3598    3623    3636
+        3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163    4189
+        4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 2
+COSTO MIGLIORE ASSOLUTO:81
+
+ITERAZIONE 99
+Esploro l'intorno
+Iterazione 99:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+4       157     187     205     277     283     336     432     456     467     521     528     539     616     628
+        691     698     767     771     822     887     940     980     1060    1088    1202    1225    1262    1333
+        1424    1432    1488    1621    1676    1774    1789    1863    1955    1977    1983    2070    2132    2196
+        2249    2386    2420    2603    2637    2694    2754    2867    2869    2908    2928    2973    3088    3089
+        3112    3140    3189    3206    3218    3270    3329    3379    3430    3549    3598    3623    3636    3746
+        3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163    4189    4233
+        4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 3
+COSTO MIGLIORE ASSOLUTO:81
+
+Ho raggiunto una soluzione di stallo...
+Diversifico...
+
+4-->1   157-->101       187-->89        205-->100       277-->180       283-->186       336-->143       432-->102
+        456-->168       467-->179       521-->139       528-->146       539-->103       616-->584       628-->104
+        691-->124       698-->105       767-->106       771-->113       822-->772       887-->107       940-->192
+        980-->108       1060-->135      1088-->163      1202-->110      1225-->127      1262-->111      1333-->112
+        1424-->2209     1432-->1390     1488-->138      1621-->115      1676-->116      1774-->181      1789-->117
+        1863-->118      1955-->128      1977-->120      1983-->156      2070-->121      2132-->122      2196-->144
+        2249-->197      2386-->125      2420-->126      2603-->196      2637-->162      2694-->130      2754-->131
+        2867-->194      Arco n 1, nodi 1-2, costo 41
+Arco n 89, nodi 1-90, costo 31
+Arco n 100, nodi 2-3, costo 41
+Arco n 101, nodi 2-4, costo 33
+Arco n 102, nodi 2-5, costo 15
+Arco n 103, nodi 2-6, costo 39
+Arco n 104, nodi 2-7, costo 58
+Arco n 105, nodi 2-8, costo 4
+Arco n 106, nodi 2-9, costo 30
+Arco n 107, nodi 2-10, costo 77
+Arco n 108, nodi 2-11, costo 6
+Arco n 110, nodi 2-13, costo 86
+Arco n 111, nodi 2-14, costo 21
+Arco n 112, nodi 2-15, costo 45
+Arco n 113, nodi 2-16, costo 24
+Arco n 115, nodi 2-18, costo 70
+Arco n 116, nodi 2-19, costo 29
+Arco n 117, nodi 2-20, costo 77
+Arco n 118, nodi 2-21, costo 73
+Arco n 120, nodi 2-23, costo 12
+Arco n 121, nodi 2-24, costo 86
+Arco n 122, nodi 2-25, costo 90
+Arco n 124, nodi 2-27, costo 36
+Arco n 125, nodi 2-28, costo 55
+Arco n 126, nodi 2-29, costo 67
+Arco n 127, nodi 2-30, costo 55
+Arco n 128, nodi 2-31, costo 74
+Arco n 130, nodi 2-33, costo 52
+Arco n 131, nodi 2-34, costo 50
+Arco n 135, nodi 2-38, costo 66
+Arco n 138, nodi 2-41, costo 91
+Arco n 139, nodi 2-42, costo 7
+Arco n 143, nodi 2-46, costo 53
+Arco n 144, nodi 2-47, costo 83
+Arco n 146, nodi 2-49, costo 9
+Arco n 156, nodi 2-59, costo 68
+Arco n 162, nodi 2-65, costo 59
+Arco n 163, nodi 2-66, costo 24
+Arco n 168, nodi 2-71, costo 41
+Arco n 179, nodi 2-82, costo 68
+Arco n 180, nodi 2-83, costo 84
+Arco n 181, nodi 2-84, costo 81
+Arco n 186, nodi 2-89, costo 38
+Arco n 192, nodi 2-95, costo 93
+Arco n 194, nodi 2-97, costo 83
+Arco n 196, nodi 2-99, costo 21
+Arco n 197, nodi 2-100, costo 10
+Arco n 216, nodi 3-22, costo 2
+Arco n 584, nodi 7-12, costo 34
+Arco n 772, nodi 9-17, costo 69
+Arco n 1390, nodi 16-26, costo 86
+Arco n 2209, nodi 26-60, costo 11
+Arco n 2659, nodi 32-87, costo 0
+Arco n 2869, nodi 35-99, costo 0
+Arco n 2908, nodi 36-74, costo 0
+Arco n 2928, nodi 36-94, costo 2
+Arco n 2973, nodi 37-76, costo 0
+Arco n 3088, nodi 39-68, costo 0
+Arco n 3089, nodi 39-69, costo 0
+Arco n 3112, nodi 39-92, costo 0
+Arco n 3140, nodi 40-60, costo 1
+Arco n 3189, nodi 41-50, costo 2
+Arco n 3206, nodi 41-67, costo 0
+Arco n 3218, nodi 41-79, costo 1
+Arco n 3270, nodi 42-73, costo 0
+Arco n 3329, nodi 43-75, costo 0
+Arco n 3379, nodi 44-69, costo 1
+Arco n 3430, nodi 45-65, costo 4
+Arco n 3534, nodi 47-62, costo 1
+Arco n 3549, nodi 47-77, costo 2
+Arco n 3598, nodi 48-74, costo 0
+Arco n 3623, nodi 48-99, costo 0
+Arco n 3636, nodi 49-61, costo 1
+Arco n 3746, nodi 51-72, costo 0
+Arco n 3766, nodi 51-92, costo 0
+Arco n 3812, nodi 52-90, costo 1
+Arco n 3823, nodi 53-54, costo 0
+Arco n 3847, nodi 53-78, costo 1
+Arco n 3943, nodi 55-83, costo 0
+Arco n 3951, nodi 55-91, costo 2
+Arco n 3961, nodi 56-57, costo 1
+Arco n 4005, nodi 57-58, costo 1
+Arco n 4034, nodi 57-87, costo 0
+Arco n 4074, nodi 58-85, costo 0
+Arco n 4077, nodi 58-88, costo 2
+Arco n 4163, nodi 60-93, costo 1
+Arco n 4189, nodi 61-80, costo 2
+Arco n 4233, nodi 62-86, costo 1
+Arco n 4258, nodi 63-74, costo 5
+Arco n 4307, nodi 64-87, costo 2
+Arco n 4460, nodi 69-75, costo 1
+Arco n 4488, nodi 70-73, costo 0
+Arco n 4558, nodi 72-86, costo 1
+Arco n 4628, nodi 75-78, costo 1
+Arco n 4654, nodi 76-80, costo 2
+Arco n 4655, nodi 76-81, costo 2
+Arco n 4801, nodi 83-87, costo 0
+Arco n 4810, nodi 83-96, costo 0
+Arco n 4933, nodi 94-98, costo 3
+Costo spanning tree: 2702
+
+ITERAZIONE 100
+Esploro l'intorno
+Iterazione 100:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+1       89      100     101     102     103     104     105     106     107     108     110     111     112     113
+        115     116     117     118     120     121     122     124     125     126     127     128     130     131
+        135     138     139     143     144     146     156     162     163     168     179     180     181     186
+        194     196     197     216     584     772     1390    2209    2659    2869    2908    2928    2973    3088
+        3089    3112    3140    3189    3206    3218    3270    3329    3379    3430    3534    3549    3598    3623
+        3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163
+        4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 1
+COSTO MIGLIORE ASSOLUTO:81
+
+ITERAZIONE 101
+Esploro l'intorno
+Iterazione 101:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+1       89      100     101     102     103     104     105     106     107     108     110     111     112     113
+        115     116     117     118     120     121     122     124     125     126     127     128     130     131
+        135     139     143     144     146     156     162     163     168     179     180     181     186     194
+        196     197     216     584     772     1390    2209    2659    2869    2908    2928    2973    3088    3089
+        3112    3140    3189    3206    3218    3270    3329    3379    3430    3534    3549    3598    3623    3636
+        3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163    4189
+        4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 2
+COSTO MIGLIORE ASSOLUTO:81
+
+ITERAZIONE 102
+Esploro l'intorno
+Iterazione 102:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+1       89      100     101     102     103     104     105     106     107     108     110     111     112     113
+        115     116     117     118     120     121     124     125     126     127     128     130     131     135
+        139     143     144     146     156     162     163     168     179     180     181     186     194     196
+        197     216     584     772     1390    2209    2659    2869    2908    2928    2973    3088    3089    3112
+        3140    3189    3206    3218    3270    3329    3379    3430    3534    3549    3598    3623    3636    3746
+        3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163    4189    4233
+        4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 3
+COSTO MIGLIORE ASSOLUTO:81
+
+Ho raggiunto una soluzione di stallo...
+Diversifico...
+
+1-->41  89-->3287       100-->2 101-->330       102-->424       103-->517       104-->609       105-->700       106-->79
+0       107-->879       108-->967       110-->1141      111-->1226      112-->1310      113-->1393      115-->1557
+        116-->1637      117-->1716      118-->1794      120-->1948      121-->23        124-->221       125-->222
+        126-->223       127-->224       128-->225       130-->227       131-->228       135-->232       impossibile rimu
+overe arco 139143-->240 144-->241       146-->109       156-->253       162-->259       163-->260       168-->265
+        179-->276       180-->277       181-->278       186-->283       194-->291       196-->293       197-->294
+        216-->119       584-->201       772-->211       1390-->306      2209-->220      2659-->226      2869-->229
+        2908-->230      Arco n 2, nodi 1-3, costo 67
+Arco n 23, nodi 1-24, costo 2
+Arco n 41, nodi 1-42, costo 3
+Arco n 109, nodi 2-12, costo 73
+Arco n 119, nodi 2-22, costo 97
+Arco n 139, nodi 2-42, costo 7
+Arco n 201, nodi 3-7, costo 9
+Arco n 211, nodi 3-17, costo 24
+Arco n 220, nodi 3-26, costo 43
+Arco n 221, nodi 3-27, costo 23
+Arco n 222, nodi 3-28, costo 87
+Arco n 223, nodi 3-29, costo 14
+Arco n 224, nodi 3-30, costo 3
+Arco n 225, nodi 3-31, costo 48
+Arco n 226, nodi 3-32, costo 0
+Arco n 227, nodi 3-33, costo 58
+Arco n 228, nodi 3-34, costo 18
+Arco n 229, nodi 3-35, costo 80
+Arco n 230, nodi 3-36, costo 96
+Arco n 232, nodi 3-38, costo 81
+Arco n 240, nodi 3-46, costo 92
+Arco n 241, nodi 3-47, costo 38
+Arco n 253, nodi 3-59, costo 72
+Arco n 259, nodi 3-65, costo 75
+Arco n 260, nodi 3-66, costo 33
+Arco n 265, nodi 3-71, costo 81
+Arco n 276, nodi 3-82, costo 12
+Arco n 277, nodi 3-83, costo 0
+Arco n 278, nodi 3-84, costo 10
+Arco n 283, nodi 3-89, costo 1
+Arco n 291, nodi 3-97, costo 88
+Arco n 293, nodi 3-99, costo 17
+Arco n 294, nodi 3-100, costo 57
+Arco n 306, nodi 4-16, costo 55
+Arco n 330, nodi 4-40, costo 5
+Arco n 424, nodi 5-39, costo 93
+Arco n 517, nodi 6-38, costo 40
+Arco n 609, nodi 7-37, costo 26
+Arco n 700, nodi 8-36, costo 59
+Arco n 790, nodi 9-35, costo 58
+Arco n 879, nodi 10-34, costo 3
+Arco n 940, nodi 10-95, costo 0
+Arco n 967, nodi 11-33, costo 77
+Arco n 1141, nodi 13-32, costo 61
+Arco n 1226, nodi 14-31, costo 55
+Arco n 1262, nodi 14-67, costo 0
+Arco n 1310, nodi 15-30, costo 85
+Arco n 1393, nodi 16-29, costo 30
+Arco n 1557, nodi 18-28, costo 91
+Arco n 1637, nodi 19-27, costo 14
+Arco n 1716, nodi 20-26, costo 6
+Arco n 1794, nodi 21-25, costo 4
+Arco n 1948, nodi 23-24, costo 88
+Arco n 2132, nodi 25-57, costo 0
+Arco n 2928, nodi 36-94, costo 2
+Arco n 2973, nodi 37-76, costo 0
+Arco n 3088, nodi 39-68, costo 0
+Arco n 3089, nodi 39-69, costo 0
+Arco n 3112, nodi 39-92, costo 0
+Arco n 3140, nodi 40-60, costo 1
+Arco n 3189, nodi 41-50, costo 2
+Arco n 3206, nodi 41-67, costo 0
+Arco n 3218, nodi 41-79, costo 1
+Arco n 3270, nodi 42-73, costo 0
+Arco n 3287, nodi 42-90, costo 18
+Arco n 3329, nodi 43-75, costo 0
+Arco n 3379, nodi 44-69, costo 1
+Arco n 3430, nodi 45-65, costo 4
+Arco n 3534, nodi 47-62, costo 1
+Arco n 3549, nodi 47-77, costo 2
+Arco n 3598, nodi 48-74, costo 0
+Arco n 3623, nodi 48-99, costo 0
+Arco n 3636, nodi 49-61, costo 1
+Arco n 3746, nodi 51-72, costo 0
+Arco n 3766, nodi 51-92, costo 0
+Arco n 3812, nodi 52-90, costo 1
+Arco n 3823, nodi 53-54, costo 0
+Arco n 3847, nodi 53-78, costo 1
+Arco n 3943, nodi 55-83, costo 0
+Arco n 3951, nodi 55-91, costo 2
+Arco n 3961, nodi 56-57, costo 1
+Arco n 4005, nodi 57-58, costo 1
+Arco n 4034, nodi 57-87, costo 0
+Arco n 4074, nodi 58-85, costo 0
+Arco n 4077, nodi 58-88, costo 2
+Arco n 4163, nodi 60-93, costo 1
+Arco n 4189, nodi 61-80, costo 2
+Arco n 4233, nodi 62-86, costo 1
+Arco n 4258, nodi 63-74, costo 5
+Arco n 4307, nodi 64-87, costo 2
+Arco n 4460, nodi 69-75, costo 1
+Arco n 4488, nodi 70-73, costo 0
+Arco n 4558, nodi 72-86, costo 1
+Arco n 4628, nodi 75-78, costo 1
+Arco n 4654, nodi 76-80, costo 2
+Arco n 4655, nodi 76-81, costo 2
+Arco n 4801, nodi 83-87, costo 0
+Arco n 4810, nodi 83-96, costo 0
+Arco n 4933, nodi 94-98, costo 3
+Costo spanning tree: 2421
+
+ITERAZIONE 103
+Esploro l'intorno
+Iterazione 103:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+2       23      41      109     119     139     201     211     220     221     222     223     224     225     226
+        227     228     229     232     240     241     253     259     260     265     276     277     278     283
+        291     293     294     306     330     424     517     609     700     790     879     940     967     1141
+        1226    1262    1310    1393    1557    1637    1716    1794    1948    2132    2928    2973    3088    3089
+        3112    3140    3189    3206    3218    3270    3287    3329    3379    3430    3534    3549    3598    3623
+        3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163
+        4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 1
+COSTO MIGLIORE ASSOLUTO:81
+
+ITERAZIONE 104
+Esploro l'intorno
+Iterazione 104:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+2       23      41      109     139     201     211     220     221     222     223     224     225     226     227
+        228     229     232     240     241     253     259     260     265     276     277     278     283     291
+        293     294     306     330     424     517     609     700     790     879     940     967     1141    1226
+        1262    1310    1393    1557    1637    1716    1794    1948    2132    2928    2973    3088    3089    3112
+        3140    3189    3206    3218    3270    3287    3329    3379    3430    3534    3549    3598    3623    3636
+        3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163    4189
+        4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 2
+COSTO MIGLIORE ASSOLUTO:81
+
+ITERAZIONE 105
+Esploro l'intorno
+Iterazione 105:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+2       23      41      109     139     201     211     220     221     222     223     224     225     226     227
+        228     229     232     240     241     253     259     260     265     276     277     278     283     291
+        293     294     306     330     517     609     700     790     879     940     967     1141    1226    1262
+        1310    1393    1557    1637    1716    1794    1948    2132    2928    2973    3088    3089    3112    3140
+        3189    3206    3218    3270    3287    3329    3379    3430    3534    3549    3598    3623    3636    3746
+        3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163    4189    4233
+        4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 3
+COSTO MIGLIORE ASSOLUTO:81
+
+Ho raggiunto una soluzione di stallo...
+Diversifico...
+
+2-->26  23-->218        41-->1  109-->206       139-->236       201-->6 211-->307       220-->316       221-->100
+        222-->318       223-->198       224-->320       225-->321       226-->322       227-->323       228-->204
+        229-->325       232-->328       240-->336       241-->337       253-->349       259-->355       260-->356
+        265-->361       276-->372       277-->373       278-->374       283-->379       291-->387       293-->202
+        294-->390       306-->113       330-->234       517-->296       609-->327       700-->326       790-->299
+        879-->324       940-->385       967-->301       1141-->303      1226-->304      1262-->357      1310-->305
+        1393-->319      1557-->308      1637-->309      1716-->310      1794-->311      1948-->313      2132-->315
+        Arco n 1, nodi 1-2, costo 41
+Arco n 4, nodi 1-5, costo 0
+Arco n 6, nodi 1-7, costo 24
+Arco n 26, nodi 1-27, costo 82
+Arco n 100, nodi 2-3, costo 41
+Arco n 113, nodi 2-16, costo 24
+Arco n 198, nodi 3-4, costo 17
+Arco n 202, nodi 3-8, costo 16
+Arco n 204, nodi 3-10, costo 51
+Arco n 206, nodi 3-12, costo 49
+Arco n 216, nodi 3-22, costo 2
+Arco n 218, nodi 3-24, costo 85
+Arco n 234, nodi 3-40, costo 98
+Arco n 236, nodi 3-42, costo 57
+Arco n 296, nodi 4-6, costo 32
+Arco n 299, nodi 4-9, costo 21
+Arco n 301, nodi 4-11, costo 76
+Arco n 303, nodi 4-13, costo 68
+Arco n 304, nodi 4-14, costo 92
+Arco n 305, nodi 4-15, costo 25
+Arco n 307, nodi 4-17, costo 34
+Arco n 308, nodi 4-18, costo 49
+Arco n 309, nodi 4-19, costo 41
+Arco n 310, nodi 4-20, costo 12
+Arco n 311, nodi 4-21, costo 45
+Arco n 313, nodi 4-23, costo 18
+Arco n 315, nodi 4-25, costo 39
+Arco n 316, nodi 4-26, costo 23
+Arco n 318, nodi 4-28, costo 96
+Arco n 319, nodi 4-29, costo 87
+Arco n 320, nodi 4-30, costo 29
+Arco n 321, nodi 4-31, costo 49
+Arco n 322, nodi 4-32, costo 37
+Arco n 323, nodi 4-33, costo 66
+Arco n 324, nodi 4-34, costo 49
+Arco n 325, nodi 4-35, costo 93
+Arco n 326, nodi 4-36, costo 95
+Arco n 327, nodi 4-37, costo 97
+Arco n 328, nodi 4-38, costo 16
+Arco n 336, nodi 4-46, costo 1
+Arco n 337, nodi 4-47, costo 16
+Arco n 349, nodi 4-59, costo 13
+Arco n 355, nodi 4-65, costo 81
+Arco n 356, nodi 4-66, costo 44
+Arco n 357, nodi 4-67, costo 96
+Arco n 361, nodi 4-71, costo 35
+Arco n 372, nodi 4-82, costo 10
+Arco n 373, nodi 4-83, costo 45
+Arco n 374, nodi 4-84, costo 49
+Arco n 379, nodi 4-89, costo 68
+Arco n 385, nodi 4-95, costo 2
+Arco n 387, nodi 4-97, costo 77
+Arco n 390, nodi 4-100, costo 24
+Arco n 2908, nodi 36-74, costo 0
+Arco n 2928, nodi 36-94, costo 2
+Arco n 2973, nodi 37-76, costo 0
+Arco n 3088, nodi 39-68, costo 0
+Arco n 3089, nodi 39-69, costo 0
+Arco n 3112, nodi 39-92, costo 0
+Arco n 3140, nodi 40-60, costo 1
+Arco n 3189, nodi 41-50, costo 2
+Arco n 3206, nodi 41-67, costo 0
+Arco n 3218, nodi 41-79, costo 1
+Arco n 3270, nodi 42-73, costo 0
+Arco n 3287, nodi 42-90, costo 18
+Arco n 3329, nodi 43-75, costo 0
+Arco n 3379, nodi 44-69, costo 1
+Arco n 3430, nodi 45-65, costo 4
+Arco n 3534, nodi 47-62, costo 1
+Arco n 3549, nodi 47-77, costo 2
+Arco n 3598, nodi 48-74, costo 0
+Arco n 3623, nodi 48-99, costo 0
+Arco n 3636, nodi 49-61, costo 1
+Arco n 3746, nodi 51-72, costo 0
+Arco n 3766, nodi 51-92, costo 0
+Arco n 3812, nodi 52-90, costo 1
+Arco n 3823, nodi 53-54, costo 0
+Arco n 3847, nodi 53-78, costo 1
+Arco n 3943, nodi 55-83, costo 0
+Arco n 3951, nodi 55-91, costo 2
+Arco n 3961, nodi 56-57, costo 1
+Arco n 4005, nodi 57-58, costo 1
+Arco n 4034, nodi 57-87, costo 0
+Arco n 4074, nodi 58-85, costo 0
+Arco n 4077, nodi 58-88, costo 2
+Arco n 4163, nodi 60-93, costo 1
+Arco n 4189, nodi 61-80, costo 2
+Arco n 4233, nodi 62-86, costo 1
+Arco n 4258, nodi 63-74, costo 5
+Arco n 4307, nodi 64-87, costo 2
+Arco n 4460, nodi 69-75, costo 1
+Arco n 4488, nodi 70-73, costo 0
+Arco n 4558, nodi 72-86, costo 1
+Arco n 4628, nodi 75-78, costo 1
+Arco n 4654, nodi 76-80, costo 2
+Arco n 4655, nodi 76-81, costo 2
+Arco n 4801, nodi 83-87, costo 0
+Arco n 4810, nodi 83-96, costo 0
+Arco n 4933, nodi 94-98, costo 3
+Costo spanning tree: 2599
+
+ITERAZIONE 106
+Esploro l'intorno
+Iterazione 106:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+1       4       6       26      100     113     198     202     204     206     216     218     236     296     299
+        301     303     304     305     307     308     309     310     311     313     315     316     318     319
+        320     321     322     323     324     325     326     327     328     336     337     349     355     356
+        357     361     372     373     374     379     385     387     390     2908    2928    2973    3088    3089
+        3112    3140    3189    3206    3218    3270    3287    3329    3379    3430    3534    3549    3598    3623
+        3636    3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163
+        4189    4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 1
+COSTO MIGLIORE ASSOLUTO:81
+
+ITERAZIONE 107
+Esploro l'intorno
+Iterazione 107:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+1       4       6       26      100     113     198     202     204     206     216     218     236     296     299
+        301     303     304     305     307     308     309     310     311     313     315     316     318     319
+        320     321     322     323     324     325     326     328     336     337     349     355     356     357
+        361     372     373     374     379     385     387     390     2908    2928    2973    3088    3089    3112
+        3140    3189    3206    3218    3270    3287    3329    3379    3430    3534    3549    3598    3623    3636
+        3746    3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163    4189
+        4233    4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 2
+COSTO MIGLIORE ASSOLUTO:81
+
+ITERAZIONE 108
+Esploro l'intorno
+Iterazione 108:non ha trovato miglioramenti
+Mi sposto comunque alla soluzione migliore dell'intorno:
+ARCHI COUNTER:
+1       4       6       26      100     113     198     202     204     206     216     218     236     296     299
+        301     303     304     305     307     308     309     310     311     313     315     316     318     319
+        320     321     322     323     324     325     326     328     336     337     349     355     356     361
+        372     373     374     379     385     387     390     2908    2928    2973    3088    3089    3112    3140
+        3189    3206    3218    3270    3287    3329    3379    3430    3534    3549    3598    3623    3636    3746
+        3766    3812    3823    3847    3943    3951    3961    4005    4034    4074    4077    4163    4189    4233
+        4258    4307    4460    4488    4558    4628    4654    4655    4801    4810    4933
+Numero di iterazioni senza miglioramenti: 3
+COSTO MIGLIORE ASSOLUTO:81
+
+All'iterazione 108 e' stata raggiunta la situazione di stallo.
+L'ottimo locale trovato risulta quindi:
+Arco n 4, nodi 1-5, costo 0
+Arco n 78, nodi 1-79, costo 1
+Arco n 157, nodi 2-60, costo 0
+Arco n 187, nodi 2-90, costo 0
+Arco n 205, nodi 3-11, costo 0
+Arco n 226, nodi 3-32, costo 0
+Arco n 277, nodi 3-83, costo 0
+Arco n 283, nodi 3-89, costo 1
+Arco n 336, nodi 4-46, costo 1
+Arco n 407, nodi 5-22, costo 2
+Arco n 432, nodi 5-47, costo 0
+Arco n 456, nodi 5-71, costo 2
+Arco n 467, nodi 5-82, costo 0
+Arco n 521, nodi 6-42, costo 0
+Arco n 528, nodi 6-49, costo 0
+Arco n 539, nodi 6-60, costo 1
+Arco n 616, nodi 7-44, costo 1
+Arco n 628, nodi 7-56, costo 0
+Arco n 691, nodi 8-27, costo 1
+Arco n 698, nodi 8-34, costo 1
+Arco n 767, nodi 9-12, costo 1
+Arco n 771, nodi 9-16, costo 0
+Arco n 822, nodi 9-67, costo 1
+Arco n 887, nodi 10-42, costo 0
+Arco n 940, nodi 10-95, costo 0
+Arco n 980, nodi 11-46, costo 0
+Arco n 1060, nodi 12-38, costo 4
+Arco n 1088, nodi 12-66, costo 0
+Arco n 1202, nodi 13-93, costo 0
+Arco n 1225, nodi 14-30, costo 2
+Arco n 1262, nodi 14-67, costo 0
+Arco n 1333, nodi 15-53, costo 1
+Arco n 1424, nodi 16-60, costo 0
+Arco n 1432, nodi 16-68, costo 0
+Arco n 1488, nodi 17-41, costo 3
+Arco n 1621, nodi 18-92, costo 5
+Arco n 1676, nodi 19-66, costo 1
+Arco n 1774, nodi 20-84, costo 0
+Arco n 1789, nodi 20-99, costo 1
+Arco n 1863, nodi 21-94, costo 0
+Arco n 1955, nodi 23-31, costo 1
+Arco n 1977, nodi 23-53, costo 1
+Arco n 1983, nodi 23-59, costo 1
+Arco n 2070, nodi 24-70, costo 1
+Arco n 2132, nodi 25-57, costo 0
+Arco n 2196, nodi 26-47, costo 0
+Arco n 2249, nodi 26-100, costo 2
+Arco n 2386, nodi 28-92, costo 0
+Arco n 2420, nodi 29-55, costo 1
+Arco n 2603, nodi 31-99, costo 0
+Arco n 2637, nodi 32-65, costo 0
+Arco n 2694, nodi 33-55, costo 0
+Arco n 2754, nodi 34-49, costo 1
+Arco n 2867, nodi 35-97, costo 0
+Arco n 2869, nodi 35-99, costo 0
+Arco n 2908, nodi 36-74, costo 0
+Arco n 2928, nodi 36-94, costo 2
+Arco n 2973, nodi 37-76, costo 0
+Arco n 3088, nodi 39-68, costo 0
+Arco n 3089, nodi 39-69, costo 0
+Arco n 3112, nodi 39-92, costo 0
+Arco n 3140, nodi 40-60, costo 1
+Arco n 3189, nodi 41-50, costo 2
+Arco n 3206, nodi 41-67, costo 0
+Arco n 3218, nodi 41-79, costo 1
+Arco n 3270, nodi 42-73, costo 0
+Arco n 3329, nodi 43-75, costo 0
+Arco n 3379, nodi 44-69, costo 1
+Arco n 3430, nodi 45-65, costo 4
+Arco n 3549, nodi 47-77, costo 2
+Arco n 3598, nodi 48-74, costo 0
+Arco n 3623, nodi 48-99, costo 0
+Arco n 3636, nodi 49-61, costo 1
+Arco n 3746, nodi 51-72, costo 0
+Arco n 3766, nodi 51-92, costo 0
+Arco n 3812, nodi 52-90, costo 1
+Arco n 3823, nodi 53-54, costo 0
+Arco n 3847, nodi 53-78, costo 1
+Arco n 3943, nodi 55-83, costo 0
+Arco n 3951, nodi 55-91, costo 2
+Arco n 3961, nodi 56-57, costo 1
+Arco n 4005, nodi 57-58, costo 1
+Arco n 4034, nodi 57-87, costo 0
+Arco n 4074, nodi 58-85, costo 0
+Arco n 4077, nodi 58-88, costo 2
+Arco n 4163, nodi 60-93, costo 1
+Arco n 4189, nodi 61-80, costo 2
+Arco n 4233, nodi 62-86, costo 1
+Arco n 4258, nodi 63-74, costo 5
+Arco n 4307, nodi 64-87, costo 2
+Arco n 4460, nodi 69-75, costo 1
+Arco n 4488, nodi 70-73, costo 0
+Arco n 4558, nodi 72-86, costo 1
+Arco n 4628, nodi 75-78, costo 1
+Arco n 4654, nodi 76-80, costo 2
+Arco n 4655, nodi 76-81, costo 2
+Arco n 4801, nodi 83-87, costo 0
+Arco n 4810, nodi 83-96, costo 0
+Arco n 4933, nodi 94-98, costo 3
+Costo spanning tree: 81
+
+Process finished with exit code 0
