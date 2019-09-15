@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define NUMERONODI 20
-#define NUMEROARCHI 190
-#define KMASSIMO 10
+#define NUMERONODI 7
+#define NUMEROARCHI 21
+#define KMASSIMO 4
 #define NUMEROITERAZIONI 50
-#define KMIGLIORI 20
+#define KMIGLIORI 7
 
 typedef struct s_arco{
     int Id;
@@ -368,8 +368,8 @@ void main() {
 
     //APRO FILE E LEGGO ISTANZE
     FILE *fd;
-    // fd=fopen("C:\\Users\\alice\\OneDrive\\Documents\\GitHub\\LocalSearch\\LocalSearch\\istanze2.txt", "r");
-    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\CreaIstanze\\nuova_istanza_grasp.txt", "r");
+    //fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\DEGREE CONSTRAINED MST\\GRASP\\nuova_istanza_grasp_20.txt", "r");
+    fd=fopen("C:\\Users\\Sara\\Documents\\GitHub\\LocalSearch\\DEGREE CONSTRAINED MST\\GRASP\\nuova_istanza_grasp_7.txt", "r");
     if(fd==NULL){
         printf("Errore apertura file");
         exit(1);
