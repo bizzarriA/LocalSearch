@@ -4,7 +4,7 @@
 :-lib(propia).
 :-lib(edge_finder).
 
-
+/*----OBSOLETO-------------------------------------------------------------------------------------------------------------------------------------*/
 is_arco(N1,N2,ListaArchi,ArchiSpanning):-
 	(N1<N2
 		-> arco(Id,N1,N2,_) infers most, nth1(Id,ArchiSpanning,Bool),Bool==1
@@ -58,7 +58,7 @@ controllo_grado_loop(N,[[Id,N1,N2,_]|ListaArchi], ArchiSpanning,C):-
 controllo_grado([_,N1,N2,_], ListaArchi, ArchiSpanning, K):-
 	controllo_grado_loop(N1, ListaArchi, ArchiSpanning, C1),
 	controllo_grado_loop(N2, ListaArchi, ArchiSpanning, C2),
-	((C1>K; C2>K)
+	((C1>=K; C2>=K)
 		->true
 		;false
 	).
@@ -113,10 +113,10 @@ has_node_selected([_,N1,N2,_],ListaNodi):-	/*controlla se almeno uno dei due nod
 define_tree(_,_,ListaNodi,_,_):-
 	ground(ListaNodi),!.
 define_tree(ListaArchi,ArchiSpanning,ListaNodi,CostoMax,ListaControllati):-
-	cerca_arco(ListaArchi,ArchiSpanning,Arco,CostoMax,ListaControllati), /*Arco è una lista che ha Id,N1,N2,Costo*/
+	cerca_arco(ListaArchi,ArchiSpanning,Arco,CostoMax,ListaControllati), /*Arco è una lista che ha Id,N1,N2,Costo. La funzione prende l'arco di costo minore non selezionato*/
 	((is_percorso(Arco,ListaNodi); grado(K),controllo_grado(Arco,ListaArchi,ArchiSpanning,K)) /*se Arco va da N1 a N2, controlla che non ci sia già un percorso e che il grado dei nodi sia rispettato*/
-		-> is_in_spanning(Arco,ArchiSpanning,0),Lista_presi=Lista_presi_old,Lista_controllati_new=[]	/*se c'è il percorso, nella lista spanning l'arco va a 0;*/
-		; ((is_empty(ListaNodi); has_node_selected(Arco,ListaNodi))
+		-> is_in_spanning(Arco,ArchiSpanning,0),Lista_presi=Lista_presi_old,Lista_controllati_new=ListaControllati	/*se c'è il percorso, nella lista spanning l'arco va a 0;*/
+		; ((is_empty(ListaNodi); has_node_selected(Arco,ListaNodi)) /*primo giro o adiacenza*/
 			-> is_in_spanning(Arco,ArchiSpanning,1), nodi_presi(Arco,ListaNodi),Lista_presi=Lista_presi_new,Lista_controllati_new=[]/*setta i nodi e gli archi presi*/
 			; append(ListaControllati,[Arco],Lista_controllati_new)
 		)

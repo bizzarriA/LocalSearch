@@ -1,0 +1,20 @@
+ARGOMENTI PRESENTAZIONE:
+1) premessa: crescita personale (all'inizio non sapevamo come iniziare) grazie a studio e ragionamento. Chi ha fatto cosa e come sarà esposto il progetto. IO
+2) spiegazione del problema (cos'è un MST, nostro problema specifico e modello matematico, quali euristiche sono state utilizzate) ALI
+3) greedy: cos'è, quali abbiamo usato e dove (ECLiPSe che non cambia idea, evoluzione da una a quattro greedy). IO
+	3a)presentazione greedy e discorso su grafi completi e incompleti
+	3b)spiegazione codice
+	3c)codice in funzionamento e risultati delle istanze grandi
+4) ls: cos'è ALI
+	4a)presentazione ls (best improvement, prima first) e discorso grafi completi e incompleti
+	4b)spiegazione codice
+	4c)codice in funzionamento e risultati delle istanze grandi
+5) come migliorare la ls con le metaeuristiche (cosa sono le metaeuristiche) IO
+6) GRASP: cos'è
+	6a)spiegazione codice
+	6b)codice in funzionamento e risultati delle istanze grandi
+7) tabu search: cos'è ALI
+	7a)presentazione tabu search e discorso grafi completi e incompleti
+	7b)spiegazione codice
+	7c)codice in funzionamento e risultati delle istanze grandi
+8) conclusioni: difficoltà incontrate, euristiche migliori per il problema, altre idee (volevamo provare la simulated annealing).
